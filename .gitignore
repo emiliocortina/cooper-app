@@ -1,0 +1,3 @@
+./client/android/*
+./client/ios/*
+.client/node_modules/*
