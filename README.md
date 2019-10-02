@@ -1,45 +1,60 @@
-# :space_invader: React Native Template TypeScript
+# Client
 
-<p>
-  <a href="https://travis-ci.org/react-native-community/react-native-template-typescript">
-    <img alt="Build Status" src="https://img.shields.io/travis/react-native-community/react-native-template-typescript.svg" target="_blank" />
-  </a>
-  <a href="https://github.com/react-native-community/react-native-template-typescript#readme">
-    <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" target="_blank" />
-  </a>
-  <a href="https://github.com/react-native-community/react-native-template-typescript/graphs/commit-activity">
-    <img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" target="_blank" />
-  </a>
-  <a href="https://github.com/react-native-community/react-native-template-typescript/blob/master/LICENSE">
-    <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" target="_blank" />
-  </a>
-</p>
+## ECMAScript 2015 features 
+(está guay pascribir código moderno)
+https://babeljs.io/docs/en/learn/
 
-> Clean and minimalist React Native template for a quick start with TypeScript.
+## Running
+Es to facil, instalaos las cosas q pone aqui. Comprobad que estáis viendo 
+el tutorial para React Native CLI Quickstart no Expo y luego elegid Windows y Android vosotros.
+https://facebook.github.io/react-native/docs/0.60/getting-started
+Esto os lo abrirá en un emulador que está bien pa ir desarrollando se actualiza solo.
 
-## :star: Features
+### Run on device
+https://facebook.github.io/react-native/docs/0.60/running-on-device 
 
-- Elegant usage directly within the [React Native CLI](https://github.com/react-native-community/cli)
-- Consistent with the default React Native template
-- Minimal additional dependencies
+## Links varios de cosas guays
 
-## :arrow_forward: Usage
+### Animaciones to fancy pa la navegacion
+https://github.com/fram-x/FluidTransitions
 
-> `react-native@0.60` or higher
+### Animacion mas fancy para las cards
+https://github.com/wcandillon/can-it-be-done-in-react-native.git
 
-```sh
-npx react-native init MyApp --template react-native-template-typescript
-```
 
-### Note on the legacy CLI
-There seems to be quite some confusion about the legacy CLI. This template only works with the new CLI. Make sure you have uninstalled the legacy `react-native-cli` first (`npm uninstall -g react-native-cli`), for the above command to work. If you wish to not use `npx`, you can also install the new CLI globally (`npm i -g @react-native-community/cli` or `yarn global add @react-native-community/cli`).
+## Performance
 
-Further information can be found here: https://github.com/react-native-community/cli#about
+### Optimizar rendimiento
+https://facebook.github.io/react-native/docs/0.60/performance
 
-## :computer: Contributing
+Navigator vs NavigatorIOS en iOS???
+Use the new react navigation library: https://facebook.github.io/react-native/docs/0.60/navigation
+Uses native components to deliver 60FPS animations that are run on the native thread.
 
-Contributions are very welcome. Please check out the [contributing document](CONTRIBUTING.md).
+FlatList/SectionList vs ListView
 
-## :bookmark: License
+### Production builds
+https://facebook.github.io/react-native/docs/0.60/running-on-device#building-your-app-for-production
 
-This project is [MIT](LICENSE) licensed.
+## Typescript
+https://facebook.github.io/react-native/docs/0.60/typescript
+
+## iOS troubleshooting
+If it cannot build due to pods problems do:
+If you don't have cocoa pods installed you need to:
+
+sudo gem install cocoapods
+Then run:
+
+cd /ios
+pod install
+delete the build folder in ios folder of your react native project
+
+run:
+
+react-native run-ios
+if error persists:
+
+delete build folder again
+open the /ios folder in Xcode
+navigate File -> Project Settings -> Build System -> change (Shared workspace settings and Per-User workspace settings): Build System -> Legacy Build System
