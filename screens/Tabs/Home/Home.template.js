@@ -1,6 +1,14 @@
 import React from 'react';
-import {Button, View, Text} from 'react-native';
-import Card from '../../../components/card';
+import {
+  Button,
+  View,
+  Text,
+  SafeAreaView,
+  TouchableOpacity,
+  Image,
+  ScrollView,
+} from 'react-native';
+import homeStyles from './Home.stylesheet';
 
 class HomeTemplate extends React.Component {
   static navigationOptions = {
@@ -10,14 +18,26 @@ class HomeTemplate extends React.Component {
 
   render() {
     return (
-      <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-        <Text>Home Screen</Text>
-        <Button
-          title="Go to Details"
-          onPress={() => this.props.navigation.navigate('Details')}
-        />
-        <Card />
-      </View>
+      <SafeAreaView
+        style={{
+          flex: 1,
+          alignItems: 'center',
+          justifyContent: 'flex-start',
+          flexDirection: 'column',
+        }}>
+        <ScrollView style={{width: '100%'}}>
+          <View style={homeStyles.TitleBar}>
+            <TouchableOpacity style={{position: 'absolute', top: 0, left: 20}}>
+              <Image
+                source={require('../../../assets/images/sentinel2.jpg')}
+                style={homeStyles.Avatar}
+              />
+            </TouchableOpacity>
+            <Text style={homeStyles.Title}>Welcome back,</Text>
+            <Text style={homeStyles.Name}>Emilio Cortina</Text>
+          </View>
+        </ScrollView>
+      </SafeAreaView>
     );
   }
 }

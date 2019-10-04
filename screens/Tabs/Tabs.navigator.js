@@ -3,50 +3,51 @@ import {Platform} from 'react-native';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
 import HomeScreen from './Home/Home.screen';
 import StatsScreen from './Stats/Stats.screen';
-import TabBarIcon from '../../components/TabBarIcon';
+import Icon from 'react-native-vector-icons/Feather';
+import SearchScreen from './Search/Search.screen';
 
 const HomeTab = HomeScreen;
 HomeTab.navigationOptions = {
   tabBarLabel: 'Home',
-  /*
-  tabBarIcon: ({focused}) => (
-    <TabBarIcon
-      focused={focused}
-      name={
-        Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
-      }
-    />
-  ),
-  */
+  tabBarIcon: ({focused, horizontal, tintColor}) => {
+    let IconComponent = Icon;
+
+    // You can return any component that you like here!
+    return <IconComponent name={'home'} size={25} color={tintColor} />;
+  },
 };
 
 const StatsTab = StatsScreen;
 StatsTab.navigationOptions = {
   tabBarLabel: 'Stats',
-  /*
-  tabBarIcon: ({focused}) => (
-    <TabBarIcon
-      focused={focused}
-      name={
-        Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
-      }
-    />
-  ),
-  */
+  tabBarIcon: ({focused, horizontal, tintColor}) => {
+    let IconComponent = Icon;
+
+    // You can return any component that you like here!
+    return <IconComponent name={'activity'} size={25} color={tintColor} />;
+  },
+};
+
+const SearchTab = SearchScreen;
+SearchTab.navigationOptions = {
+  tabBarLabel: 'Stats',
+  tabBarIcon: ({focused, horizontal, tintColor}) => {
+    let IconComponent = Icon;
+
+    // You can return any component that you like here!
+    return <IconComponent name={'search'} size={25} color={tintColor} />;
+  },
 };
 
 const TabNavigator = createBottomTabNavigator(
   {
     Home: HomeTab,
     Stats: StatsTab,
+    Search: SearchTab,
   },
   {
     tabBarOptions: {
-      activeTintColor: '#6C1D7C',
+      activeTintColor: '#e06075',
       inactiveTintColor: 'rgba(0,0,0,0.6)',
       showLabel: false,
       style: {
@@ -56,10 +57,7 @@ const TabNavigator = createBottomTabNavigator(
         shadowRadius: 15,
         borderTopColor: 'transparent',
         backgroundColor: '#fff',
-        borderRadius: 20,
-        margin: 20,
-        marginBottom: 30,
-        height: 40,
+        borderRadius: 2000,
       },
       activeTabStyle: {
         backgroundColor: 'white',

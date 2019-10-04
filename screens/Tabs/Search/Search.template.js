@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text} from 'react-native';
 
-class ExploreTemplate extends React.Component {
+class SearchTemplate extends React.Component {
   render() {
     return (
       <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
@@ -11,4 +11,4 @@ class ExploreTemplate extends React.Component {
   }
 }
 
-export default ExploreTemplate;
+export default SearchTemplate;

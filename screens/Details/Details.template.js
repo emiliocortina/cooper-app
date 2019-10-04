@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, Button, SafeAreaView, ScrollView} from 'react-native';
 
 class Detailstemplate extends React.Component {
   static navigationOptions = {
@@ -9,9 +9,9 @@ class Detailstemplate extends React.Component {
   };
   render() {
     return (
-      <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+      <SafeAreaView>
         <Text>Details Screen</Text>
-      </View>
+      </SafeAreaView>
     );
   }
 }
