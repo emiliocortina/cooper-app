@@ -39,9 +39,35 @@ StatsTab.navigationOptions = {
   */
 };
 
-const TabNavigator = createBottomTabNavigator({
-  Home: HomeTab,
-  Stats: StatsTab,
-});
+const TabNavigator = createBottomTabNavigator(
+  {
+    Home: HomeTab,
+    Stats: StatsTab,
+  },
+  {
+    tabBarOptions: {
+      activeTintColor: '#6C1D7C',
+      inactiveTintColor: 'rgba(0,0,0,0.6)',
+      showLabel: false,
+      style: {
+        shadowColor: 'rgba(58,55,55,0.1)',
+        shadowOffset: {width: 0, height: 0},
+        shadowOpacity: 1,
+        shadowRadius: 15,
+        borderTopColor: 'transparent',
+        backgroundColor: '#fff',
+        borderRadius: 20,
+        margin: 20,
+        marginBottom: 30,
+        height: 40,
+      },
+      activeTabStyle: {
+        backgroundColor: 'white',
+        borderBottomWidth: 4,
+        borderColor: '#6C1D7C',
+      },
+    },
+  },
+);
 
 export default TabNavigator;

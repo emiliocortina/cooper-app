@@ -9,6 +9,15 @@ const HomeScreen = createStackNavigator(
     initialRouteName: 'Home',
     defaultNavigationOptions: {
       gestureResponseDistance: {horizontal: 600},
+      headerStyle: {
+        backgroundColor: '#ffffff',
+        shadowColor: 'rgba(58,55,55,0.1)',
+        shadowOffset: {width: 0, height: 0},
+        shadowOpacity: 1,
+        shadowRadius: 15,
+        borderBottomColor: 'transparent',
+        color: '#333333',
+      },
     },
   },
 );

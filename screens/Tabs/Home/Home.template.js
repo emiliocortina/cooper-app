@@ -4,6 +4,7 @@ import Card from '../../../components/card';
 
 class HomeTemplate extends React.Component {
   static navigationOptions = {
+    title: 'Home',
     header: null,
   };
 
