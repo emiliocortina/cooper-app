@@ -36,6 +36,14 @@ Podemos hacer una de estas con las distintas mediciones de cada categoria (colap
 https://www.reddit.com/r/reactnative/comments/dbtxu2/the_5_minutes_react_native_accordion_list/
 
 
+## Styling
+### Best practices
+https://thoughtbot.com/blog/structure-for-styling-in-react-native
+(El punto 4 lo vamos a refactorizar en otro archivo pero es el mismo concepto)
+
+### Dark mode
+https://blog.expo.io/expo-sdk-35-is-now-available-beee0dfafbf4
+
 ## Internationalization
 https://whatdidilearn.info/2019/01/20/internationalization-in-react-native.html
 
