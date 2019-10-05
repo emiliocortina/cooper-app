@@ -9,6 +9,7 @@ import {
   ScrollView,
 } from 'react-native';
 import homeStyles from './Home.stylesheet';
+import Card from '../../../components/card';
 
 class HomeTemplate extends React.Component {
   static navigationOptions = {
@@ -36,6 +37,7 @@ class HomeTemplate extends React.Component {
             <Text style={homeStyles.Title}>Welcome back,</Text>
             <Text style={homeStyles.Name}>Emilio Cortina</Text>
           </View>
+          <Card />
         </ScrollView>
       </SafeAreaView>
     );
