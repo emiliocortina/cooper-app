@@ -1,25 +1,40 @@
 import {StyleSheet} from 'react-native';
+import {Buttons, Typography, Colors} from 'cooper/styles'
 
 const homeStyles = StyleSheet.create({
+  Content: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "flex-start",
+    flexDirection: "column"
+  },
+  Section: {
+    marginTop: 50,
+    paddingLeft: 20,
+    width: '100%',
+  },
+  CardsContainer: {
+    marginTop: 50,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
   TitleBar: {
     width: '100%',
     marginTop: 50,
     paddingLeft: 80,
   },
   Avatar: {
-    width: 44,
-    height: 44,
-    borderRadius: 22,
+    ...Buttons.avatar,
   },
-  Title: {
+  Welcome: {
+    ...Colors.secondaryLabel,
     fontSize: 16,
-    color: '#b8bece',
     fontWeight: '500',
   },
   Name: {
-    fontSize: 20,
+    ...Typography.h3,
     color: '#3c4560',
-    fontWeight: 'bold',
   },
 });
 

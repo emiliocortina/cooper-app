@@ -1,12 +1,20 @@
-import React from 'react';
-import {View, Text} from 'react-native';
+import React from "react";
+import { View, Text, ImageBackground } from "react-native";
 
 class StatsTemplate extends React.Component {
   render() {
     return (
-      <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-        <Text>Stats Screen</Text>
-      </View>
+      <ImageBackground
+        source={require("cooper/assets/images/sentinel3.jpg")}
+        style={{
+          flex: 1,
+            width: "100%",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Text>Statistics Screen</Text>
+      </ImageBackground>
     );
   }
 }

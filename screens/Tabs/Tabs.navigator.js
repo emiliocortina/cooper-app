@@ -40,7 +40,7 @@ const TabNavigator = createBottomTabNavigator(
   {
     tabBarOptions: {
       activeTintColor: '#e06075',
-      inactiveTintColor: 'rgba(0,0,0,0.6)',
+      inactiveTintColor: '#8F9091',
       showLabel: false,
       style: {
         shadowColor: 'rgba(58,55,55,0.1)',
@@ -51,11 +51,6 @@ const TabNavigator = createBottomTabNavigator(
         borderTopColor: 'transparent',
         backgroundColor: '#fff',
         borderRadius: 2000,
-      },
-      activeTabStyle: {
-        backgroundColor: 'white',
-        borderBottomWidth: 4,
-        borderColor: '#6C1D7C',
       },
     },
   },
