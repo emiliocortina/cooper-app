@@ -1,27 +1,27 @@
 // Text
 export const label = {
-    color: "rgba(0,0,0,0.91)"
+    color: "#ffffffff"
 };
 
 export const secondaryLabel = {
-    color: "#3c3c4399"
+    color: "#ebebf599"
 };
 
 export const tertiaryLabel = {
-    color: "#3c3c434c"
+    color: "#ebebf54c"
 };
 
 
 // Background
 export const systemBackground = {
-    color: "#ffffffff"
+    color: "#000000ff"
 };
 
 export const secondarySystemBackground = {
-    color: "#f2f2f7ff"
+    color: "#1c1c1eff"
 };
 
 export const tertiarySystemBackground = {
-    color: "#ffffffff"
+    color: "#2c2c2eff"
 };
 

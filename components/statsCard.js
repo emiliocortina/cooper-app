@@ -12,19 +12,12 @@ import {
 import { BlurView } from 'expo-blur';
 import {Colors, Typography} from 'cooper/styles';
 
-class Card extends React.Component {
+class StatsCard extends React.Component {
   render() {
     return (
-      <ImageBackground
-        source={require("cooper/assets/images/sentinel3.jpg")}
-        style={styles.CardContainer}
-        imageStyle={{ borderRadius: 21 }}
-      >
-        <View  style={styles.Content}>
-          <Text style={styles.Subtitle}>HOLAA</Text>
-          <Text>HOLAA</Text>
-        </View>
-      </ImageBackground>
+        <BlurView style={styles.CardContainer}>
+
+        </BlurView>
     );
   }
 }
@@ -59,4 +52,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Card;
+export default StatsCard;

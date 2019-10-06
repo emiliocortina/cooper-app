@@ -6,7 +6,7 @@ const homeStyles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "flex-start",
-    flexDirection: "column"
+    flexDirection: "column",
   },
   Section: {
     marginTop: 50,
@@ -15,17 +15,20 @@ const homeStyles = StyleSheet.create({
   },
   CardsContainer: {
     marginTop: 50,
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
+    paddingBottom: 30,
   },
   TitleBar: {
     width: '100%',
     marginTop: 50,
-    paddingLeft: 80,
+    marginBottom: 20,
+    paddingLeft: 20,
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
   },
   Avatar: {
     ...Buttons.avatar,
+    marginRight: 10,
   },
   Welcome: {
     ...Colors.secondaryLabel,

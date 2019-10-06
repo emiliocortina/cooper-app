@@ -18,23 +18,32 @@ class HomeTemplate extends React.Component {
 
   render() {
     return (
-      <SafeAreaView
-        style={homeStyles.Content}
-      >
-        <ScrollView style={{ width: "100%" }} contentContainerStyle={homeStyles.Content}>
+      <SafeAreaView style={homeStyles.Content}>
+        <ScrollView style={{ width: "100%" }}>
           <View style={homeStyles.TitleBar}>
             <TouchableOpacity
-              style={{ position: "absolute", top: 0, left: 20 }}
             >
               <Image
                 source={require("../../../assets/images/sentinel2.jpg")}
                 style={homeStyles.Avatar}
               />
             </TouchableOpacity>
-            <Text style={homeStyles.Welcome}>Welcome back,</Text>
-            <Text style={homeStyles.Name}>Emilio Cortina</Text>
+            <View>
+              <Text style={homeStyles.Welcome}>Welcome back,</Text>
+              <Text style={homeStyles.Name}>Emilio Cortina</Text>
+            </View>
           </View>
-          <View style={[homeStyles.CardsContainer]}><Card /></View>
+
+          <ScrollView horizontal style={homeStyles.CardsContainer}>
+            <Card />
+              <Card />
+              <Card />
+              <Card />
+              <Card />
+              <Card />
+              <Card />
+              <Card />
+          </ScrollView>
 
         </ScrollView>
       </SafeAreaView>

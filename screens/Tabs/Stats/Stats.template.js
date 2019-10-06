@@ -13,7 +13,7 @@ class StatsTemplate extends React.Component {
           justifyContent: "center",
         }}
       >
-        <Text>Statistics Screen</Text>
+        <Text>Statisticsss Screen</Text>
       </ImageBackground>
     );
   }
