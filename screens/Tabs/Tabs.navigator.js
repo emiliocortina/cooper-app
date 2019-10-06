@@ -4,6 +4,7 @@ import HomeScreen from './Home/Home.screen';
 import StatsScreen from './Stats/Stats.screen';
 import { Feather } from '@expo/vector-icons';
 import SearchScreen from './Search/Search.screen';
+import {Colors, Typography} from 'cooper/styles'
 
 const IconComponent = Feather;
 
@@ -31,6 +32,7 @@ SearchTab.navigationOptions = {
   },
 };
 
+console.log(Typography);
 const TabNavigator = createBottomTabNavigator(
   {
     Home: HomeTab,
@@ -40,22 +42,21 @@ const TabNavigator = createBottomTabNavigator(
   {
     tabBarOptions: {
       activeTintColor: '#e06075',
-      inactiveTintColor: 'rgba(0,0,0,0.6)',
+      inactiveTintColor: '#8F9091',
       showLabel: false,
       style: {
+        position: 'absolute',
+        left: 0,
+        bottom: 0,
+        right: 0,
         shadowColor: 'rgba(58,55,55,0.1)',
         shadowOffset: {width: 0, height: 0},
         shadowOpacity: 1,
         shadowRadius: 15,
         elevation: 3,
         borderTopColor: 'transparent',
-        backgroundColor: '#fff',
-        borderRadius: 2000,
-      },
-      activeTabStyle: {
         backgroundColor: 'white',
-        borderBottomWidth: 4,
-        borderColor: '#6C1D7C',
+        borderRadius: 2000,
       },
     },
   },

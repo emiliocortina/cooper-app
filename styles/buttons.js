@@ -8,6 +8,12 @@ export const rounded = {
     borderRadius: 50
 };
 
+export const avatar = {
+    width: 44,
+    height: 44,
+    borderRadius: 22,
+}
+
 export const smallRounded = {
     ...small,
     ...rounded

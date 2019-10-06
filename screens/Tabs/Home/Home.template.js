@@ -9,6 +9,7 @@ import {
   ScrollView
 } from "react-native";
 import homeStyles from "./Home.stylesheet";
+import Card from "../../../components/card";
 
 class HomeTemplate extends React.Component {
   static navigationOptions = {
@@ -17,27 +18,33 @@ class HomeTemplate extends React.Component {
 
   render() {
     return (
-      <SafeAreaView
-        style={{
-          flex: 1,
-          alignItems: "center",
-          justifyContent: "flex-start",
-          flexDirection: "column"
-        }}
-      >
+      <SafeAreaView style={homeStyles.Content}>
         <ScrollView style={{ width: "100%" }}>
           <View style={homeStyles.TitleBar}>
             <TouchableOpacity
-              style={{ position: "absolute", top: 0, left: 20 }}
             >
               <Image
                 source={require("../../../assets/images/sentinel2.jpg")}
                 style={homeStyles.Avatar}
               />
             </TouchableOpacity>
-            <Text style={homeStyles.Title}>Welcome back,</Text>
-            <Text style={homeStyles.Name}>Emilio Cortina</Text>
+            <View>
+              <Text style={homeStyles.Welcome}>Welcome back,</Text>
+              <Text style={homeStyles.Name}>Emilio Cortina</Text>
+            </View>
           </View>
+
+          <ScrollView horizontal style={homeStyles.CardsContainer}>
+            <Card />
+              <Card />
+              <Card />
+              <Card />
+              <Card />
+              <Card />
+              <Card />
+              <Card />
+          </ScrollView>
+
         </ScrollView>
       </SafeAreaView>
     );
