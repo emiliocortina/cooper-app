@@ -1,0 +1,16 @@
+{
+    "tabs":{
+        "home": {
+            "welcome": "Welcome back, ",
+            "tabLabel": "Home"
+        },
+        "stats":{
+            "name": "Stats screen",
+            "tabLabel": "Stats"
+        },
+        "search": {
+            "name": "Search screen",
+            "tabLabel": "Search"
+        }
+    }
+}

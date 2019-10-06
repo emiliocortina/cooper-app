@@ -4,13 +4,14 @@ import HomeScreen from './Home/Home.screen';
 import StatsScreen from './Stats/Stats.screen';
 import { Feather } from '@expo/vector-icons';
 import SearchScreen from './Search/Search.screen';
-import {Colors, Typography} from 'cooper/styles'
+import {Colors, Typography} from 'cooper/styles';
+import i18n from '../../i18n';
 
 const IconComponent = Feather;
 
 const HomeTab = HomeScreen;
 HomeTab.navigationOptions = {
-  tabBarLabel: 'Home',
+  tabBarLabel: i18n.t('tabs.home.tabLabel'),
   tabBarIcon: ({focused, horizontal, tintColor}) => {
     return <IconComponent name={'home'} size={25} color={tintColor} />;
   },
@@ -18,7 +19,7 @@ HomeTab.navigationOptions = {
 
 const StatsTab = StatsScreen;
 StatsTab.navigationOptions = {
-  tabBarLabel: 'Stats',
+  tabBarLabel: i18n.t('tabs.stats.tabLabel'),
   tabBarIcon: ({focused, horizontal, tintColor}) => {
     return <IconComponent name={'activity'} size={25} color={tintColor} />;
   },
@@ -26,7 +27,7 @@ StatsTab.navigationOptions = {
 
 const SearchTab = SearchScreen;
 SearchTab.navigationOptions = {
-  tabBarLabel: 'Stats',
+  tabBarLabel: i18n.t('tabs.search.tabLabel'),
   tabBarIcon: ({focused, horizontal, tintColor}) => {
     return <IconComponent name={'search'} size={25} color={tintColor} />;
   },

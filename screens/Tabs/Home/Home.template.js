@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import homeStyles from "./Home.stylesheet";
 import Card from "../../../components/card";
+import i18n  from "../../../i18n";
 
 class HomeTemplate extends React.Component {
   static navigationOptions = {
@@ -29,12 +30,12 @@ class HomeTemplate extends React.Component {
               />
             </TouchableOpacity>
             <View>
-              <Text style={homeStyles.Welcome}>Welcome back,</Text>
+              <Text style={homeStyles.Welcome}>{i18n.t('tabs.home.welcome')}</Text>
               <Text style={homeStyles.Name}>Emilio Cortina</Text>
             </View>
           </View>
 
-          <ScrollView horizontal style={homeStyles.CardsContainer}>
+          <ScrollView vertical style={homeStyles.CardsContainer}>
             <Card />
               <Card />
               <Card />
