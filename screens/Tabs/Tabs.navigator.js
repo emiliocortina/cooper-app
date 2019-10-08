@@ -1,5 +1,5 @@
 import React from 'react';
-import { createBottomTabNavigator } from 'react-navigation';
+import { createBottomTabNavigator } from '@mcmar/react-navigation-tabs';
 import HomeScreen from './Home/Home.screen';
 import StatsScreen from './Stats/Stats.screen';
 import { Feather } from '@expo/vector-icons';
@@ -46,6 +46,7 @@ const TabNavigator = createBottomTabNavigator(
       showLabel: false,
       style: {
         position: 'absolute',
+        zIndex: 5,
         left: 0,
         bottom: 0,
         right: 0,

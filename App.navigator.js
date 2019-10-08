@@ -8,7 +8,7 @@
 
 import React from 'react';
 import TabNavigator from './screens/Tabs/Tabs.navigator';
-import { createStackNavigator } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 import DetailsScreen from './screens/Details/Details.screen';
 
 const AppNavigator = createStackNavigator(

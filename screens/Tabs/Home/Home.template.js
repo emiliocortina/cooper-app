@@ -44,6 +44,36 @@ class HomeTemplate extends React.Component {
               <Card />
               <Card />
           </ScrollView>
+          <ScrollView horizontal style={homeStyles.CardsContainer}>
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+          </ScrollView>
+          <ScrollView horizontal style={homeStyles.CardsContainer}>
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+          </ScrollView>
+          <ScrollView horizontal style={homeStyles.CardsContainer}>
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+          </ScrollView>
 
         </ScrollView>
       </SafeAreaView>
