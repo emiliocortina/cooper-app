@@ -12,5 +12,12 @@
             "name": "Search screen",
             "tabLabel": "Search"
         }
+    },
+    "screens": {
+        "login": {
+            "button": "Log in",
+            "title": "Log in",
+            "passwordLbl": "Password"
+        }
     }
 }

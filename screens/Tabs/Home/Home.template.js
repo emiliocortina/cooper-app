@@ -11,6 +11,7 @@ import {
 import homeStyles from "./Home.stylesheet";
 import Card from "../../../components/card";
 import i18n  from "../../../i18n";
+import { NavigationEvents } from "react-navigation";
 
 class HomeTemplate extends React.Component {
   static navigationOptions = {
@@ -22,7 +23,9 @@ class HomeTemplate extends React.Component {
       <SafeAreaView style={homeStyles.Content}>
         <ScrollView style={{ width: "100%" }}>
           <View style={homeStyles.TitleBar}>
-            <TouchableOpacity
+            <TouchableOpacity onPress={() => {
+              this.props.navigation.navigate('Login');
+            }}
             >
               <Image
                 source={require("../../../assets/images/sentinel2.jpg")}
@@ -35,7 +38,7 @@ class HomeTemplate extends React.Component {
             </View>
           </View>
 
-          <ScrollView vertical style={homeStyles.CardsContainer}>
+          <ScrollView horizontal style={homeStyles.CardsContainer}>
             <Card />
               <Card />
               <Card />
