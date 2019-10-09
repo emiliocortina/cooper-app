@@ -1,0 +1,32 @@
+{
+    "tabs":{
+        "home": {
+            "welcome": "Welcome back, ",
+            "tabLabel": "Home"
+        },
+        "stats":{
+            "name": "Stats screen",
+            "tabLabel": "Stats"
+        },
+        "search": {
+            "name": "Search screen",
+            "tabLabel": "Search"
+        }
+    },
+    "screens": {
+        "login": {
+            "button": "Log in",
+            "title": "Log in",
+            "password": {
+                "label": "Password",
+                "error": "Password is required"
+            },
+            "email": {
+                "label": "Email",
+                "error": "Email is required"
+            },
+            "noUserError": "There are no users with the given email and password",
+            "messageSignup": "Not registered yet? Please signup"
+        }
+    }
+}

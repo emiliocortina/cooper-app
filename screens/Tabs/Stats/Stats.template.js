@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text, ImageBackground } from "react-native";
+import i18n from '../../../i18n';
 
 class StatsTemplate extends React.Component {
   render() {
@@ -13,7 +14,7 @@ class StatsTemplate extends React.Component {
           justifyContent: "center",
         }}
       >
-        <Text>Statisticsss Screen</Text>
+        <Text>{i18n.t('tabs.stats.name')}</Text>
       </ImageBackground>
     );
   }

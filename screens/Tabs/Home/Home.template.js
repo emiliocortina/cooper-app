@@ -10,6 +10,8 @@ import {
 } from "react-native";
 import homeStyles from "./Home.stylesheet";
 import Card from "../../../components/card";
+import i18n  from "../../../i18n";
+import { NavigationEvents } from "react-navigation";
 
 class HomeTemplate extends React.Component {
   static navigationOptions = {
@@ -17,11 +19,14 @@ class HomeTemplate extends React.Component {
   };
 
   render() {
+    const {navigation}= this.props;
     return (
       <SafeAreaView style={homeStyles.Content}>
         <ScrollView style={{ width: "100%" }}>
           <View style={homeStyles.TitleBar}>
-            <TouchableOpacity
+            <TouchableOpacity onPress={() => {
+              this.props.navigation.navigate('Login');
+            }}
             >
               <Image
                 source={require("../../../assets/images/sentinel2.jpg")}
@@ -29,8 +34,10 @@ class HomeTemplate extends React.Component {
               />
             </TouchableOpacity>
             <View>
-              <Text style={homeStyles.Welcome}>Welcome back,</Text>
-              <Text style={homeStyles.Name}>Emilio Cortina</Text>
+              <Text style={homeStyles.Welcome}>{i18n.t('tabs.home.welcome')}</Text>
+              <Text style={homeStyles.Name}>
+              {navigation.getParam('user',"No user")}
+              </Text>
             </View>
           </View>
 
