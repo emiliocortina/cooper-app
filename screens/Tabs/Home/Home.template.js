@@ -19,6 +19,7 @@ class HomeTemplate extends React.Component {
   };
 
   render() {
+    const {navigation}= this.props;
     return (
       <SafeAreaView style={homeStyles.Content}>
         <ScrollView style={{ width: "100%" }}>
@@ -34,7 +35,9 @@ class HomeTemplate extends React.Component {
             </TouchableOpacity>
             <View>
               <Text style={homeStyles.Welcome}>{i18n.t('tabs.home.welcome')}</Text>
-              <Text style={homeStyles.Name}>Emilio Cortina</Text>
+              <Text style={homeStyles.Name}>
+              {JSON.stringify(navigation.getParam('user',"No user"))}
+              </Text>
             </View>
           </View>
 

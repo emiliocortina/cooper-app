@@ -13,6 +13,7 @@ import i18n from "../../i18n";
 import t from "tcomb-form-native";
 import KeyboardShift from "../../components/keyboardShift";
 import { Feather } from "@expo/vector-icons";
+import ApiService from '../../services/api.service';
 
 const Form = t.form.Form;
 const IconComponent = Feather;
@@ -24,13 +25,20 @@ const LoginObject = t.struct({
 
 const options = {
   fields: {
+    email: {
+      label: i18n.t("screens.login.email.label"),
+      error: i18n.t("screens.login.email.error")
+    },
     password: {
-      label: i18n.t("screens.login.passwordLbl"),
+      label: i18n.t("screens.login.password.label"),
       password: true,
-      secureTextEntry: true
+      secureTextEntry: true,
+      error: i18n.t("screens.login.password.error")
     }
   }
 };
+
+const api = new ApiService();
 
 class LoginTemplate extends React.Component {
   static navigationOptions = {
@@ -38,7 +46,19 @@ class LoginTemplate extends React.Component {
     tabBarVisible: false
   };
 
-  handleSubmit = () => {};
+  handleSubmit = () => {
+    const value = this._form.getValue();
+    if (value != null){
+      api.request('auth/login', 'POST', value)
+      .then((res) => {
+        if(res.status === 'logged in') {
+          this.props.navigation.navigate('Home', {user: res.user.nickName});
+        } else  {
+          alert(i18n.t("screens.login.noUserError"));
+        }
+      });
+    }  
+  };
 
   render() {
     return (
@@ -60,7 +80,11 @@ class LoginTemplate extends React.Component {
               {i18n.t("screens.login.title")}
             </Text>
             <View style={loginStyles.Form}>
-              <Form type={LoginObject} options={options}></Form>
+              <Form 
+                ref={c => this._form = c}
+                type={LoginObject}
+                options={options}
+              ></Form>
             </View>
             <Button
               color="#D44963"

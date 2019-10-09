@@ -13,6 +13,7 @@ const loginStyles = StyleSheet.create({
       alignItems: "center",
       justifyContent: "center",
       flexDirection: "column",
+      width: '70%',
     },
     Form: {
       width: '75%',
