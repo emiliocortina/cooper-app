@@ -25,7 +25,8 @@
                 "label": "Email",
                 "error": "Email is required"
             },
-            "noUserError": "There are no users with the given email and password"
+            "noUserError": "There are no users with the given email and password",
+            "messageSignup": "Not registered yet? Please signup"
         }
     }
 }

@@ -36,7 +36,7 @@ class HomeTemplate extends React.Component {
             <View>
               <Text style={homeStyles.Welcome}>{i18n.t('tabs.home.welcome')}</Text>
               <Text style={homeStyles.Name}>
-              {JSON.stringify(navigation.getParam('user',"No user"))}
+              {navigation.getParam('user',"No user")}
               </Text>
             </View>
           </View>

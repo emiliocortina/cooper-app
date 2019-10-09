@@ -8,7 +8,7 @@ import {
   Image,
   ScrollView
 } from "react-native";
-import loginStyles from "./Login.stylesheet";
+import signupStyles from "./Signup.stylesheet";
 import i18n from "../../i18n";
 import t from "tcomb-form-native";
 import KeyboardShift from "../../components/keyboardShift";
@@ -40,9 +40,9 @@ const options = {
 
 const api = new ApiService();
 
-class LoginTemplate extends React.Component {
+class SignupTemplate extends React.Component {
   static navigationOptions = {
-    title: "Login",
+    title: "Signup",
     tabBarVisible: false
   };
 
@@ -64,42 +64,8 @@ class LoginTemplate extends React.Component {
     return (
       <KeyboardShift>
         {() => (
-          <View style={loginStyles.Container}>
-            <View style={loginStyles.Header}>
-              <TouchableOpacity
-                onPress={() => {
-                  this.props.navigation.navigate("Home");
-                }}
-              >
-                <IconComponent name={"home"} size={25} color="#3c4560" />
-              </TouchableOpacity>
-            </View>
-            
-            <View style={loginStyles.Content}>
-            <Text style={loginStyles.Title}>
-              {i18n.t("screens.login.title")}
-            </Text>
-            <View style={loginStyles.Form}>
-              <Form 
-                ref={c => this._form = c}
-                type={LoginObject}
-                options={options}
-              ></Form>
-            </View>
-            <Button
-              color="#D44963"
-              title={i18n.t("screens.login.button")}
-              onPress={this.handleSubmit}
-            ></Button>
-            <Text
-              style={loginStyles.Link}
-              onPress={() => {
-                this.props.navigation.navigate("Signup");
-              }}
-            >
-              {i18n.t("screens.login.messageSignup")}
-            </Text>
-            </View>
+          <View style={signupStyles.Container}>
+            <Text>Signup</Text>
           </View>
         )}
       </KeyboardShift>
@@ -107,4 +73,4 @@ class LoginTemplate extends React.Component {
   }
 }
 
-export default LoginTemplate;
+export default SignupTemplate;
