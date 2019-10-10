@@ -1,10 +1,10 @@
 {
-    "tabs":{
+    "tabs": {
         "home": {
             "welcome": "Welcome back, ",
             "tabLabel": "Home"
         },
-        "stats":{
+        "stats": {
             "name": "Stats screen",
             "tabLabel": "Stats"
         },
@@ -27,6 +27,34 @@
             },
             "noUserError": "There are no users with the given email and password",
             "messageSignup": "Not registered yet? Please signup"
+        },
+        "signup": {
+            "title": "Sign up",
+            "button": "Sign up",
+            "nickName": {
+                "label": "Nickname",
+                "error": "A nickname is required"
+            },
+            "password": {
+                "label": "Password",
+                "error": "Password is required"
+            },
+            "email": {
+                "label": "Email",
+                "error": "Email is required"
+            },
+            "passwordRepeat": {
+                "label": "Repeat the password",
+                "error": "Passwords should be equal"
+            },
+            "older": {
+                "label": "I'm older than 13",
+                "error": "You should be older than 13 in order to register"
+            },
+            "terms": {
+                "label": "I accept the terms and conditions",
+                "error": "You should accept the terms and conditions"
+            }
         }
     }
 }

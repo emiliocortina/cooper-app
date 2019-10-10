@@ -18,22 +18,44 @@ import ApiService from '../../services/api.service';
 const Form = t.form.Form;
 const IconComponent = Feather;
 
-const LoginObject = t.struct({
+const SignupObject = t.struct({
+  nickName: t.String,
   email: t.String,
-  password: t.String
+  password: t.String,
+  passwordRepeat: t.String,
+  olderThan13: t.Boolean,
+  terms: t.Boolean
 });
 
 const options = {
   fields: {
+    nickName: {
+      label: i18n.t("screens.signup.nickName.label"),
+      error: i18n.t("screens.signup.nickName.error")
+    },
     email: {
-      label: i18n.t("screens.login.email.label"),
-      error: i18n.t("screens.login.email.error")
+      label: i18n.t("screens.signup.email.label"),
+      error: i18n.t("screens.signup.email.error")
     },
     password: {
-      label: i18n.t("screens.login.password.label"),
+      label: i18n.t("screens.signup.password.label"),
       password: true,
       secureTextEntry: true,
-      error: i18n.t("screens.login.password.error")
+      error: i18n.t("screens.signup.password.error")
+    },
+    passwordRepeat: {
+      label: i18n.t("screens.signup.passwordRepeat.label"),
+      password: true,
+      secureTextEntry: true,
+      error: i18n.t("screens.signup.passwordRepeat.error")
+    },
+    olderThan13: {
+      label: i18n.t("screens.signup.older.help"),
+      error: i18n.t("screens.signup.older.error")
+    },
+    terms: {
+      label: i18n.t("screens.signup.terms.help"),
+      error: i18n.t("screens.signup.terms.error")
     }
   }
 };
@@ -46,26 +68,38 @@ class SignupTemplate extends React.Component {
     tabBarVisible: false
   };
 
-  handleSubmit = () => {
-    const value = this._form.getValue();
-    if (value != null){
-      api.request('auth/login', 'POST', value)
-      .then((res) => {
-        if(res.status === 'logged in') {
-          this.props.navigation.navigate('Home', {user: res.user.nickName});
-        } else  {
-          alert(i18n.t("screens.login.noUserError"));
-        }
-      });
-    }  
-  };
-
   render() {
     return (
       <KeyboardShift>
         {() => (
           <View style={signupStyles.Container}>
-            <Text>Signup</Text>
+            <View style={signupStyles.Header}>
+              <TouchableOpacity
+                onPress={() => {
+                  this.props.navigation.navigate("Home");
+                }}
+              >
+                <IconComponent name={"home"} size={25} color="#3c4560" />
+              </TouchableOpacity>
+            </View>
+
+            <View style={signupStyles.Content}>
+              <Text style={signupStyles.Title}>
+                {i18n.t("screens.signup.title")}
+              </Text>
+              <View style={signupStyles.Form}>
+                <Form
+                  ref={c => (this._form = c)}
+                  type={SignupObject}
+                  options={options}
+                />
+              </View>
+              <Button
+                color="#D44963"
+                title={i18n.t("screens.signup.button")}
+                onPress={model.handleSubmit(this._form.getValue(), this.props)}
+              />
+            </View>
           </View>
         )}
       </KeyboardShift>
