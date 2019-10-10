@@ -8,9 +8,10 @@ import {
   View,
   StyleSheet,
   ImageBackground
-} from "react-native"
-import { BlurView } from 'expo-blur';
-import {Colors, Typography} from 'cooper/styles';
+} from "react-native";
+import { BlurView } from "expo-blur";
+import { LinearGradient } from "expo-linear-gradient";
+import { Colors, Typography } from "cooper/styles";
 
 class Card extends React.Component {
   render() {
@@ -18,12 +19,15 @@ class Card extends React.Component {
       <ImageBackground
         source={require("cooper/assets/images/sentinel3.jpg")}
         style={styles.CardContainer}
-        imageStyle={{ borderRadius: 21 }}
+        imageStyle={{ borderRadius: 30 }}
       >
-        <View  style={styles.Content}>
+        <LinearGradient
+          colors={["transparent", "rgba(0,0,0,0.8)"]}
+          style={styles.Content}
+        >
           <Text style={styles.Subtitle}>HOLAA</Text>
-          <Text>HOLAA</Text>
-        </View>
+          <Text style={styles.Title}>HOLAA</Text>
+        </LinearGradient>
       </ImageBackground>
     );
   }
@@ -36,27 +40,27 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "flex-end",
     borderRadius: 40,
-    height: 220,
+    height: 250,
     width: 250,
     shadowColor: "rgba(58,55,55,0.1)",
     shadowOffset: { width: 0, height: 0 },
     shadowOpacity: 1,
     shadowRadius: 15,
     elevation: 3,
-    marginHorizontal: 10,
+    marginHorizontal: 10
   },
   Content: {
-    backgroundColor: "white",
     width: "100%",
     padding: 20,
-    borderBottomRightRadius: 20,
-      borderBottomLeftRadius: 20,
+    borderRadius: 30,
   },
   Subtitle: {
-    ...Colors.secondaryLabel,
-
-
+    ...Colors.secondaryLabelContrast
   },
+  Title: {
+    ...Typography.h3,
+    ...Colors.labelContrast
+  }
 });
 
 export default Card;

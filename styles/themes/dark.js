@@ -11,6 +11,18 @@ export const tertiaryLabel = {
     color: "#ebebf54c"
 };
 
+export const labelContrast = {
+    color: "rgba(0,0,0,0.91)"
+};
+
+export const secondaryLabelContrast = {
+    color: "#3c3c4399"
+};
+
+export const tertiaryLabelContrast = {
+    color: "#3c3c434c"
+};
+
 
 // Background
 export const systemBackground = {
