@@ -3,14 +3,15 @@ import {
   Button,
   View,
   Text,
-  SafeAreaView,
   TouchableOpacity,
   Image,
-  ScrollView
+  ScrollView,
+  StatusBar
 } from "react-native";
 import homeStyles from "./Home.stylesheet";
 import Card from "../../../components/card";
 import i18n  from "../../../i18n";
+import SafeAreaView from 'react-native-safe-area-view';
 import { NavigationEvents } from "react-navigation";
 
 class HomeTemplate extends React.Component {
@@ -21,7 +22,8 @@ class HomeTemplate extends React.Component {
   render() {
     const {navigation}= this.props;
     return (
-      <SafeAreaView style={homeStyles.Content}>
+      <SafeAreaView style={homeStyles.Content}  forceInset={{ bottom: 'never' }}>
+        <StatusBar barStyle="dark-content" />
         <ScrollView style={{ width: "100%" }}>
           <View style={homeStyles.TitleBar}>
             <TouchableOpacity onPress={() => {
