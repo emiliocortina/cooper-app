@@ -4,14 +4,15 @@ import {
   View,
   Text,
   TouchableOpacity,
+  AsyncStorage
 } from "react-native";
 import loginStyles from "./Login.stylesheet";
-import i18n from "../../i18n";
+import i18n from "../../../i18n";
 import t from "tcomb-form-native";
-import KeyboardShift from "../../components/keyboardShift";
+import KeyboardShift from "../../../components/keyboardShift";
 import { Feather } from "@expo/vector-icons";
 import LoginModel from './Login.model';
-import ApiService from "../../services/api.service";
+import ApiService from "../../../services/api.service";
 
 const api = new ApiService();
 const Form = t.form.Form;
@@ -40,7 +41,7 @@ const options = {
 
 class LoginTemplate extends React.Component {
   static navigationOptions = {
-    title: "Login",
+    title: "LoginPage",
     tabBarVisible: false
   };
 
@@ -91,7 +92,7 @@ class LoginTemplate extends React.Component {
               <Text
                 style={loginStyles.Link}
                 onPress={() => {
-                  this.props.navigation.navigate("Signup");
+                  this.props.navigation.navigate("SignupPage");
                 }}
               >
                 {i18n.t("screens.login.messageSignup")}

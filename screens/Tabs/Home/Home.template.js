@@ -27,7 +27,7 @@ class HomeTemplate extends React.Component {
         <ScrollView style={{ width: "100%" }}>
           <View style={homeStyles.TitleBar}>
             <TouchableOpacity onPress={() => {
-              this.props.navigation.navigate('Login');
+              this.props.navigation.navigate('Profile');
             }}
             >
               <Image

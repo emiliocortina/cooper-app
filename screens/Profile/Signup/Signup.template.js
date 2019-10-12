@@ -1,19 +1,11 @@
 import React from "react";
-import {
-  Button,
-  View,
-  Text,
-  SafeAreaView,
-  TouchableOpacity,
-  Image,
-  ScrollView
-} from "react-native";
+import { ScrollView, Button, View, Text, TouchableOpacity } from "react-native";
 import signupStyles from "./Signup.stylesheet";
-import i18n from "../../i18n";
+import i18n from "../../../i18n";
 import t from "tcomb-form-native";
-import KeyboardShift from "../../components/keyboardShift";
+import KeyboardShift from "../../../components/keyboardShift";
 import { Feather } from "@expo/vector-icons";
-import ApiService from '../../services/api.service';
+import ApiService from "../../../services/api.service";
 
 const Form = t.form.Form;
 const IconComponent = Feather;
@@ -50,11 +42,11 @@ const options = {
       error: i18n.t("screens.signup.passwordRepeat.error")
     },
     olderThan13: {
-      label: i18n.t("screens.signup.older.help"),
+      label: i18n.t("screens.signup.older.label"),
       error: i18n.t("screens.signup.older.error")
     },
     terms: {
-      label: i18n.t("screens.signup.terms.help"),
+      label: i18n.t("screens.signup.terms.label"),
       error: i18n.t("screens.signup.terms.error")
     }
   }
@@ -64,7 +56,7 @@ const api = new ApiService();
 
 class SignupTemplate extends React.Component {
   static navigationOptions = {
-    title: "Signup",
+    title: "SignupPage",
     tabBarVisible: false
   };
 
@@ -72,35 +64,38 @@ class SignupTemplate extends React.Component {
     return (
       <KeyboardShift>
         {() => (
-          <View style={signupStyles.Container}>
-            <View style={signupStyles.Header}>
-              <TouchableOpacity
-                onPress={() => {
-                  this.props.navigation.navigate("Home");
-                }}
-              >
-                <IconComponent name={"home"} size={25} color="#3c4560" />
-              </TouchableOpacity>
-            </View>
-
-            <View style={signupStyles.Content}>
-              <Text style={signupStyles.Title}>
-                {i18n.t("screens.signup.title")}
-              </Text>
-              <View style={signupStyles.Form}>
-                <Form
-                  ref={c => (this._form = c)}
-                  type={SignupObject}
-                  options={options}
-                />
+          <ScrollView style={{ width: "100%" }}>
+            <View style={signupStyles.Container}>
+              <View style={signupStyles.Header}>
+                <TouchableOpacity
+                  onPress={() => {
+                    this.props.navigation.navigate("Home");
+                  }}
+                >
+                  <IconComponent name={"home"} size={25} color="#3c4560" />
+                </TouchableOpacity>
               </View>
-              <Button
-                color="#D44963"
-                title={i18n.t("screens.signup.button")}
-                onPress={model.handleSubmit(this._form.getValue(), this.props)}
-              />
+
+              <View style={signupStyles.Content}>
+                <Text style={signupStyles.Title}>
+                  {i18n.t("screens.signup.title")}
+                </Text>
+                <View style={signupStyles.Form}>
+                  <Form
+                    ref={c => (this._form = c)}
+                    type={SignupObject}
+                    options={options}
+                  />
+                </View>
+                <View style={signupStyles.Footer}>
+                <Button
+                  color="#D44963"
+                  title={i18n.t("screens.signup.button")}
+                />
+                </View>
+              </View>
             </View>
-          </View>
+          </ScrollView>
         )}
       </KeyboardShift>
     );
