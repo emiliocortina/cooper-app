@@ -60,6 +60,21 @@ class SignupTemplate extends React.Component {
     tabBarVisible: false
   };
 
+  handleSubmit = () => {
+    let value = this._form.getValue();
+    if (value != null) {
+      /*
+      HACER COSIS DE SIGNUP
+      api.request("auth/signup", "POST", value).then(res => {
+        if (res.status === "logged in") {
+          this.props.navigation.navigate("Home", { user: res.user.nickName });
+        } else {
+          alert(i18n.t("screens.login.noUserError"));
+        }
+      });*/
+    }
+  }
+
   render() {
     return (
       <KeyboardShift>
@@ -88,10 +103,11 @@ class SignupTemplate extends React.Component {
                   />
                 </View>
                 <View style={signupStyles.Footer}>
-                <Button
-                  color="#D44963"
-                  title={i18n.t("screens.signup.button")}
-                />
+                  <Button
+                    color="#D44963"
+                    title={i18n.t("screens.signup.button")}
+                    onPress={this.handleSubmit}
+                  />
                 </View>
               </View>
             </View>
