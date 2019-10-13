@@ -10,9 +10,12 @@ import {
 } from "react-native";
 import homeStyles from "./Home.stylesheet";
 import Card from "../../../components/card";
-import i18n  from "../../../i18n";
+import i18n from "../../../i18n";
 import SafeAreaView from 'react-native-safe-area-view';
 import { NavigationEvents } from "react-navigation";
+import { Feather } from "@expo/vector-icons";
+
+const IconComponent = Feather;
 
 class HomeTemplate extends React.Component {
   static navigationOptions = {
@@ -20,9 +23,9 @@ class HomeTemplate extends React.Component {
   };
 
   render() {
-    const {navigation}= this.props;
+    const { navigation } = this.props;
     return (
-      <SafeAreaView style={homeStyles.Content}  forceInset={{ bottom: 'never' }}>
+      <SafeAreaView style={homeStyles.Content} forceInset={{ bottom: 'never' }}>
         <StatusBar barStyle="dark-content" />
         <ScrollView style={{ width: "100%" }}>
           <View style={homeStyles.TitleBar}>
@@ -38,20 +41,27 @@ class HomeTemplate extends React.Component {
             <View>
               <Text style={homeStyles.Welcome}>{i18n.t('tabs.home.welcome')}</Text>
               <Text style={homeStyles.Name}>
-              {navigation.getParam('user',"No user")}
+                {navigation.getParam('user', "No user")}
               </Text>
+            </View>
+            <View style={homeStyles.UpRightButton}>
+              <TouchableOpacity
+                onPress={this.logout}
+              >
+                <IconComponent name={"export"} size={25} color="#3c4560" />
+              </TouchableOpacity>
             </View>
           </View>
 
           <ScrollView horizontal style={homeStyles.CardsContainer}>
             <Card />
-              <Card />
-              <Card />
-              <Card />
-              <Card />
-              <Card />
-              <Card />
-              <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
           </ScrollView>
           <ScrollView horizontal style={homeStyles.CardsContainer}>
             <Card />
