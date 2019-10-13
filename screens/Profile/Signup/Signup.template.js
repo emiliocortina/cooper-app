@@ -1,5 +1,6 @@
 import React from "react";
 import { ScrollView, Button, View, Text, TouchableOpacity } from "react-native";
+import {CheckBox} from 'react-native-elements';
 import signupStyles from "./Signup.stylesheet";
 import i18n from "../../../i18n";
 import t from "tcomb-form-native";
@@ -14,9 +15,7 @@ const SignupObject = t.struct({
   nickName: t.String,
   email: t.String,
   password: t.String,
-  passwordRepeat: t.String,
-  olderThan13: t.Boolean,
-  terms: t.Boolean
+  passwordRepeat: t.String
 });
 
 const options = {
@@ -40,14 +39,6 @@ const options = {
       password: true,
       secureTextEntry: true,
       error: i18n.t("screens.signup.passwordRepeat.error")
-    },
-    olderThan13: {
-      label: i18n.t("screens.signup.older.label"),
-      error: i18n.t("screens.signup.older.error")
-    },
-    terms: {
-      label: i18n.t("screens.signup.terms.label"),
-      error: i18n.t("screens.signup.terms.error")
     }
   }
 };
@@ -55,25 +46,61 @@ const options = {
 const api = new ApiService();
 
 class SignupTemplate extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      olderChecked: false,
+      termsChecked: false
+    }
+  }
+
   static navigationOptions = {
     title: "SignupPage",
     tabBarVisible: false
   };
 
   handleSubmit = () => {
-    let value = this._form.getValue();
-    if (value != null) {
-      /*
-      HACER COSIS DE SIGNUP
-      api.request("auth/signup", "POST", value).then(res => {
-        if (res.status === "logged in") {
-          this.props.navigation.navigate("Home", { user: res.user.nickName });
-        } else {
-          alert(i18n.t("screens.login.noUserError"));
-        }
-      });*/
+    let user = this._form.getValue();
+
+    if (this.state) {
+      alert(this.state.olderChecked + "  " +  this.state.termsChecked);
+
     }
-  }
+
+    /*
+    if (user != null) {
+      firebase
+    .auth()
+    .createUserWithEmailAndPassword(user.email, user.password)
+    .then(
+      function() {
+        console.log(
+          'created user successfully. User email:' +
+            user.email +
+            ' name:' +
+            user.nickName
+        );
+        var userf = firebase.auth().currentUser;
+        userf.updateProfile({ displayName: user.nickName }).then(
+          function() {
+            console.log('Updated displayName successfully. name:' + user.nickName);
+            alert(
+              'User ' + user.nickName + ' was created successfully. Please login.'
+            );
+          },
+          function(error) {
+            console.warn('Error update displayName - ' + error);
+          }
+        );
+      },
+      function(error) {
+        console.error('got error:' + typeof error + ' string:' + error.message);
+        alert('Create account failed. Error: ' + error.message);
+      }
+    );
+    }
+    */
+  };
 
   render() {
     return (
@@ -100,6 +127,20 @@ class SignupTemplate extends React.Component {
                     ref={c => (this._form = c)}
                     type={SignupObject}
                     options={options}
+                  />
+                </View>
+                <View>
+                  <CheckBox
+                    title={i18n.t("screens.signup.olderCkbx")}
+                    checked={this.state.olderChecked}
+                    checkedIcon="dot-circle-o"
+                    uncheckedIcon="circle-o"
+                  />
+                  <CheckBox
+                    title={i18n.t("screens.signup.termsCkbx")}
+                    checked={this.state.termsChecked}
+                    checkedIcon="dot-circle-o"
+                    uncheckedIcon="circle-o"
                   />
                 </View>
                 <View style={signupStyles.Footer}>

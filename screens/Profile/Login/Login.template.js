@@ -11,7 +11,7 @@ import i18n from "../../../i18n";
 import t from "tcomb-form-native";
 import KeyboardShift from "../../../components/keyboardShift";
 import { Feather } from "@expo/vector-icons";
-import LoginModel from './Login.model';
+import LoginModel from "./Login.model";
 import ApiService from "../../../services/api.service";
 
 const api = new ApiService();
@@ -46,17 +46,28 @@ class LoginTemplate extends React.Component {
   };
 
   handleSubmit = () => {
-      let value = this._form.getValue();
-      if (value != null) {
-        api.request("auth/login", "POST", value).then(res => {
-          if (res.status === "logged in") {
-            this.props.navigation.navigate("Home", { user: res.user.nickName });
-          } else {
-            alert(i18n.t("screens.login.noUserError"));
-          }
+    let value = this._form.getValue();
+    if (value != null) {
+      api.request("auth/login", "POST", value).then(res => {
+        if (res.status === "logged in") {
+          this.props.navigation.navigate("Home", { user: res.user.nickName });
+        } else {
+          alert(i18n.t("screens.login.noUserError"));
+        }
+      });
+    }
+    /*
+    if (value != null) {
+      try {
+        firebase.auth().signInWithEmailAndPassword(value.email, value.password);
+        firebase.auth().onAuthStateChanged(user => {
+          alert(user.email);
         });
+      } catch (error) {
+        console.log(error.toString(error));
       }
-  }
+    }*/
+  };
 
   render() {
     return (

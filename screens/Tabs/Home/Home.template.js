@@ -13,14 +13,23 @@ import Card from "../../../components/card";
 import i18n from "../../../i18n";
 import SafeAreaView from 'react-native-safe-area-view';
 import { NavigationEvents } from "react-navigation";
-import { Feather } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
 
-const IconComponent = Feather;
+const IconComponent = AntDesign;
 
 class HomeTemplate extends React.Component {
   static navigationOptions = {
     title: "Home",
   };
+
+  logout = ()  => {
+    /*
+    firebase.auth().signOut().then(function () {
+      console.log("User signed out");
+    }).catch(function (error) {
+      alert("Could not sign out " + error);
+    });*/
+  }
 
   render() {
     const { navigation } = this.props;
@@ -48,7 +57,7 @@ class HomeTemplate extends React.Component {
               <TouchableOpacity
                 onPress={this.logout}
               >
-                <IconComponent name={"export"} size={25} color="#3c4560" />
+                <IconComponent name={"logout"} size={25} color="#3c4560" />
               </TouchableOpacity>
             </View>
           </View>
