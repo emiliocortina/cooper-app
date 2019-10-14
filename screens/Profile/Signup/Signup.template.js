@@ -7,9 +7,11 @@ import t from "tcomb-form-native";
 import KeyboardShift from "../../../components/keyboardShift";
 import { Feather } from "@expo/vector-icons";
 import ApiService from "../../../services/api.service";
+import SignupModel from './Signup.model';
 
 const Form = t.form.Form;
 const IconComponent = Feather;
+const model = new SignupModel();
 
 const SignupObject = t.struct({
   nickName: t.String,
@@ -43,63 +45,20 @@ const options = {
   }
 };
 
-const api = new ApiService();
-
 class SignupTemplate extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      olderChecked: false,
-      termsChecked: false
-    }
-  }
-
   static navigationOptions = {
     title: "SignupPage",
     tabBarVisible: false
   };
 
+  state = {
+    olderChecked: false,
+    termsChecked: false
+  }
+
   handleSubmit = () => {
     let user = this._form.getValue();
-
-    if (this.state) {
-      alert(this.state.olderChecked + "  " +  this.state.termsChecked);
-
-    }
-
-    /*
-    if (user != null) {
-      firebase
-    .auth()
-    .createUserWithEmailAndPassword(user.email, user.password)
-    .then(
-      function() {
-        console.log(
-          'created user successfully. User email:' +
-            user.email +
-            ' name:' +
-            user.nickName
-        );
-        var userf = firebase.auth().currentUser;
-        userf.updateProfile({ displayName: user.nickName }).then(
-          function() {
-            console.log('Updated displayName successfully. name:' + user.nickName);
-            alert(
-              'User ' + user.nickName + ' was created successfully. Please login.'
-            );
-          },
-          function(error) {
-            console.warn('Error update displayName - ' + error);
-          }
-        );
-      },
-      function(error) {
-        console.error('got error:' + typeof error + ' string:' + error.message);
-        alert('Create account failed. Error: ' + error.message);
-      }
-    );
-    }
-    */
+    model.signup(user, this.state, this.props);
   };
 
   render() {
@@ -130,17 +89,17 @@ class SignupTemplate extends React.Component {
                   />
                 </View>
                 <View>
-                  <CheckBox
+                  <CheckBox 
+                    checkedColor='#e06075'
                     title={i18n.t("screens.signup.olderCkbx")}
                     checked={this.state.olderChecked}
-                    checkedIcon="dot-circle-o"
-                    uncheckedIcon="circle-o"
+                    onPress={() => this.setState({ olderChecked: !this.state.olderChecked })}
                   />
-                  <CheckBox
+                  <CheckBox 
+                    checkedColor='#e06075'
                     title={i18n.t("screens.signup.termsCkbx")}
                     checked={this.state.termsChecked}
-                    checkedIcon="dot-circle-o"
-                    uncheckedIcon="circle-o"
+                    onPress={() => this.setState({ termsChecked: !this.state.termsChecked })}
                   />
                 </View>
                 <View style={signupStyles.Footer}>

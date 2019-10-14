@@ -47,26 +47,7 @@ class LoginTemplate extends React.Component {
 
   handleSubmit = () => {
     let value = this._form.getValue();
-    if (value != null) {
-      api.request("auth/login", "POST", value).then(res => {
-        if (res.status === "logged in") {
-          this.props.navigation.navigate("Home", { user: res.user.nickName });
-        } else {
-          alert(i18n.t("screens.login.noUserError"));
-        }
-      });
-    }
-    /*
-    if (value != null) {
-      try {
-        firebase.auth().signInWithEmailAndPassword(value.email, value.password);
-        firebase.auth().onAuthStateChanged(user => {
-          alert(user.email);
-        });
-      } catch (error) {
-        console.log(error.toString(error));
-      }
-    }*/
+    model.login(value, this.props);
   };
 
   render() {
