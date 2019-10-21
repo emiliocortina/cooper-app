@@ -4,9 +4,10 @@ import HomeScreen from "./Home/Home.screen";
 import StatsScreen from "./Stats/Stats.screen";
 import { Feather } from "@expo/vector-icons";
 import SearchScreen from "./Search/Search.screen";
-import { Colors, Typography } from "cooper/styles";
+import { Light, Dark, Typography } from "cooper/styles";
 import { Platform } from "react-native";
 import i18n from "../../i18n";
+import { useColorScheme } from "react-native-appearance";
 
 const IconComponent = Feather;
 
@@ -55,7 +56,8 @@ const TabNavigator = createBottomTabNavigator(
   },
   {
     tabBarOptions: {
-      activeTintColor: "#e06075",
+      activeTintColor:
+          "#e06075",
       inactiveTintColor: "#8F9091",
       showLabel: false,
       safeAreaInset: { bottom: "never", top: "never" },
@@ -67,7 +69,6 @@ const TabNavigator = createBottomTabNavigator(
         shadowRadius: 15,
         elevation: 3,
         borderTopColor: "transparent",
-        backgroundColor: "white",
         borderRadius: 2000
       }
     }

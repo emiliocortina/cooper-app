@@ -23,7 +23,6 @@ class HomeTemplate extends React.Component {
     const {navigation}= this.props;
     return (
       <SafeAreaView style={homeStyles.Content}  forceInset={{ bottom: 'never' }}>
-        <StatusBar barStyle="dark-content" />
         <ScrollView style={{ width: "100%" }}>
           <View style={homeStyles.TitleBar}>
             <TouchableOpacity onPress={() => {
