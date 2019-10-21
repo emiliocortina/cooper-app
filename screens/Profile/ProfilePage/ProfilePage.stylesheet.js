@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
-import { Buttons, Typography, Colors } from "cooper/styles";
+import { Typography} from "cooper/styles";
 
-const loginStyles = StyleSheet.create({
+const profileStyles = StyleSheet.create({
   Container: {
     flex: 1,
     alignItems: "center",
@@ -44,4 +44,4 @@ const loginStyles = StyleSheet.create({
     justifyContent: "flex-start"
   }
 });
-export default loginStyles;
+export default profileStyles;

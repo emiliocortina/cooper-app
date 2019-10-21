@@ -37,6 +37,15 @@ const signupStyles = StyleSheet.create({
       display: 'flex',
       flexDirection: 'row',
       justifyContent: 'flex-start',
+    },
+    Footer: {
+      width: '100%',
+      marginTop: 20,
+      marginBottom: 50,
+      paddingLeft: 20,
+      display: 'flex',
+      alignItems: "center",
+      justifyContent: "center",
     }
 });
 export default signupStyles;

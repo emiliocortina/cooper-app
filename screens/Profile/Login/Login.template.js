@@ -4,14 +4,17 @@ import {
   View,
   Text,
   TouchableOpacity,
+  AsyncStorage
 } from "react-native";
 import loginStyles from "./Login.stylesheet";
-import i18n from "../../i18n";
+import i18n from "../../../i18n";
 import t from "tcomb-form-native";
-import KeyboardShift from "../../components/keyboardShift";
+import KeyboardShift from "../../../components/keyboardShift";
 import { Feather } from "@expo/vector-icons";
 import LoginModel from './Login.model';
+import ApiService from "../../../services/api.service";
 
+const api = new ApiService();
 const Form = t.form.Form;
 const IconComponent = Feather;
 const model = new LoginModel();
@@ -38,9 +41,22 @@ const options = {
 
 class LoginTemplate extends React.Component {
   static navigationOptions = {
-    title: "Login",
+    title: "LoginPage",
     tabBarVisible: false
   };
+
+  handleSubmit = () => {
+      let value = this._form.getValue();
+      if (value != null) {
+        api.request("auth/login", "POST", value).then(res => {
+          if (res.status === "logged in") {
+            this.props.navigation.navigate("Home", { user: res.user.nickName });
+          } else {
+            alert(i18n.t("screens.login.noUserError"));
+          }
+        });
+      }
+  }
 
   render() {
     return (
@@ -71,12 +87,12 @@ class LoginTemplate extends React.Component {
               <Button
                 color="#D44963"
                 title={i18n.t("screens.login.button")}
-                onPress={model.handleSubmit(this._form.getValue(), this.props)}
+                onPress={this.handleSubmit}
               />
               <Text
                 style={loginStyles.Link}
                 onPress={() => {
-                  this.props.navigation.navigate("Signup");
+                  this.props.navigation.navigate("SignupPage");
                 }}
               >
                 {i18n.t("screens.login.messageSignup")}

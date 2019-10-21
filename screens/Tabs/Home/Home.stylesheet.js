@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native';
-import {Buttons, Typography, Colors} from 'cooper/styles'
+import { StyleSheet } from 'react-native';
+import { Buttons, Typography, Colors } from 'cooper/styles'
 
 const homeStyles = StyleSheet.create({
   Content: {
@@ -18,13 +18,14 @@ const homeStyles = StyleSheet.create({
     paddingBottom: 30,
   },
   TitleBar: {
-    width: '100%',
+    width: '70%',
     marginTop: 50,
     marginBottom: 20,
     paddingLeft: 20,
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'flex-start',
+    flex: 4
   },
   Avatar: {
     ...Buttons.avatar,
@@ -39,6 +40,13 @@ const homeStyles = StyleSheet.create({
     ...Typography.h3,
     color: '#3c4560',
   },
+  UpRightButton: {
+    width: '30%',
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: 'flex-end',
+    flex: 2
+  }
 });
 
 export default homeStyles;
