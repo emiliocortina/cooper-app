@@ -1,12 +1,13 @@
+import NavigationService from "../../../services/navigation.service";
 import firebase from '../../../Firebase';
 
 class HomeModel {
-    logout()  {
-        firebase.auth().signOut().then(function () {
-            console.log("User signed out");
-          }).catch(function (error) {
-            alert("Could not sign out " + error);
-          });
+    nav = new NavigationService();
+
+    logout(props)  {
+        firebase.auth().signOut().then(() => {
+            this.nav.goHome(props);
+        }); 
     }
 }
 

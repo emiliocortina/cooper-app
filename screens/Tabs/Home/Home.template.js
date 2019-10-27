@@ -6,53 +6,60 @@ import {
   TouchableOpacity,
   Image,
   ScrollView,
-  StatusBar,
-  AsyncStorage
+  StatusBar
 } from "react-native";
 import homeStyles from "./Home.stylesheet";
 import Card from "../../../components/card";
 import i18n from "../../../i18n";
 import SafeAreaView from "react-native-safe-area-view";
-import { NavigationEvents } from "react-navigation";
 import { AntDesign } from "@expo/vector-icons";
 import HomeModel from "./Home.model";
-import firebase from "../../../Firebase";
+import NavigationService from "../../../services/navigation.service";
 
 const IconComponent = AntDesign;
 const model = new HomeModel();
+const nav = new NavigationService();
 
 class HomeTemplate extends React.Component {
   static navigationOptions = {
     title: "Home"
   };
 
-  state = {
-    userName : null
+  logout = () => {
+    model.logout(this.props);
+  };
+
+  goToProfile = () => {
+    nav.goToProfile(this.props);
   }
 
   render() {
     let logoutButton = <View></View>;
     let userName = <View></View>;
 
-    firebase.auth().onAuthStateChanged(async user => {
-      if (user) {
-        logoutButton = (
-          <View style={homeStyles.UpRightButton}>
-            <TouchableOpacity onPress={model.logout}>
-              <IconComponent name={"logout"} size={25} color="#3c4560" />
-            </TouchableOpacity>
-          </View>
-        );
-        userName = (
-          <View>
-            <Text style={homeStyles.Welcome}>
-              {i18n.t("tabs.home.welcome")}
-            </Text>
-            <Text style={homeStyles.Name}>{user.displayName}</Text>
-          </View>
-        );
-      }
-    });
+    let user = this.props.navigation.getParam('currentUser');
+    
+    if(user != null) {
+      logoutButton = (
+        <View style={homeStyles.UpRightButton}>
+          <TouchableOpacity onPress={this.logout}>
+            <IconComponent name={"logout"} size={25} color="#3c4560" />
+          </TouchableOpacity>
+        </View>
+      );
+      userName = (
+        <View>
+          <Text style={homeStyles.Welcome}>
+            {i18n.t("tabs.home.welcome")}
+          </Text>
+          <Text style={homeStyles.Name}>{user.displayName}</Text>
+        </View>
+      );
+    } else {
+      logoutButton = <View></View>;
+      userName = <View></View>;
+    }      
+
 
     return (
       <SafeAreaView style={homeStyles.Content} forceInset={{ bottom: "never" }}>
@@ -60,9 +67,7 @@ class HomeTemplate extends React.Component {
         <ScrollView style={{ width: "100%" }}>
           <View style={homeStyles.TitleBar}>
             <TouchableOpacity
-              onPress={() => {
-                this.props.navigation.navigate("Profile");
-              }}
+              onPress={this.goToProfile}
             >
               <Image
                 source={require("../../../assets/images/sentinel2.jpg")}

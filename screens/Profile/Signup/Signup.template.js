@@ -6,12 +6,13 @@ import i18n from "../../../i18n";
 import t from "tcomb-form-native";
 import KeyboardShift from "../../../components/keyboardShift";
 import { Feather } from "@expo/vector-icons";
-import ApiService from "../../../services/api.service";
 import SignupModel from './Signup.model';
+import NavigationService from "../../../services/navigation.service";
 
 const Form = t.form.Form;
 const IconComponent = Feather;
 const model = new SignupModel();
+const nav = new NavigationService();
 
 const SignupObject = t.struct({
   nickName: t.String,
@@ -60,6 +61,10 @@ class SignupTemplate extends React.Component {
     let user = this._form.getValue();
     model.signup(user, this.state, this.props);
   };
+  
+  goHome = () => {
+    nav.goHome(this.props);
+  };
 
   render() {
     return (
@@ -69,9 +74,7 @@ class SignupTemplate extends React.Component {
             <View style={signupStyles.Container}>
               <View style={signupStyles.Header}>
                 <TouchableOpacity
-                  onPress={() => {
-                    this.props.navigation.navigate("Home");
-                  }}
+                  onPress={this.goHome}
                 >
                   <IconComponent name={"home"} size={25} color="#3c4560" />
                 </TouchableOpacity>

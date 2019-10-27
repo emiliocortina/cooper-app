@@ -1,13 +1,18 @@
-import { createSwitchNavigator } from 'react-navigation';
-import LoginNavigator from './LoginNavigator';
-import ProfilePageScreen from './ProfilePage/ProfilePage.screen';
-import AuthLoadingScreen from './AuthLoadingScreen';
+import { createSwitchNavigator } from "react-navigation";
+import LoginNavigator from "./LoginNavigator";
+import ProfilePageScreen from "./ProfilePage/ProfilePage.screen";
 
 const ProfileNavigator = createSwitchNavigator(
   {
-    AuthLoading: AuthLoadingScreen,
     Login: LoginNavigator,
     ProfilePage: ProfilePageScreen
+  },
+  {
+    headerMode: "none",
+    mode: "modal",
+    defaultNavigationOptions: {
+      gestureResponseDistance: { vertical: 1200 }
+    }
   }
 );
 

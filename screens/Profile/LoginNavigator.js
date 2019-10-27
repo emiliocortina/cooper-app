@@ -1,12 +1,19 @@
-import {createSwitchNavigator} from 'react-navigation';
-import LoginScreen from './Login/Login.screen';
-import SignupScreen from './Signup/Signup.screen';
+import { createStackNavigator } from "react-navigation-stack";
+import LoginScreen from "./Login/Login.screen";
+import SignupScreen from "./Signup/Signup.screen";
 
-const LoginNavigator = createSwitchNavigator(
-    {
-      LoginPage: LoginScreen,
-      SignupPage: SignupScreen
+const LoginNavigator = createStackNavigator(
+  {
+    LoginPage: LoginScreen,
+    SignupPage: SignupScreen
+  },
+  {
+    headerMode: "none",
+    mode: "modal",
+    defaultNavigationOptions: {
+      gestureResponseDistance: { vertical: 1200 }
     }
-  );
-  
-  export default LoginNavigator;
+  }
+);
+
+export default LoginNavigator;

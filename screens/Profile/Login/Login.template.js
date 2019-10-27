@@ -4,7 +4,6 @@ import {
   View,
   Text,
   TouchableOpacity,
-  AsyncStorage
 } from "react-native";
 import loginStyles from "./Login.stylesheet";
 import i18n from "../../../i18n";
@@ -12,12 +11,12 @@ import t from "tcomb-form-native";
 import KeyboardShift from "../../../components/keyboardShift";
 import { Feather } from "@expo/vector-icons";
 import LoginModel from "./Login.model";
-import ApiService from "../../../services/api.service";
+import NavigationService from '../../../services/navigation.service';
 
-const api = new ApiService();
 const Form = t.form.Form;
 const IconComponent = Feather;
 const model = new LoginModel();
+const nav = new NavigationService();
 
 const LoginObject = t.struct({
   email: t.String,
@@ -50,17 +49,17 @@ class LoginTemplate extends React.Component {
     model.login(value, this.props);
   };
 
+  goHome = () => {
+    nav.goHome(this.props);
+  };
+
   render() {
     return (
       <KeyboardShift>
         {() => (
           <View style={loginStyles.Container}>
             <View style={loginStyles.Header}>
-              <TouchableOpacity
-                onPress={() => {
-                  this.props.navigation.navigate("Home");
-                }}
-              >
+              <TouchableOpacity onPress={this.goHome}>
                 <IconComponent name={"home"} size={25} color="#3c4560" />
               </TouchableOpacity>
             </View>

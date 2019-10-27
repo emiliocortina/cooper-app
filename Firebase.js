@@ -1,5 +1,4 @@
 import * as firebase from 'firebase';
-import { AsyncStorage } from 'react-native';
 
 const config = {
     apiKey: "AIzaSyA7OAZdjFHmc5hPe1w_LnUHnragbbUt_ro",
@@ -12,14 +11,6 @@ const config = {
     measurementId: "G-XH22H6JDXX"
 };
 firebase.initializeApp(config);
-
-firebase.auth().onAuthStateChanged(async (user) => {
-    if(user) {
-        await AsyncStorage.setItem('userUid', user.uid);
-    } else {
-        await AsyncStorage.setItem('userUid', null);
-    }
-});
 
 export default firebase;
 
