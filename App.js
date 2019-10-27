@@ -4,7 +4,7 @@ import AppNavigator from "./App.navigator";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { AppearanceProvider, useColorScheme } from 'react-native-appearance';
 
-const MyAwesomeApp = createAppContainer(AppNavigator);
+const Cooper = createAppContainer(AppNavigator);
 
 export default function App() {
     let theme = useColorScheme();
@@ -12,7 +12,7 @@ export default function App() {
   return (
     <AppearanceProvider>
       <SafeAreaProvider>
-        <MyAwesomeApp theme={theme}/>
+        <Cooper theme={theme}/>
       </SafeAreaProvider>
     </AppearanceProvider>
   );

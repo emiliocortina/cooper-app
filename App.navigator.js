@@ -1,16 +1,18 @@
+import AuthLoadingScreen from "./screens/AuthLoading/authLoading.screen";
 import TabNavigator from "./screens/Tabs/Tabs.navigator";
-import { createStackNavigator } from "react-navigation-stack";
 import DetailsScreen from "./screens/Details/Details.screen";
 import ProfileNavigator from './screens/Profile/ProfileNavigator';
+import { createSwitchNavigator } from 'react-navigation';
 
-const AppNavigator = createStackNavigator(
+const MainAppNavigator = createSwitchNavigator(
   {
+    AuthLoading: AuthLoadingScreen,
     Tabs: TabNavigator,
     Details: DetailsScreen,
     Profile: ProfileNavigator
   },
   {
-    initialRouteName: "Tabs",
+    initialRouteName: "AuthLoading",
     headerMode: "none",
     mode: "modal",
       defaultNavigationOptions: {
@@ -19,4 +21,4 @@ const AppNavigator = createStackNavigator(
   }
 );
 
-export default AppNavigator;
+export default MainAppNavigator;

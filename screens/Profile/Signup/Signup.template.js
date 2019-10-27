@@ -1,22 +1,24 @@
 import React from "react";
 import { ScrollView, Button, View, Text, TouchableOpacity } from "react-native";
+import {CheckBox} from 'react-native-elements';
 import signupStyles from "./Signup.stylesheet";
 import i18n from "../../../i18n";
 import t from "tcomb-form-native";
 import KeyboardShift from "../../../components/keyboardShift";
 import { Feather } from "@expo/vector-icons";
-import ApiService from "../../../services/api.service";
+import SignupModel from './Signup.model';
+import NavigationService from "../../../services/navigation.service";
 
 const Form = t.form.Form;
 const IconComponent = Feather;
+const model = new SignupModel();
+const nav = new NavigationService();
 
 const SignupObject = t.struct({
   nickName: t.String,
   email: t.String,
   password: t.String,
-  passwordRepeat: t.String,
-  olderThan13: t.Boolean,
-  terms: t.Boolean
+  passwordRepeat: t.String
 });
 
 const options = {
@@ -40,19 +42,9 @@ const options = {
       password: true,
       secureTextEntry: true,
       error: i18n.t("screens.signup.passwordRepeat.error")
-    },
-    olderThan13: {
-      label: i18n.t("screens.signup.older.label"),
-      error: i18n.t("screens.signup.older.error")
-    },
-    terms: {
-      label: i18n.t("screens.signup.terms.label"),
-      error: i18n.t("screens.signup.terms.error")
     }
   }
 };
-
-const api = new ApiService();
 
 class SignupTemplate extends React.Component {
   static navigationOptions = {
@@ -60,20 +52,19 @@ class SignupTemplate extends React.Component {
     tabBarVisible: false
   };
 
-  handleSubmit = () => {
-    let value = this._form.getValue();
-    if (value != null) {
-      /*
-      HACER COSIS DE SIGNUP
-      api.request("auth/signup", "POST", value).then(res => {
-        if (res.status === "logged in") {
-          this.props.navigation.navigate("Home", { user: res.user.nickName });
-        } else {
-          alert(i18n.t("screens.login.noUserError"));
-        }
-      });*/
-    }
+  state = {
+    olderChecked: false,
+    termsChecked: false
   }
+
+  handleSubmit = () => {
+    let user = this._form.getValue();
+    model.signup(user, this.state, this.props);
+  };
+  
+  goHome = () => {
+    nav.goHome(this.props);
+  };
 
   render() {
     return (
@@ -83,9 +74,7 @@ class SignupTemplate extends React.Component {
             <View style={signupStyles.Container}>
               <View style={signupStyles.Header}>
                 <TouchableOpacity
-                  onPress={() => {
-                    this.props.navigation.navigate("Home");
-                  }}
+                  onPress={this.goHome}
                 >
                   <IconComponent name={"home"} size={25} color="#3c4560" />
                 </TouchableOpacity>
@@ -100,6 +89,20 @@ class SignupTemplate extends React.Component {
                     ref={c => (this._form = c)}
                     type={SignupObject}
                     options={options}
+                  />
+                </View>
+                <View>
+                  <CheckBox 
+                    checkedColor='#e06075'
+                    title={i18n.t("screens.signup.olderCkbx")}
+                    checked={this.state.olderChecked}
+                    onPress={() => this.setState({ olderChecked: !this.state.olderChecked })}
+                  />
+                  <CheckBox 
+                    checkedColor='#e06075'
+                    title={i18n.t("screens.signup.termsCkbx")}
+                    checked={this.state.termsChecked}
+                    onPress={() => this.setState({ termsChecked: !this.state.termsChecked })}
                   />
                 </View>
                 <View style={signupStyles.Footer}>

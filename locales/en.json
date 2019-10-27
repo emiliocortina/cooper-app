@@ -47,14 +47,11 @@
                 "label": "Repeat the password",
                 "error": "Passwords should be equal"
             },
-            "older": {
-                "label": "I'm older than 13",
-                "error": "You should be older than 13 in order to register"
-            },
-            "terms": {
-                "label": "I accept the terms and conditions",
-                "error": "You should accept the terms and conditions"
-            }
+            "olderCkbx": "I'm older than 13", 
+            "termsCkbx": "I accept the terms and conditions",
+            "notOlderError": "You must be older than 13 in order to register",
+            "notTermsError": "You have to accept the Terms and Conditions",
+            "errorAccount": "Create account failed"
         }
     }
 }
