@@ -12,7 +12,7 @@ export default function App() {
   return (
     <AppearanceProvider>
       <SafeAreaProvider>
-        <MyAwesomeApp theme={theme}/>
+        <Cooper theme={theme}/>
       </SafeAreaProvider>
     </AppearanceProvider>
   );
