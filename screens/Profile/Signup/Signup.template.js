@@ -18,18 +18,22 @@ const SignupObject = t.struct({
   nickName: t.String,
   email: t.String,
   password: t.String,
-  passwordRepeat: t.String
+  passwordRepeat: t.String,
+  older: t.Boolean,
+  terms: t.Boolean
 });
 
 const options = {
   fields: {
     nickName: {
       label: i18n.t("screens.signup.nickName.label"),
-      error: i18n.t("screens.signup.nickName.error")
+      error: i18n.t("screens.signup.nickName.error"),
+      autoCapitalize: 'none'
     },
     email: {
       label: i18n.t("screens.signup.email.label"),
-      error: i18n.t("screens.signup.email.error")
+      error: i18n.t("screens.signup.email.error"),
+      autoCapitalize: 'none'
     },
     password: {
       label: i18n.t("screens.signup.password.label"),
@@ -42,6 +46,16 @@ const options = {
       password: true,
       secureTextEntry: true,
       error: i18n.t("screens.signup.passwordRepeat.error")
+    },
+    older: {
+      label: i18n.t("screens.signup.olderCkbx"),
+      onTintColor: '#e9a4b1',
+      thumbTintColor: '#E0E0E0'
+    },
+    terms: {
+      label: i18n.t("screens.signup.termsCkbx"),
+      onTintColor: '#e9a4b1',
+      thumbTintColor: '#E0E0E0'
     }
   }
 };
@@ -52,14 +66,9 @@ class SignupTemplate extends React.Component {
     tabBarVisible: false
   };
 
-  state = {
-    olderChecked: false,
-    termsChecked: false
-  }
-
   handleSubmit = () => {
     let user = this._form.getValue();
-    model.signup(user, this.state, this.props);
+    model.signup(user, this.props);
   };
   
   goHome = () => {
@@ -89,20 +98,6 @@ class SignupTemplate extends React.Component {
                     ref={c => (this._form = c)}
                     type={SignupObject}
                     options={options}
-                  />
-                </View>
-                <View>
-                  <CheckBox 
-                    checkedColor='#e06075'
-                    title={i18n.t("screens.signup.olderCkbx")}
-                    checked={this.state.olderChecked}
-                    onPress={() => this.setState({ olderChecked: !this.state.olderChecked })}
-                  />
-                  <CheckBox 
-                    checkedColor='#e06075'
-                    title={i18n.t("screens.signup.termsCkbx")}
-                    checked={this.state.termsChecked}
-                    onPress={() => this.setState({ termsChecked: !this.state.termsChecked })}
                   />
                 </View>
                 <View style={signupStyles.Footer}>
