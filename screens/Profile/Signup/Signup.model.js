@@ -6,10 +6,10 @@ import LoginModel from '../Login/Login.model';
 const loginModel = new LoginModel();
 
 class SignupModel {
-  signup(user, state, props) {
+  signup(user, props) {
     if (user != null) {
-      if (state.olderChecked) {
-        if (state.termsChecked) {
+      if (user.older) {
+        if (user.terms) {
           firebase
             .auth()
             .createUserWithEmailAndPassword(user.email, user.password)
