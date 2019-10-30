@@ -63,6 +63,7 @@ const options = {
 class SignupTemplate extends React.Component {
   static navigationOptions = {
     title: "SignupPage",
+    headerTitle: "Sign up",
     tabBarVisible: false
   };
 
@@ -70,7 +71,7 @@ class SignupTemplate extends React.Component {
     let user = this._form.getValue();
     model.signup(user, this.props);
   };
-  
+
   goHome = () => {
     nav.goHome(this.props);
   };

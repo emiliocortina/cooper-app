@@ -1,23 +1,39 @@
 import AuthLoadingScreen from "./screens/AuthLoading/authLoading.screen";
 import TabNavigator from "./screens/Tabs/Tabs.navigator";
 import DetailsScreen from "./screens/Details/Details.screen";
-import ProfileNavigator from './screens/Profile/ProfileNavigator';
-import { createSwitchNavigator } from 'react-navigation';
+import ProfileNavigator from "./screens/Profile/ProfileNavigator";
+import {
+  createStackNavigator,
+  TransitionPresets
+} from "react-navigation-stack";
+import { createSwitchNavigator } from "react-navigation";
 
-const MainAppNavigator = createSwitchNavigator(
+const AppStack = createStackNavigator(
   {
-    AuthLoading: AuthLoadingScreen,
     Tabs: TabNavigator,
     Details: DetailsScreen,
     Profile: ProfileNavigator
   },
   {
-    initialRouteName: "AuthLoading",
-    headerMode: "none",
+    initialRouteName: "Tabs",
     mode: "modal",
-      defaultNavigationOptions: {
-          gestureResponseDistance: {vertical: 1200},
-      }
+    headerMode: "none",
+    defaultNavigationOptions: {
+      gestureEnabled: true,
+      cardOverlayEnabled: true,
+      ...TransitionPresets.ModalPresentationIOS
+    }
+  }
+);
+
+const MainAppNavigator = createSwitchNavigator(
+  {
+    AuthLoading: AuthLoadingScreen,
+    AppStack: AppStack
+  },
+  {
+    initialRouteName: "AuthLoading",
+    headerMode: "none"
   }
 );
 
