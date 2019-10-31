@@ -12,7 +12,7 @@ class SearchTemplate extends React.Component {
                 <ScrollView style={{ width: "100%" }}>
                     <View style={searchStyles.Row}>
                         <View style={[searchStyles.MiniCard, searchStyles.Left]}></View>
-                        <View style={searchStyles.MiniCard, searchStyles.Left, searchStyles.Right}></View>
+                        <View style={[searchStyles.MiniCard, searchStyles.Left, searchStyles.Right]}></View>
                     </View>
                 </ScrollView>
             </SafeAreaView>
