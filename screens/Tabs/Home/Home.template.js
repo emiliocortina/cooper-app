@@ -38,7 +38,7 @@ class HomeTemplate extends React.Component {
     let userName = <View></View>;
 
     let user = this.props.navigation.getParam('currentUser');
-    
+
     if(user != null) {
       logoutButton = (
         <View style={homeStyles.UpRightButton}>
@@ -58,12 +58,11 @@ class HomeTemplate extends React.Component {
     } else {
       logoutButton = <View></View>;
       userName = <View></View>;
-    }      
+    }
 
 
     return (
       <SafeAreaView style={homeStyles.Content} forceInset={{ bottom: "never" }}>
-        <StatusBar barStyle="dark-content" />
         <ScrollView style={{ width: "100%" }}>
           <View style={homeStyles.TitleBar}>
             <TouchableOpacity
