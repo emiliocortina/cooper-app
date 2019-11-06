@@ -36,7 +36,7 @@ const signupStyles = StyleSheet.create({
       paddingLeft: 20,
       display: 'flex',
       flexDirection: 'row',
-      justifyContent: 'flex-start',
+      justifyContent: 'flex-end',
     },
     Footer: {
       width: '100%',

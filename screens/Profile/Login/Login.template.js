@@ -4,6 +4,8 @@ import {
   View,
   Text,
   TouchableOpacity,
+  ImageBackground,
+  StatusBar
 } from "react-native";
 import loginStyles from "./Login.stylesheet";
 import i18n from "../../../i18n";
@@ -11,7 +13,8 @@ import t from "tcomb-form-native";
 import KeyboardShift from "../../../components/keyboardShift";
 import { Feather } from "@expo/vector-icons";
 import LoginModel from "./Login.model";
-import NavigationService from '../../../services/navigation.service';
+import NavigationService from "../../../services/navigation.service";
+import { BlurView } from "expo-blur";
 
 const Form = t.form.Form;
 const IconComponent = Feather;
@@ -57,39 +60,50 @@ class LoginTemplate extends React.Component {
     return (
       <KeyboardShift>
         {() => (
-          <View style={loginStyles.Container}>
+          <ImageBackground
+            source={require("cooper/assets/images/login.jpg")}
+            style={loginStyles.Container}
+          >
             <View style={loginStyles.Header}>
               <TouchableOpacity onPress={this.goHome}>
-                <IconComponent name={"home"} size={25} color="#3c4560" />
+                <BlurView intensity={90} style={loginStyles.Close}>
+                  <IconComponent
+                    name={"chevron-down"}
+                    size={30}
+                    color="white"
+                  />
+                </BlurView>
               </TouchableOpacity>
             </View>
 
             <View style={loginStyles.Content}>
-              <Text style={loginStyles.Title}>
-                {i18n.t("screens.login.title")}
-              </Text>
-              <View style={loginStyles.Form}>
-                <Form
-                  ref={c => (this._form = c)}
-                  type={LoginObject}
-                  options={options}
+              <BlurView intensity={100} style={loginStyles.BlurPanel}>
+                <Text style={loginStyles.Title}>
+                  {i18n.t("screens.login.title")}
+                </Text>
+                <View style={loginStyles.Form}>
+                  <Form
+                    ref={c => (this._form = c)}
+                    type={LoginObject}
+                    options={options}
+                  />
+                </View>
+                <Button
+                  color="#D44963"
+                  title={i18n.t("screens.login.button")}
+                  onPress={this.handleSubmit}
                 />
-              </View>
-              <Button
-                color="#D44963"
-                title={i18n.t("screens.login.button")}
-                onPress={this.handleSubmit}
-              />
-              <Text
-                style={loginStyles.Link}
-                onPress={() => {
-                  this.props.navigation.navigate("SignupPage");
-                }}
-              >
-                {i18n.t("screens.login.messageSignup")}
-              </Text>
+                <Text
+                  style={loginStyles.Link}
+                  onPress={() => {
+                    this.props.navigation.navigate("SignupPage");
+                  }}
+                >
+                  {i18n.t("screens.login.messageSignup")}
+                </Text>
+              </BlurView>
             </View>
-          </View>
+          </ImageBackground>
         )}
       </KeyboardShift>
     );

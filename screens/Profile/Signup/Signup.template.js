@@ -50,12 +50,12 @@ const options = {
     older: {
       label: i18n.t("screens.signup.olderCkbx"),
       onTintColor: '#e9a4b1',
-      thumbTintColor: '#E0E0E0'
+      thumbColor: '#E0E0E0'
     },
     terms: {
       label: i18n.t("screens.signup.termsCkbx"),
       onTintColor: '#e9a4b1',
-      thumbTintColor: '#E0E0E0'
+      thumbColor: '#E0E0E0'
     }
   }
 };
@@ -70,7 +70,7 @@ class SignupTemplate extends React.Component {
     let user = this._form.getValue();
     model.signup(user, this.props);
   };
-  
+
   goHome = () => {
     nav.goHome(this.props);
   };
@@ -85,7 +85,7 @@ class SignupTemplate extends React.Component {
                 <TouchableOpacity
                   onPress={this.goHome}
                 >
-                  <IconComponent name={"home"} size={25} color="#3c4560" />
+                  <IconComponent name={"chevron-down"} size={25} color="#3c4560" />
                 </TouchableOpacity>
               </View>
 

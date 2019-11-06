@@ -1,17 +1,12 @@
 import { StyleSheet } from "react-native";
-import {Typography} from "cooper/styles";
+import { Typography } from "cooper/styles";
 
 const loginStyles = StyleSheet.create({
   Container: {
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    flexDirection: "column",
-    shadowColor: "rgba(58,55,55,0.1)",
-    shadowOffset: { width: 0, height: 0 },
-    shadowOpacity: 1,
-    shadowRadius: 15,
-    elevation: 3,
+    flexDirection: "column"
   },
   Content: {
     flex: 4,
@@ -21,27 +16,45 @@ const loginStyles = StyleSheet.create({
     width: "70%"
   },
   Form: {
-    width: "75%",
-    paddingBottom: 20
+    width: "85%",
+    paddingBottom: 10
   },
   Link: {
     paddingTop: 20,
-    color: "#3c4560",
+    color: "white",
     textDecorationLine: "underline"
   },
   Title: {
     ...Typography.h2,
-    color: "#3c4560",
-    padding: 20
+    color: "white",
+    padding: 20,
+    paddingBottom: 0,
   },
   Header: {
     width: "100%",
     marginTop: 50,
-    marginBottom: 20,
-    paddingLeft: 20,
+    marginHorizontal: 20,
+    paddingHorizontal: 20,
     display: "flex",
     flexDirection: "row",
-    justifyContent: "flex-start"
+    justifyContent: "flex-end"
+  },
+  Close: {
+    borderRadius: 20,
+    height: 40,
+    aspectRatio: 1,
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  BlurPanel: {
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "column",
+    borderRadius: 20,
+    width: "100%",
+    paddingHorizontal: 20,
+    paddingBottom: 30,
   }
 });
 export default loginStyles;
