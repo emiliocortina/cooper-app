@@ -14,14 +14,18 @@ export const tertiaryLabel = {
 
 // Background
 export const systemBackground = {
-    color: "#ffffffff"
+    backgroundColor: "#ffffffff"
 };
 
 export const secondarySystemBackground = {
-    color: "#f2f2f7ff"
+    backgroundColor: "#f2f2f7ff"
 };
 
 export const tertiarySystemBackground = {
-    color: "#ffffffff"
+    backgroundColor: "#ffffffff"
 };
+
+export const formTextInputBackground = {
+    backgroundColor: "#ffffffff"
+}
 

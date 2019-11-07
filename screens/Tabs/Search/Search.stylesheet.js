@@ -24,10 +24,8 @@ const searchStyles = {
     elevation: 3,
   },
   Left: {
-    marginLeft: 10
   },
   Right: {
-    marginRight: 10
   }
 };
 

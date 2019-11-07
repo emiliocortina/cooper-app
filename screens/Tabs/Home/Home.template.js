@@ -40,10 +40,10 @@ const HomeTemplate = function(props) {
 
   // Header
   let logoutButton = <View></View>;
-  let userName = <View></View>;
+  let title = i18n.t("tabs.home.join");
+  let subtitle = i18n.t("tabs.home.welcome");
 
   let user = props.navigation.getParam("currentUser");
-
   if (user != null) {
     logoutButton = (
       <View style={homeStyles.UpRightButton}>
@@ -52,22 +52,8 @@ const HomeTemplate = function(props) {
         </TouchableOpacity>
       </View>
     );
-    userName = (
-      <View>
-        <Text style={[homeStyles.Welcome, Colors.secondaryLabel]}>
-          {i18n.t("tabs.home.welcomeBack")}
-        </Text>
-        <Text style={[homeStyles.Name, Colors.label]}>{user.displayName}</Text>
-      </View>
-    );
-  } else {
-    logoutButton = <View></View>;
-    userName = (
-      <View>
-        <Text style={homeStyles.Welcome}>{i18n.t("tabs.home.welcome")}</Text>
-        <Text style={homeStyles.Name}>{i18n.t("tabs.home.join")} </Text>
-      </View>
-    );
+    title = user.displayName;
+    subtitle = i18n.t("tabs.home.welcomeBack");
   }
 
   return (
@@ -84,7 +70,12 @@ const HomeTemplate = function(props) {
               style={homeStyles.Avatar}
             />
 
-            {userName}
+            <View>
+              <Text style={[homeStyles.Welcome, Colors.secondaryLabel]}>
+                {subtitle}
+              </Text>
+              <Text style={[homeStyles.Name, Colors.label]}>{title}</Text>
+            </View>
           </TouchableOpacity>
 
           {logoutButton}
