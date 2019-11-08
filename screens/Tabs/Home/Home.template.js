@@ -17,7 +17,6 @@ import { AntDesign } from "@expo/vector-icons";
 import HomeModel from "./Home.model";
 import NavigationService from "../../../services/navigation.service";
 import { useColorScheme } from "react-native-appearance";
-import { useTheme } from "react-navigation";
 
 const IconComponent = AntDesign;
 const model = new HomeModel();
@@ -31,6 +30,7 @@ const HomeTemplate = function(props) {
   const goToProfile = () => {
     nav.goToProfile(props);
   };
+
 
   let colorScheme = useColorScheme();
   let Colors = Light;
@@ -82,7 +82,9 @@ const HomeTemplate = function(props) {
         </View>
 
         <ScrollView horizontal style={homeStyles.CardsContainer}>
-          <ThreadSquareCard />
+          <TouchableOpacity onPress={() => props.navigation.navigate("Thread")}>
+            <ThreadSquareCard/>
+          </TouchableOpacity>
           <ThreadSquareCard />
           <ThreadSquareCard />
           <ThreadSquareCard />

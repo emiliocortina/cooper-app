@@ -1,6 +1,6 @@
 import AuthLoadingScreen from "./screens/AuthLoading/authLoading.screen";
 import TabNavigator from "./screens/Tabs/Tabs.navigator";
-import DetailsScreen from "./screens/Details/Details.screen";
+import ThreadDetailsScreen from "./screens/ThreadDetails/ThreadDetails.screen";
 import ProfileNavigator from './screens/Profile/ProfileNavigator';
 import { createSwitchNavigator } from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
@@ -9,7 +9,7 @@ import {createStackNavigator} from 'react-navigation-stack';
 const AppStack = createStackNavigator(
     {
         Tabs: TabNavigator,
-        Details: DetailsScreen,
+        Thread: ThreadDetailsScreen,
         Profile: ProfileNavigator
     },
     {

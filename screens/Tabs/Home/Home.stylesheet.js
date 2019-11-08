@@ -19,7 +19,7 @@ const homeStyles = StyleSheet.create({
   },
   TitleBar: {
     width: '100%',
-    marginTop: 50,
+    marginTop: 40,
     marginBottom: 20,
     alignSelf: 'flex-start',
     flexDirection: 'row',

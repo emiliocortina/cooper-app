@@ -1,23 +1,16 @@
 import React from "react";
 import { View, Text, ImageBackground } from "react-native";
 import i18n from '../../../i18n';
+import statsStyles from './Stats.stylesheet';
 
-class StatsTemplate extends React.Component {
-  render() {
+const StatsTemplate = () => {
     return (
-      <ImageBackground
-        source={require("cooper/assets/images/sentinel3.jpg")}
-        style={{
-          flex: 1,
-            width: "100%",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
+      <View
+        style={statsStyles.Content}
       >
         <Text>{i18n.t('tabs.stats.name')}</Text>
-      </ImageBackground>
+      </View>
     );
-  }
 }
 
 export default StatsTemplate;
