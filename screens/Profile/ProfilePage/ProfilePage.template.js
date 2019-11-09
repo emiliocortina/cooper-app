@@ -1,34 +1,30 @@
 import React from "react";
 import {
-  Button,
-  View,
-  Text,
-  SafeAreaView,
-  TouchableOpacity,
-  Image,
-  ScrollView
+    View,
+    Text,
 } from "react-native";
 import profileStyles from './ProfilePage.stylesheet';
-import i18n from "../../../i18n";
 import KeyboardShift from "../../../components/keyboardShift";
+import useColorsSheet from "../../../services/useColorsSheet.service";
 
-class ProfilePageTemplate extends React.Component {
-    static navigationOptions = {
-      title: "ProfilePage",
-      tabBarVisible: false
-    };
-  
-    render() {
-      return (
+const ProfilePageTemplate = () => {
+    let Colors = useColorsSheet();
+
+    return (
         <KeyboardShift>
-          {() => (
-            <View style={profileStyles.Container}>
-              <Text>Profile page screen</Text>
-            </View>
-          )}
+            {() => (
+                <View style={[profileStyles.Container, Colors.systemBackground]}>
+                    <Text>Profile page screen</Text>
+                </View>
+            )}
         </KeyboardShift>
-      );
-    }
-  }
-  
-  export default ProfilePageTemplate;
+    );
+
+}
+
+ProfilePageTemplate.navigationOptions = {
+    title: "ProfilePage",
+    tabBarVisible: false
+};
+
+export default ProfilePageTemplate;

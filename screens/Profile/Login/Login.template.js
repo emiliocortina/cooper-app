@@ -14,11 +14,10 @@ import loginStyles from "./Login.stylesheet";
 import i18n from "../../../i18n";
 import {Feather} from "@expo/vector-icons";
 import LoginModel from "./Login.model";
-import {Dark, Light} from "cooper/styles";
 import NavigationService from "../../../services/navigation.service";
 import * as yup from 'yup';
 import {Formik} from 'formik';
-import {useColorScheme} from "react-native-appearance/src/index";
+import useColorsSheet from "../../../services/useColorsSheet.service";
 
 const IconComponent = Feather;
 const model = new LoginModel();
@@ -32,11 +31,7 @@ const LoginTemplate = function (props) {
         nav.goHome(props);
     };
 
-    let colorScheme = useColorScheme();
-    let Colors = Light;
-    if (colorScheme === "dark") {
-        Colors = Dark;// render some dark thing
-    }
+    let Colors = useColorsSheet();
 
     return (
         <ImageBackground

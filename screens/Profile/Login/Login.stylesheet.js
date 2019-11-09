@@ -10,7 +10,7 @@ const loginStyles = StyleSheet.create({
     },
     Header: {
         position: 'absolute',
-        top: 60,
+        top: 20,
         right: 20
     },
     Close: {
@@ -58,8 +58,8 @@ const loginStyles = StyleSheet.create({
         borderRadius: 20,
     },
     ErrorMessage: {
-        fontSize: 10,
-        color: 'red',
+        fontSize: 12,
+        color: '#DE6176',
         textAlign: 'center',
     },
     SubmitButton: {

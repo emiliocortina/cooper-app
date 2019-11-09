@@ -3,7 +3,7 @@ import TabNavigator from "./screens/Tabs/Tabs.navigator";
 import ThreadDetailsScreen from "./screens/ThreadDetails/ThreadDetails.screen";
 import ProfileNavigator from './screens/Profile/ProfileNavigator';
 import { createSwitchNavigator } from 'react-navigation';
-import {createStackNavigator} from 'react-navigation-stack';
+import {createStackNavigator, TransitionPresets} from 'react-navigation-stack';
 
 
 const AppStack = createStackNavigator(
@@ -19,6 +19,7 @@ const AppStack = createStackNavigator(
         defaultNavigationOptions: {
             gestureEnabled: true,
             cardOverlayEnabled: true,
+            ...TransitionPresets.ModalPresentationIOS,
         }
     }
 );

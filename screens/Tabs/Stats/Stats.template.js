@@ -1,15 +1,19 @@
 import React from "react";
-import { View, Text, ImageBackground } from "react-native";
+import {View, Text, ImageBackground} from "react-native";
 import i18n from '../../../i18n';
 import statsStyles from './Stats.stylesheet';
+import SafeAreaView from "react-native-safe-area-view";
+import useColorsSheet from "../../../services/useColorsSheet.service";
 
 const StatsTemplate = () => {
+    let Colors = useColorsSheet();
+
     return (
-      <View
-        style={statsStyles.Content}
-      >
-        <Text>{i18n.t('tabs.stats.name')}</Text>
-      </View>
+        <SafeAreaView
+            style={[statsStyles.Content, Colors.systemBackground]}
+        >
+            <Text>{i18n.t('tabs.stats.name')}</Text>
+        </SafeAreaView>
     );
 }
 

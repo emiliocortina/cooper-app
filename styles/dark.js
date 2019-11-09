@@ -25,12 +25,20 @@ export const tertiaryLabelContrast = {
 
 
 // Background
-export const systemBackground = {
+/*export const systemBackground = {
     backgroundColor: "#000000ff"
 };
 
 export const secondarySystemBackground = {
     backgroundColor: "#1c1c1eff"
+};*/
+
+export const systemBackground = {
+    backgroundColor: "#1c1c1eff"
+};
+
+export const secondarySystemBackground = {
+    backgroundColor: "#2c2c2eff"
 };
 
 export const tertiarySystemBackground = {
@@ -38,5 +46,5 @@ export const tertiarySystemBackground = {
 };
 
 export const formTextInputBackground = {
-    backgroundColor: "#1c1c1eff"
+    backgroundColor: "#2c2c2eff"
 }

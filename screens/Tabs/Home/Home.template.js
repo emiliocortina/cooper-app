@@ -9,14 +9,13 @@ import {
   StatusBar
 } from "react-native";
 import homeStyles from "./Home.stylesheet";
-import { Dark, Light } from "cooper/styles";
 import ThreadSquareCard from "../../../components/cards/threadSquareCard";
 import i18n from "../../../i18n";
 import SafeAreaView from "react-native-safe-area-view";
 import { AntDesign } from "@expo/vector-icons";
 import HomeModel from "./Home.model";
 import NavigationService from "../../../services/navigation.service";
-import { useColorScheme } from "react-native-appearance";
+import useColorsSheet from "../../../services/useColorsSheet.service";
 
 const IconComponent = AntDesign;
 const model = new HomeModel();
@@ -31,12 +30,7 @@ const HomeTemplate = function(props) {
     nav.goToProfile(props);
   };
 
-
-  let colorScheme = useColorScheme();
-  let Colors = Light;
-  if (colorScheme === "dark") {
-    Colors = Dark;// render some dark thing
-  }
+  let Colors = useColorsSheet();
 
   // Header
   let logoutButton = <View></View>;
@@ -57,7 +51,7 @@ const HomeTemplate = function(props) {
   }
 
   return (
-    <SafeAreaView style={homeStyles.Content} forceInset={{ bottom: "never" }}>
+    <SafeAreaView style={[homeStyles.Content, Colors.systemBackground]} forceInset={{ bottom: "never" }}>
       <StatusBar />
       <ScrollView style={{ width: "100%" }}>
         <View style={homeStyles.TitleBar}>
