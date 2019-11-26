@@ -3,15 +3,23 @@ import HomeScreen from "./Home/Home.screen";
 import StatsScreen from "./Stats/Stats.screen";
 import {Feather} from "@expo/vector-icons";
 import SearchScreen from "./Search/Search.screen";
-import {Platform} from "react-native";
 import i18n from "../../i18n";
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 const IconComponent = Feather;
 const Tabs = createBottomTabNavigator();
 
-let floatingTabBar = {};
+let floatingTabBar = {
+    position: "absolute",
+    left: 80,
+    bottom: 0,
+    right: 80,
+    marginBottom: 26,
+    height: 50,
+    paddingBottom: 0,
+};
 
+/*
 if (Platform.OS === "ios") {
     floatingTabBar = {
         position: "absolute",
@@ -22,7 +30,7 @@ if (Platform.OS === "ios") {
         height: 50,
         paddingBottom: 0,
     };
-}
+}*/
 
 const barOptions = {
     activeTintColor: "#e06075",
