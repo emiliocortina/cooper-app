@@ -14,31 +14,40 @@ import loginStyles from "./Login.stylesheet";
 import i18n from "../../../i18n";
 import {Feather} from "@expo/vector-icons";
 import LoginModel from "./Login.model";
-import NavigationService from "../../../services/navigation.service";
 import * as yup from 'yup';
 import {Formik} from 'formik';
 import useColorsSheet from "../../../services/useColorsSheet.service";
 
 const IconComponent = Feather;
 const model = new LoginModel();
-const nav = new NavigationService();
 
 
-const LoginTemplate = function (props) {
+const LoginTemplate = ({navigation}) => {
 
 
     const goHome = () => {
-        nav.goHome(props);
+        navigation.navigate('Home');
     };
 
     let Colors = useColorsSheet();
+
+    const schema = yup.object().shape({
+        email: yup
+            .string()
+            .email()
+            .required(),
+        password: yup
+            .string()
+            .min(6)
+            .required(),
+    });
 
     return (
         <ImageBackground
             source={require("cooper/assets/images/login.jpg")}
             style={loginStyles.Container}
         >
-            <StatusBar barStyle="light-content" />
+            <StatusBar barStyle="light-content"/>
             <View style={loginStyles.Header}>
                 <TouchableOpacity onPress={goHome}>
                     <View style={[loginStyles.Close, Colors.systemBackground]}>
@@ -59,17 +68,8 @@ const LoginTemplate = function (props) {
                 <View style={loginStyles.Form}>
                     <Formik
                         initialValues={{email: '', password: ''}}
-                        onSubmit={values => model.login(values, props)}
-                        validationSchema={yup.object().shape({
-                            email: yup
-                                .string()
-                                .email()
-                                .required(),
-                            password: yup
-                                .string()
-                                .min(6)
-                                .required(),
-                        })}
+                        onSubmit={values => model.login(values, navigation)}
+                        validationSchema={schema}
                     >
                         {({values, handleChange, errors, setFieldTouched, touched, isValid, handleSubmit}) => (
                             <Fragment>
@@ -125,11 +125,12 @@ const LoginTemplate = function (props) {
                 <Text
                     style={[loginStyles.Link, Colors.secondaryLabel]}
                     onPress={() => {
-                        props.navigation.navigate("SignupPage");
+                        navigation.navigate("Signup");
                     }}
                 >
                     {i18n.t("screens.login.messageSignup")}
                 </Text>
+
             </KeyboardAvoidingView>
         </ImageBackground>
     );
@@ -137,7 +138,8 @@ const LoginTemplate = function (props) {
 
 LoginTemplate.navigationOptions = {
     title: "LoginPage",
-    tabBarVisible: false
+    tabBarVisible: false,
+    headerMode: 'none'
 };
 
 export default LoginTemplate;

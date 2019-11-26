@@ -40,11 +40,12 @@ const loginStyles = StyleSheet.create({
         paddingVertical: 10
     },
     FormGroup: {
-        marginBottom: 20
+        marginBottom: 25,
     },
     FormTextInput: {
         backgroundColor: 'white',
-        padding: 10,
+        paddingVertical: 10,
+        paddingHorizontal: 16,
         borderRadius: 100,
         shadowColor: "rgba(58,55,55,0.19)",
         shadowOffset: {width: 0, height: 0},

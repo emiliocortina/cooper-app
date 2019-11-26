@@ -6,8 +6,8 @@ class HomeModel {
 
     logout(props)  {
         firebase.auth().signOut().then(() => {
-            this.nav.goHome(props);
-        }); 
+            //this.nav.goHome(props);
+        });
     }
 }
 

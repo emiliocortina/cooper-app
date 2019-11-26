@@ -1,19 +1,30 @@
-import createAnimatedSwitchNavigator from 'react-navigation-animated-switch';
-import LoginNavigator from "./LoginNavigator";
+import React from "react";
+import {createStackNavigator} from '@react-navigation/stack';
+import LoginScreen from "./Login/Login.screen";
+import SignupScreen from "./Signup/Signup.screen";
 import ProfilePageScreen from "./ProfilePage/ProfilePage.screen";
+import {getCurrentUser, isAuthenticated} from "../../services/auth.service";
 
-const ProfileNavigator = createAnimatedSwitchNavigator(
-  {
-    Login: LoginNavigator,
-    ProfilePage: ProfilePageScreen
-  },
-  {
-    headerMode: "none",
-    mode: "modal",
-    defaultNavigationOptions: {
-      gestureResponseDistance: { vertical: 1200 }
-    }
-  }
-);
+
+const Stack = createStackNavigator();
+
+const ProfileNavigator = () => {
+    return (
+        <Stack.Navigator
+            initialRouteName="Login" headerMode="none">
+
+            {isAuthenticated() ? (
+                <Stack.Screen name="ProfilePage" component={ProfilePageScreen}/>
+            ) : (
+                <>
+                    <Stack.Screen name="Login" component={LoginScreen}/>
+                    <Stack.Screen name="Signup" component={SignupScreen} headerShown="true"/>
+                </>
+            )}
+
+
+        </Stack.Navigator>);
+};
+
 
 export default ProfileNavigator;

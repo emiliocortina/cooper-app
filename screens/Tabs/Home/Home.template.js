@@ -1,129 +1,122 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {
-  Button,
-  View,
-  Text,
-  TouchableOpacity,
-  Image,
-  ScrollView,
-  StatusBar
+    Button,
+    View,
+    Text,
+    TouchableOpacity,
+    Image,
+    ScrollView,
+    StatusBar
 } from "react-native";
 import homeStyles from "./Home.stylesheet";
 import ThreadSquareCard from "../../../components/cards/threadSquareCard";
 import i18n from "../../../i18n";
 import SafeAreaView from "react-native-safe-area-view";
-import { AntDesign } from "@expo/vector-icons";
+import {AntDesign} from "@expo/vector-icons";
 import HomeModel from "./Home.model";
-import NavigationService from "../../../services/navigation.service";
 import useColorsSheet from "../../../services/useColorsSheet.service";
+import {logout} from "../../../services/auth.service";
+import firebase from "../../../Firebase";
 
 const IconComponent = AntDesign;
-const model = new HomeModel();
-const nav = new NavigationService();
 
-const HomeTemplate = function(props) {
-  const logout = () => {
-    model.logout(props);
-  };
+const HomeTemplate = function ({route, navigation}) {
 
-  const goToProfile = () => {
-    nav.goToProfile(props);
-  };
+    const goToProfile = () => {
+        navigation.navigate('Profile');
+    };
 
-  let Colors = useColorsSheet();
+    let Colors = useColorsSheet();
 
-  // Header
-  let logoutButton = <View></View>;
-  let title = i18n.t("tabs.home.join");
-  let subtitle = i18n.t("tabs.home.welcome");
+    const [currentUser, setCurrentUser] = useState(null);
 
-  let user = props.navigation.getParam("currentUser");
-  if (user != null) {
-    logoutButton = (
-      <View style={homeStyles.UpRightButton}>
-        <TouchableOpacity onPress={logout}>
-          <IconComponent name={"logout"} size={25} color={Colors.secondaryLabel.color} />
-        </TouchableOpacity>
-      </View>
+    useEffect(() => {
+        firebase.auth.onAuthStateChanged(async (user) => {
+            setCurrentUser(user);
+        });
+    });
+
+    return (
+        <SafeAreaView style={[homeStyles.Content, Colors.systemBackground]} forceInset={{bottom: "never"}}>
+            <StatusBar/>
+            <ScrollView style={{width: "100%"}}>
+                <View style={homeStyles.TitleBar}>
+                    <TouchableOpacity
+                        style={{flexDirection: "row"}}
+                        onPress={goToProfile}
+                    >
+                        <Image
+                            source={require("../../../assets/images/sentinel2.jpg")}
+                            style={homeStyles.Avatar}
+                        />
+
+                        <View>
+                            <Text style={[homeStyles.Welcome, Colors.secondaryLabel]}>
+                                {currentUser ? i18n.t("tabs.home.welcomeBack") : i18n.t("tabs.home.welcome")}
+                            </Text>
+                            <Text
+                                style={[homeStyles.Name, Colors.label]}>{currentUser ? currentUser.displayName : i18n.t("tabs.home.join")}</Text>
+                        </View>
+                    </TouchableOpacity>
+
+                    {currentUser && (
+                        <View style={homeStyles.LogoutButton}>
+                            <TouchableOpacity onPress={logout}>
+                                <IconComponent name={"logout"} size={25} color={Colors.secondaryLabel.color}/>
+                            </TouchableOpacity>
+                        </View>)
+                    }
+                </View>
+
+                <ScrollView horizontal style={homeStyles.CardsContainer}>
+                    <TouchableOpacity onPress={() => navigation.navigate("Thread")}>
+                        <ThreadSquareCard/>
+                    </TouchableOpacity>
+                    <ThreadSquareCard/>
+                    <ThreadSquareCard/>
+                    <ThreadSquareCard/>
+                    <ThreadSquareCard/>
+                    <ThreadSquareCard/>
+                    <ThreadSquareCard/>
+                    <ThreadSquareCard/>
+                </ScrollView>
+                <ScrollView horizontal style={homeStyles.CardsContainer}>
+                    <ThreadSquareCard/>
+                    <ThreadSquareCard/>
+                    <ThreadSquareCard/>
+                    <ThreadSquareCard/>
+                    <ThreadSquareCard/>
+                    <ThreadSquareCard/>
+                    <ThreadSquareCard/>
+                    <ThreadSquareCard/>
+                </ScrollView>
+                <ScrollView horizontal style={homeStyles.CardsContainer}>
+                    <ThreadSquareCard/>
+                    <ThreadSquareCard/>
+                    <ThreadSquareCard/>
+                    <ThreadSquareCard/>
+                    <ThreadSquareCard/>
+                    <ThreadSquareCard/>
+                    <ThreadSquareCard/>
+                    <ThreadSquareCard/>
+                </ScrollView>
+                <ScrollView horizontal style={homeStyles.CardsContainer}>
+                    <ThreadSquareCard/>
+                    <ThreadSquareCard/>
+                    <ThreadSquareCard/>
+                    <ThreadSquareCard/>
+                    <ThreadSquareCard/>
+                    <ThreadSquareCard/>
+                    <ThreadSquareCard/>
+                    <ThreadSquareCard/>
+                </ScrollView>
+            </ScrollView>
+        </SafeAreaView>
     );
-    title = user.displayName;
-    subtitle = i18n.t("tabs.home.welcomeBack");
-  }
-
-  return (
-    <SafeAreaView style={[homeStyles.Content, Colors.systemBackground]} forceInset={{ bottom: "never" }}>
-      <StatusBar />
-      <ScrollView style={{ width: "100%" }}>
-        <View style={homeStyles.TitleBar}>
-          <TouchableOpacity
-            style={{ flexDirection: "row" }}
-            onPress={goToProfile}
-          >
-            <Image
-              source={require("../../../assets/images/sentinel2.jpg")}
-              style={homeStyles.Avatar}
-            />
-
-            <View>
-              <Text style={[homeStyles.Welcome, Colors.secondaryLabel]}>
-                {subtitle}
-              </Text>
-              <Text style={[homeStyles.Name, Colors.label]}>{title}</Text>
-            </View>
-          </TouchableOpacity>
-
-          {logoutButton}
-        </View>
-
-        <ScrollView horizontal style={homeStyles.CardsContainer}>
-          <TouchableOpacity onPress={() => props.navigation.navigate("Thread")}>
-            <ThreadSquareCard/>
-          </TouchableOpacity>
-          <ThreadSquareCard />
-          <ThreadSquareCard />
-          <ThreadSquareCard />
-          <ThreadSquareCard />
-          <ThreadSquareCard />
-          <ThreadSquareCard />
-          <ThreadSquareCard />
-        </ScrollView>
-        <ScrollView horizontal style={homeStyles.CardsContainer}>
-          <ThreadSquareCard />
-          <ThreadSquareCard />
-          <ThreadSquareCard />
-          <ThreadSquareCard />
-          <ThreadSquareCard />
-          <ThreadSquareCard />
-          <ThreadSquareCard />
-          <ThreadSquareCard />
-        </ScrollView>
-        <ScrollView horizontal style={homeStyles.CardsContainer}>
-          <ThreadSquareCard />
-          <ThreadSquareCard />
-          <ThreadSquareCard />
-          <ThreadSquareCard />
-          <ThreadSquareCard />
-          <ThreadSquareCard />
-          <ThreadSquareCard />
-          <ThreadSquareCard />
-        </ScrollView>
-        <ScrollView horizontal style={homeStyles.CardsContainer}>
-          <ThreadSquareCard />
-          <ThreadSquareCard />
-          <ThreadSquareCard />
-          <ThreadSquareCard />
-          <ThreadSquareCard />
-          <ThreadSquareCard />
-          <ThreadSquareCard />
-          <ThreadSquareCard />
-        </ScrollView>
-      </ScrollView>
-    </SafeAreaView>
-  );
 };
 
 HomeTemplate.navigationOptions = {
-  title: "Home"
+    title: "Home"
 };
 
 export default HomeTemplate;

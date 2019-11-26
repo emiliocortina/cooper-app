@@ -38,8 +38,10 @@ const homeStyles = StyleSheet.create({
     ...Typography.h3,
     color: '#3c4560',
   },
-  UpRightButton: {
-  }
+  LogoutButton: {
+    justifyContent: 'center',
+
+  },
 });
 
 export default homeStyles;

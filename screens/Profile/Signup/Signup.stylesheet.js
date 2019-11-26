@@ -3,49 +3,92 @@ import {Buttons, Typography, Colors} from 'cooper/styles'
 
 const signupStyles = StyleSheet.create({
     Container: {
-      flex: 1,
-      alignItems: "center",
-      justifyContent: "center",
-      flexDirection: "column",
+        width: '100%',
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
+        flexDirection: "column",
     },
     Content: {
-      flex: 4,
-      alignItems: "center",
-      justifyContent: "center",
-      flexDirection: "column",
-      width: '70%',
+        flex: 4,
+        alignItems: "center",
+        justifyContent: "center",
+        flexDirection: "column",
+        width: '100%',
+        marginTop: 30,
     },
     Form: {
-      width: '75%',
-      paddingBottom: 20
+        width: '65%',
+        paddingBottom: 20
+    },
+    FormGroup: {
+        marginBottom: 25,
+    },
+    FormTextInput: {
+        backgroundColor: 'white',
+        paddingVertical: 10,
+        paddingHorizontal: 16,
+        borderRadius: 100,
+        shadowColor: "rgba(58,55,55,0.14)",
+        shadowOffset: {width: 0, height: 0},
+        shadowOpacity: 1,
+        shadowRadius: 5,
+        elevation: 3,
+    },
+    ErrorPanel: {
+        padding: 5,
+        marginTop: 10,
+        borderRadius: 20,
+    },
+    ErrorMessage: {
+        fontSize: 12,
+        color: '#DE6176',
+        textAlign: 'center',
+    },
+    SubmitButton: {
+        backgroundColor: "pink",
+        fontWeight: "bold",
+        padding: 10,
+        color: "white"
     },
     Link: {
-      paddingTop: 20,
-      color: '#3c4560',
-      textDecorationLine:'underline'
+        color: "#3c3c4399",
+        textDecorationLine: "underline",
+        marginBottom: 30
     },
     Title: {
-      ...Typography.h2,
-      color: '#3c4560',
-      padding: 20,
+        ...Typography.h2,
+        paddingVertical: 20,
+        color: "#DE6176",
     },
     Header: {
-      width: '100%',
-      marginTop: 50,
-      marginBottom: 20,
-      paddingLeft: 20,
-      display: 'flex',
-      flexDirection: 'row',
-      justifyContent: 'flex-end',
+        flexDirection: 'row',
+        alignItems: 'center',
+        width: '100%',
+        justifyContent: 'space-between',
+        paddingHorizontal: 15,
+    },
+    Close: {
+        borderRadius: 20,
+        height: 40,
+        aspectRatio: 1,
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: "blue",
+    },
+    Checkbox: {
+        backgroundColor: 'transparent',
+        borderColor: 'transparent',
     },
     Footer: {
-      width: '100%',
-      marginTop: 20,
-      marginBottom: 50,
-      paddingLeft: 20,
-      display: 'flex',
-      alignItems: "center",
-      justifyContent: "center",
+        width: '100%',
+        marginTop: 20,
+        marginBottom: 50,
+        paddingLeft: 20,
+        display: 'flex',
+        alignItems: "center",
+        justifyContent: "center",
     }
 });
 export default signupStyles;
