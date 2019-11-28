@@ -42,6 +42,7 @@ const LoginTemplate = ({navigation}) => {
             .required(),
     });
 
+
     return (
         <ImageBackground
             source={require("cooper/assets/images/login.jpg")}
@@ -112,6 +113,7 @@ const LoginTemplate = ({navigation}) => {
                                 <Button
                                     title='Log In'
                                     disabled={!isValid}
+                                    // @ts-ignore
                                     onPress={handleSubmit}
                                     color="#DE6176"
                                 />

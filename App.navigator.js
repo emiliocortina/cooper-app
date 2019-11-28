@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from "react";
-import AuthLoadingScreen from "./screens/AuthLoading/authLoading.screen";
 import TabNavigator from "./screens/Tabs/Tabs.navigator";
 import ThreadDetailsScreen from "./screens/ThreadDetails/ThreadDetails.screen";
 import ProfileNavigator from './screens/Profile/ProfileNavigator';

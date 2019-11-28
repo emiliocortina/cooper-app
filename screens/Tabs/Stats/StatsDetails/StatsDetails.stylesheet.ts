@@ -1,12 +1,5 @@
 import { StyleSheet } from 'react-native';
 
-const Column = {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "flex-start",
-    flexDirection: "column",
-};
-
 const statsDetailsStyles = StyleSheet.create({
     Content: {
         width: '100%',
@@ -22,11 +15,17 @@ const statsDetailsStyles = StyleSheet.create({
         flexDirection: "row",
     },
     ColumnLeft: {
-        ...Column,
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "flex-start",
+        flexDirection: "column",
         paddingRight: 5,
     },
     ColumnRight: {
-        ...Column,
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "flex-start",
+        flexDirection: "column",
         paddingLeft: 5,
     },
     Card: {

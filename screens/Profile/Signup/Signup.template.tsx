@@ -203,6 +203,7 @@ const SignupTemplate = ({navigation}) => {
                                     <Button
                                         title='Register'
                                         disabled={!isValid}
+                                        // @ts-ignore
                                         onPress={handleSubmit}
                                         color="#DE6176"
                                     />

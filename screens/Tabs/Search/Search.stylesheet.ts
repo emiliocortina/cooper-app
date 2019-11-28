@@ -1,4 +1,6 @@
-const searchStyles = {
+import {StyleSheet} from "react-native";
+
+const searchStyles = StyleSheet.create({
   Content: {
     flex: 1,
     alignItems: "center",
@@ -27,6 +29,6 @@ const searchStyles = {
   },
   Right: {
   }
-};
+});
 
 export default searchStyles;

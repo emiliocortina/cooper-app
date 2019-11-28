@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { Typography } from 'cooper/styles'
+import { Typography } from 'styles'
 
 const statsStyles = StyleSheet.create({
     Content: {

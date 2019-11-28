@@ -18,7 +18,7 @@ const ProfileNavigator = () => {
             ) : (
                 <>
                     <Stack.Screen name="Login" component={LoginScreen}/>
-                    <Stack.Screen name="Signup" component={SignupScreen} headerShown="true"/>
+                    <Stack.Screen name="Signup" component={SignupScreen}/>
                 </>
             )}
 
