@@ -10,7 +10,7 @@ import {
   ImageBackground
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import { Colors, Typography } from "cooper-app/styles";
+import {Light, Typography} from "cooper-app/styles";
 
 class ThreadSquareCard extends React.Component {
   render() {
@@ -58,11 +58,11 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
   },
   Subtitle: {
-    ...Colors.secondaryLabelContrast
+    color: "#ebebf599"
   },
   Title: {
     ...Typography.h3,
-    ...Colors.labelContrast
+    color: "#ffffff"
   }
 });
 

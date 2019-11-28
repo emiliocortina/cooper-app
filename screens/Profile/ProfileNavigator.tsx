@@ -3,7 +3,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import LoginScreen from "./Login/Login.screen";
 import SignupScreen from "./Signup/Signup.screen";
 import ProfilePageScreen from "./ProfilePage/ProfilePage.screen";
-import {getCurrentUser, isAuthenticated} from "../../services/auth.service";
+import AuthService from "../../services/auth.service";
 
 
 const Stack = createStackNavigator();
@@ -13,7 +13,7 @@ const ProfileNavigator = () => {
         <Stack.Navigator
             initialRouteName="Login" headerMode="none">
 
-            {isAuthenticated() ? (
+            {AuthService.isAuthenticated() ? (
                 <Stack.Screen name="ProfilePage" component={ProfilePageScreen}/>
             ) : (
                 <>

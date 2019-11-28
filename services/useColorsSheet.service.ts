@@ -1,14 +1,16 @@
 import {useColorScheme} from "react-native-appearance/src/index";
 import { Dark, Light } from "cooper-app/styles";
 
+const lightTheme = new Light();
+const darkTheme = new Dark();
+
 // This is a hook
-function useColorsSheet()  {
+function useColorsSheet(): Colorsheet  {
     let colorScheme = useColorScheme();
-    let Colors = Light;
     if (colorScheme === "dark") {
-        Colors = Dark;// render some dark thing
+        return darkTheme;
     }
-    return Colors;
+    return lightTheme;
 }
 
 export default useColorsSheet;

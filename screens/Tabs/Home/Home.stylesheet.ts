@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { Buttons, Typography, Colors } from 'cooper-app/styles';
+import { Buttons, Typography } from 'cooper-app/styles';
 
 const homeStyles = StyleSheet.create({
   Content: {

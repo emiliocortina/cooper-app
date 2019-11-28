@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {Buttons, Typography, Colors} from 'cooper-app/styles'
+import {Typography} from 'cooper-app/styles'
 
 const signupStyles = StyleSheet.create({
     Container: {

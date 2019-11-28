@@ -1,9 +1,8 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import TabNavigator from "./screens/Tabs/Tabs.navigator";
 import ThreadDetailsScreen from "./screens/ThreadDetails/ThreadDetails.screen";
 import ProfileNavigator from './screens/Profile/ProfileNavigator';
 import {createStackNavigator, TransitionPresets} from '@react-navigation/stack';
-import {isAuthenticated, isInitialized} from "./services/auth.service";
 
 
 const pageSheetOptions = {

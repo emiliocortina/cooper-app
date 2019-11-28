@@ -1,7 +1,6 @@
 import React from "react";
 import {StyleSheet} from "react-native"
 import {BlurView} from 'expo-blur';
-import {Colors, Typography} from 'cooper-app/styles';
 
 class StatsCard extends React.Component {
     render() {
@@ -37,9 +36,7 @@ const styles = StyleSheet.create({
         borderBottomLeftRadius: 20,
     },
     Subtitle: {
-        ...Colors.secondaryLabel,
-
-
+        color: "#3c3c4399"
     },
 });
 

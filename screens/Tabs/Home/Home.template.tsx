@@ -13,10 +13,9 @@ import ThreadSquareCard from "../../../components/cards/threadSquareCard";
 import i18n from "cooper-app/i18n";
 import SafeAreaView from "react-native-safe-area-view";
 import {AntDesign} from "@expo/vector-icons";
-import HomeModel from "./Home.model";
 import useColorsSheet from "../../../services/useColorsSheet.service";
-import {logout} from "../../../services/auth.service";
 import firebase from "cooper-app/Firebase";
+import AuthService from "cooper-app/services/auth.service";
 
 const IconComponent = AntDesign;
 
@@ -61,7 +60,7 @@ const HomeTemplate = function ({route, navigation}) {
 
                     {currentUser && (
                         <View style={homeStyles.LogoutButton}>
-                            <TouchableOpacity onPress={logout}>
+                            <TouchableOpacity onPress={AuthService.logout}>
                                 <IconComponent name={"logout"} size={25} color={Colors.secondaryLabel.color}/>
                             </TouchableOpacity>
                         </View>)

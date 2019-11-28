@@ -22,7 +22,7 @@ class Firebase {
         this.auth = app.auth();
     }
 
-    login(email, password, callback) {
+    login(email, password, callback): Promise<void | never> {
         return this.auth.signInWithEmailAndPassword(email, password).catch((error) => {
             alert(i18n.t("screens.login.noUserError"));
         }).then(() => {
@@ -30,28 +30,28 @@ class Firebase {
         });
     }
 
-    logout() {
+    logout(): Promise<void> {
         return this.auth.signOut();
     }
 
-    getCurrentUser() {
+    getCurrentUser(): firebase.User {
         return this.auth.currentUser;
     }
 
-    async register(name, email, password) {
+    async register(name, email, password): Promise<void> {
         await this.auth.createUserWithEmailAndPassword(email, password);
         return this.auth.currentUser.updateProfile({
             displayName: name
         })
     }
 
-    isInitialized() {
+    isInitialized(): Promise<any> {
         return new Promise(resolve => {
             this.auth.onAuthStateChanged(resolve)
         })
     }
 
-    getCurrentUsername() {
+    getCurrentUsername(): string {
         return this.auth.currentUser && this.auth.currentUser.displayName
     }
 
