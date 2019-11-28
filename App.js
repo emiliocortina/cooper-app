@@ -10,9 +10,11 @@ export default function App() {
 
     return (
         <NavigationNativeContainer>
-            <SafeAreaProvider>
-                <AppNavigator theme={theme}/>
-            </SafeAreaProvider>
+            <AppearanceProvider>
+                <SafeAreaProvider>
+                    <AppNavigator theme={theme}/>
+                </SafeAreaProvider>
+            </AppearanceProvider>
         </NavigationNativeContainer>
     );
 }

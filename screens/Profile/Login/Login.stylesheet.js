@@ -44,6 +44,7 @@ const loginStyles = StyleSheet.create({
     },
     FormTextInput: {
         backgroundColor: 'white',
+        fontSize: 16,
         paddingVertical: 10,
         paddingHorizontal: 16,
         borderRadius: 100,

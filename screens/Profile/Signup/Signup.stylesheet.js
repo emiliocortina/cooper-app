@@ -26,6 +26,7 @@ const signupStyles = StyleSheet.create({
     },
     FormTextInput: {
         backgroundColor: 'white',
+        fontSize: 18,
         paddingVertical: 10,
         paddingHorizontal: 16,
         borderRadius: 100,

@@ -24,7 +24,7 @@ export const tertiaryLabelContrast = {
 };
 
 
-// Background
+// Card
 /*export const systemBackground = {
     backgroundColor: "#000000ff"
 };
@@ -32,6 +32,10 @@ export const tertiaryLabelContrast = {
 export const secondarySystemBackground = {
     backgroundColor: "#1c1c1eff"
 };*/
+
+export const tabBarBackground = {
+    backgroundColor: "#2c2c2eff"
+};
 
 export const systemBackground = {
     backgroundColor: "#1c1c1eff"
