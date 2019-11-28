@@ -14,7 +14,7 @@ const pageSheetOptions = {
 
 const Stack = createStackNavigator();
 
-const MainAppNavigator = () => {
+const MainAppNavigator = (theme) => {
 
     return (
         <Stack.Navigator mode="modal"

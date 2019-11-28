@@ -9,15 +9,14 @@ import {
   StyleSheet,
   ImageBackground
 } from "react-native";
-import { BlurView } from "expo-blur";
 import { LinearGradient } from "expo-linear-gradient";
-import { Colors, Typography } from "cooper/styles";
+import { Colors, Typography } from "cooper-app/styles";
 
 class ThreadSquareCard extends React.Component {
   render() {
     return (
       <ImageBackground
-        source={require("cooper/assets/images/sentinel3.jpg")}
+        source={require("cooper-app/assets/images/sentinel3.jpg")}
         style={styles.CardContainer}
         imageStyle={{ borderRadius: 30 }}
       >

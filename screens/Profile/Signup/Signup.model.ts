@@ -1,5 +1,5 @@
-import firebase from "../../../Firebase";
-import i18n from "../../../i18n";
+import firebase from "cooper-app/Firebase";
+import i18n from "cooper-app/i18n";
 import LoginModel from '../Login/Login.model';
 
 const loginModel = new LoginModel();

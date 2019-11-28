@@ -109,7 +109,7 @@ const ThreadDetailsTemplate = (props) => {
 
 
 const images = {
-    background: require('cooper/assets/images/sentinel3.jpg'), // Put your own image here
+    background: require('cooper-app/assets/images/sentinel3.jpg'), // Put your own image here
 };
 
 

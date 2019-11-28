@@ -3,7 +3,7 @@ import React from "react";
 
 const DashboardImageCard = (props) => {
 
-    let source = require('cooper/assets/images/sentinel3.jpg');
+    let source = require('cooper-app/assets/images/sentinel3.jpg');
 
     if(props.source) {
         source = props.source;

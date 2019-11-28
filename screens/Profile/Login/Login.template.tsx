@@ -11,7 +11,7 @@ import {
     StatusBar
 } from "react-native";
 import loginStyles from "./Login.stylesheet";
-import i18n from "../../../i18n";
+import i18n from "cooper-app/i18n";
 import {Feather} from "@expo/vector-icons";
 import LoginModel from "./Login.model";
 import * as yup from 'yup';
@@ -45,7 +45,7 @@ const LoginTemplate = ({navigation}) => {
 
     return (
         <ImageBackground
-            source={require("cooper/assets/images/login.jpg")}
+            source={require("cooper-app/assets/images/login.jpg")}
             style={loginStyles.Container}
         >
             <StatusBar barStyle="light-content"/>
@@ -64,7 +64,7 @@ const LoginTemplate = ({navigation}) => {
             <KeyboardAvoidingView behavior="padding" style={[loginStyles.LoginCard, Colors.systemBackground]}>
                 <Image style={loginStyles.Title}
                        resizeMode="contain"
-                       source={require("cooper/assets/images/logo_text.png")}>
+                       source={require("cooper-app/assets/images/logo_text.png")}>
                 </Image>
                 <View style={loginStyles.Form}>
                     <Formik

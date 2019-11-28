@@ -1,6 +1,6 @@
-import firebase from '../../../Firebase';
+import firebase from 'cooper-app/Firebase';
 import {login} from '../../../services/auth.service'
-import i18n from "../../../i18n";
+import i18n from "cooper-app/i18n";
 
 class LoginModel {
 

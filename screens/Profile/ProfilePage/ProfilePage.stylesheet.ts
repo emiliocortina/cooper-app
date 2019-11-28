@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { Typography} from "styles";
+import { Typography} from "cooper-app/styles";
 
 const profileStyles = StyleSheet.create({
   Container: {

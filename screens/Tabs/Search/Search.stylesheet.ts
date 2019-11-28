@@ -18,7 +18,6 @@ const searchStyles = StyleSheet.create({
     marginHorizontal: 5,
     borderRadius: 15,
     marginLeft: 15,
-    boxShadow: " 0 5px 10px rgba(0, 0, 0, 0.05)",
     shadowColor: "rgba(58,55,55,0.1)",
     shadowOffset: { width: 0, height: 0 },
     shadowOpacity: 1,

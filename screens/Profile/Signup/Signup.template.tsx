@@ -1,7 +1,7 @@
 import React, {Fragment} from "react";
 import {ScrollView, Button, View, Text, TouchableOpacity, TextInput, KeyboardAvoidingView} from "react-native";
 import signupStyles from "./Signup.stylesheet";
-import i18n from "../../../i18n";
+import i18n from "cooper-app/i18n";
 import {Formik} from 'formik';
 import {CheckBox} from 'react-native-elements';
 import {Feather} from "@expo/vector-icons";

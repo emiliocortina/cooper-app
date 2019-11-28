@@ -3,7 +3,7 @@ import HomeScreen from "./Home/Home.screen";
 import StatsScreen from "./Stats/Stats.screen";
 import {Feather, Foundation} from "@expo/vector-icons";
 import SearchScreen from "./Search/Search.screen";
-import i18n from "../../i18n";
+import i18n from "cooper-app/i18n";
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import useColorsSheet from "../../services/useColorsSheet.service";
 

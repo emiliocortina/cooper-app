@@ -10,13 +10,13 @@ import {
 } from "react-native";
 import homeStyles from "./Home.stylesheet";
 import ThreadSquareCard from "../../../components/cards/threadSquareCard";
-import i18n from "../../../i18n";
+import i18n from "cooper-app/i18n";
 import SafeAreaView from "react-native-safe-area-view";
 import {AntDesign} from "@expo/vector-icons";
 import HomeModel from "./Home.model";
 import useColorsSheet from "../../../services/useColorsSheet.service";
 import {logout} from "../../../services/auth.service";
-import firebase from "../../../Firebase";
+import firebase from "cooper-app/Firebase";
 
 const IconComponent = AntDesign;
 

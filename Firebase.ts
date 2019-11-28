@@ -1,7 +1,7 @@
 import app from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/firebase-firestore'
-import i18n from "./i18n";
+import i18n from "cooper-app/i18n";
 
 const config = {
     apiKey: "AIzaSyA7OAZdjFHmc5hPe1w_LnUHnragbbUt_ro",
@@ -15,10 +15,11 @@ const config = {
 };
 
 class Firebase {
+    auth: firebase.auth.Auth;
+
     constructor() {
         app.initializeApp(config);
         this.auth = app.auth();
-        this.db = app.firestore();
     }
 
     login(email, password, callback) {

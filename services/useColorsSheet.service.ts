@@ -1,5 +1,5 @@
 import {useColorScheme} from "react-native-appearance/src/index";
-import { Dark, Light } from "cooper/styles";
+import { Dark, Light } from "cooper-app/styles";
 
 // This is a hook
 function useColorsSheet()  {
