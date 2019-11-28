@@ -1,7 +1,7 @@
 import React from "react";
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import SafeAreaView from "react-native-safe-area-view";
-import {View, Text, TouchableOpacity} from "react-native";
+import {View, Text, TouchableOpacity, ScrollView} from "react-native";
 import {SimpleLineIcons} from "@expo/vector-icons";
 import statsStyles from "./Stats.stylesheet";
 import useColorsSheet from "../../../services/useColorsSheet.service";
@@ -41,7 +41,7 @@ const StatsScreen = () => {
             <View style={[statsStyles.Header, Colors.systemBackground]}>
                 <View>
                     <Text style={[statsStyles.Subtitle, Colors.secondaryLabel]}>Stats in</Text>
-                    <Text style={[statsStyles.Title, Colors.label]}>Frascati</Text>
+                    <Text style={[statsStyles.Title, Colors.label]}>Frascato</Text>
                 </View>
                 <View>
                     <TouchableOpacity>
