@@ -13,7 +13,7 @@ import { BlurView } from "expo-blur";
 import { LinearGradient } from "expo-linear-gradient";
 import { Colors, Typography } from "cooper/styles";
 
-class Card extends React.Component {
+class ThreadSquareCard extends React.Component {
   render() {
     return (
       <ImageBackground
@@ -22,11 +22,11 @@ class Card extends React.Component {
         imageStyle={{ borderRadius: 30 }}
       >
         <LinearGradient
-          colors={["transparent", "rgba(0,0,0,0.8)"]}
+          colors={["transparent", "transparent", "rgba(0,0,0,0.54)"]}
           style={styles.Content}
         >
           <Text style={styles.Subtitle}>HOLAA</Text>
-          <Text style={styles.Title}>HOLAA</Text>
+          <Text style={styles.Title}>BREAKING NEWS</Text>
         </LinearGradient>
       </ImageBackground>
     );
@@ -42,17 +42,21 @@ const styles = StyleSheet.create({
     borderRadius: 40,
     height: 250,
     width: 250,
-    shadowColor: "rgba(58,55,55,0.1)",
-    shadowOffset: { width: 0, height: 0 },
+    shadowColor: "rgba(58,55,55,0.31)",
+    shadowOffset: { width: 0, height: 8 },
     shadowOpacity: 1,
-    shadowRadius: 15,
+    shadowRadius: 10,
     elevation: 3,
-    marginHorizontal: 10
+    marginHorizontal: 10,
   },
   Content: {
     width: "100%",
+    height: "100%",
     padding: 20,
     borderRadius: 30,
+    flexDirection: "column",
+    justifyContent: "flex-end",
+    alignItems: "flex-start",
   },
   Subtitle: {
     ...Colors.secondaryLabelContrast
@@ -63,4 +67,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Card;
+export default ThreadSquareCard;

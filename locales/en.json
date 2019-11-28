@@ -1,8 +1,10 @@
 {
     "tabs": {
         "home": {
-            "welcome": "Welcome back, ",
-            "tabLabel": "Home"
+            "welcomeBack": "Welcome back, ",
+            "welcome": "Welcome, ",
+            "tabLabel": "Home",
+            "join": "Join us!"
         },
         "stats": {
             "name": "Stats screen",
@@ -47,11 +49,12 @@
                 "label": "Repeat the password",
                 "error": "Passwords should be equal"
             },
-            "olderCkbx": "I'm older than 13", 
+            "olderCkbx": "I'm older than 13",
             "termsCkbx": "I accept the terms and conditions",
             "notOlderError": "You must be older than 13 in order to register",
             "notTermsError": "You have to accept the Terms and Conditions",
-            "errorAccount": "Create account failed"
+            "errorAccount": "Create account failed",
+            "messageLogin": "Already have an account? Login"
         }
     }
 }

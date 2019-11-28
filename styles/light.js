@@ -1,27 +1,34 @@
 // Text
 export const label = {
-    color: "rgba(0,0,0,0.91)"
+    color: "rgba(50,53,55,0.92)"
 };
 
 export const secondaryLabel = {
-    color: "#3c3c4399"
+    color: "rgba(50,53,55,0.81)"
 };
 
 export const tertiaryLabel = {
     color: "#3c3c434c"
 };
 
+export const tabBarBackground = {
+    backgroundColor: "#ffffffff"
+};
 
-// Background
+// Card
 export const systemBackground = {
-    color: "#ffffffff"
+    backgroundColor: "#ffffffff"
 };
 
 export const secondarySystemBackground = {
-    color: "#f2f2f7ff"
+    backgroundColor: "#f2f2f7ff"
 };
 
 export const tertiarySystemBackground = {
-    color: "#ffffffff"
+    backgroundColor: "#ffffffff"
 };
+
+export const formTextInputBackground = {
+    backgroundColor: "#ffffffff"
+}
 

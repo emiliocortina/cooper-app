@@ -1,99 +1,145 @@
-import React from "react";
+import React, {Fragment} from "react";
 import {
-  Button,
-  View,
-  Text,
-  TouchableOpacity,
+    Button,
+    View,
+    Text,
+    TouchableOpacity,
+    ImageBackground,
+    Image,
+    TextInput,
+    KeyboardAvoidingView,
+    StatusBar
 } from "react-native";
 import loginStyles from "./Login.stylesheet";
 import i18n from "../../../i18n";
-import t from "tcomb-form-native";
-import KeyboardShift from "../../../components/keyboardShift";
-import { Feather } from "@expo/vector-icons";
+import {Feather} from "@expo/vector-icons";
 import LoginModel from "./Login.model";
-import NavigationService from '../../../services/navigation.service';
+import * as yup from 'yup';
+import {Formik} from 'formik';
+import useColorsSheet from "../../../services/useColorsSheet.service";
 
-const Form = t.form.Form;
 const IconComponent = Feather;
 const model = new LoginModel();
-const nav = new NavigationService();
 
-const LoginObject = t.struct({
-  email: t.String,
-  password: t.String
-});
 
-const options = {
-  fields: {
-    email: {
-      label: i18n.t("screens.login.email.label"),
-      error: i18n.t("screens.login.email.error")
-    },
-    password: {
-      label: i18n.t("screens.login.password.label"),
-      password: true,
-      secureTextEntry: true,
-      error: i18n.t("screens.login.password.error")
-    }
-  }
-};
+const LoginTemplate = ({navigation}) => {
 
-class LoginTemplate extends React.Component {
-  static navigationOptions = {
-    title: "LoginPage",
-    tabBarVisible: false
-  };
 
-  handleSubmit = () => {
-    let value = this._form.getValue();
-    model.login(value, this.props);
-  };
+    const goHome = () => {
+        navigation.navigate('Home');
+    };
 
-  goHome = () => {
-    nav.goHome(this.props);
-  };
+    let Colors = useColorsSheet();
 
-  render() {
+    const schema = yup.object().shape({
+        email: yup
+            .string()
+            .email()
+            .required(),
+        password: yup
+            .string()
+            .min(6)
+            .required(),
+    });
+
     return (
-      <KeyboardShift>
-        {() => (
-          <View style={loginStyles.Container}>
+        <ImageBackground
+            source={require("cooper/assets/images/login.jpg")}
+            style={loginStyles.Container}
+        >
+            <StatusBar barStyle="light-content"/>
             <View style={loginStyles.Header}>
-              <TouchableOpacity onPress={this.goHome}>
-                <IconComponent name={"home"} size={25} color="#3c4560" />
-              </TouchableOpacity>
+                <TouchableOpacity onPress={goHome}>
+                    <View style={[loginStyles.Close, Colors.systemBackground]}>
+                        <IconComponent
+                            name={"chevron-down"}
+                            size={30}
+                            color="#DE6176"
+                        />
+                    </View>
+                </TouchableOpacity>
             </View>
 
-            <View style={loginStyles.Content}>
-              <Text style={loginStyles.Title}>
-                {i18n.t("screens.login.title")}
-              </Text>
-              <View style={loginStyles.Form}>
-                <Form
-                  ref={c => (this._form = c)}
-                  type={LoginObject}
-                  options={options}
-                />
-              </View>
-              <Button
-                color="#D44963"
-                title={i18n.t("screens.login.button")}
-                onPress={this.handleSubmit}
-              />
-              <Text
-                style={loginStyles.Link}
-                onPress={() => {
-                  this.props.navigation.navigate("SignupPage");
-                }}
-              >
-                {i18n.t("screens.login.messageSignup")}
-              </Text>
-            </View>
-          </View>
-        )}
-      </KeyboardShift>
+            <KeyboardAvoidingView behavior="padding" style={[loginStyles.LoginCard, Colors.systemBackground]}>
+                <Image style={loginStyles.Title}
+                       resizeMode="contain"
+                       source={require("cooper/assets/images/logo_text.png")}>
+                </Image>
+                <View style={loginStyles.Form}>
+                    <Formik
+                        initialValues={{email: '', password: ''}}
+                        onSubmit={values => model.login(values, navigation)}
+                        validationSchema={schema}
+                    >
+                        {({values, handleChange, errors, setFieldTouched, touched, isValid, handleSubmit}) => (
+                            <Fragment>
+                                <View style={loginStyles.FormGroup}>
+                                    <TextInput
+                                        value={values.email}
+                                        onChangeText={handleChange('email')}
+                                        onBlur={() => setFieldTouched('email')}
+                                        placeholder="E-mail"
+                                        placeholderTextColor={Colors.tertiaryLabel.color}
+                                        textContentType={'username'}
+                                        style={[loginStyles.FormTextInput, Colors.formTextInputBackground,
+                                            Colors.secondaryLabel]}
+                                    />
+                                    {touched.email && errors.email &&
+                                    <View style={loginStyles.ErrorPanel}>
+                                        <Text style={loginStyles.ErrorMessage}>{errors.email}</Text>
+                                    </View>
+                                    }
+                                </View>
+
+                                <View style={loginStyles.FormGroup}>
+                                    <TextInput
+                                        value={values.password}
+                                        onChangeText={handleChange('password')}
+                                        placeholder="Password"
+                                        placeholderTextColor={Colors.tertiaryLabel.color}
+                                        onBlur={() => setFieldTouched('password')}
+                                        secureTextEntry={true}
+                                        textContentType={'password'}
+                                        style={[loginStyles.FormTextInput,
+                                            Colors.formTextInputBackground, Colors.secondaryLabel]}
+                                    />
+                                    {touched.password && errors.password &&
+                                    <View style={loginStyles.ErrorPanel}>
+                                        <Text style={loginStyles.ErrorMessage}>{errors.password}</Text>
+                                    </View>
+                                    }
+                                </View>
+                                <Button
+                                    title='Log In'
+                                    disabled={!isValid}
+                                    onPress={handleSubmit}
+                                    color="#DE6176"
+                                />
+                            </Fragment>
+                        )}
+                    </Formik>
+
+
+                </View>
+
+                <Text
+                    style={[loginStyles.Link, Colors.secondaryLabel]}
+                    onPress={() => {
+                        navigation.navigate("Signup");
+                    }}
+                >
+                    {i18n.t("screens.login.messageSignup")}
+                </Text>
+
+            </KeyboardAvoidingView>
+        </ImageBackground>
     );
-  }
 }
+
+LoginTemplate.navigationOptions = {
+    title: "LoginPage",
+    tabBarVisible: false,
+    headerMode: 'none'
+};
 
 export default LoginTemplate;

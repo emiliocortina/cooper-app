@@ -1,23 +1,20 @@
 import React from "react";
-import { View, Text, ImageBackground } from "react-native";
+import {View, Text, ImageBackground} from "react-native";
 import i18n from '../../../i18n';
+import statsStyles from './Stats.stylesheet';
+import SafeAreaView from "react-native-safe-area-view";
+import useColorsSheet from "../../../services/useColorsSheet.service";
 
-class StatsTemplate extends React.Component {
-  render() {
+const StatsTemplate = () => {
+    let Colors = useColorsSheet();
+
     return (
-      <ImageBackground
-        source={require("cooper/assets/images/sentinel3.jpg")}
-        style={{
-          flex: 1,
-            width: "100%",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <Text>{i18n.t('tabs.stats.name')}</Text>
-      </ImageBackground>
+        <SafeAreaView
+            style={[statsStyles.Content, Colors.systemBackground]}
+        >
+            <Text>{i18n.t('tabs.stats.name')}</Text>
+        </SafeAreaView>
     );
-  }
 }
 
 export default StatsTemplate;

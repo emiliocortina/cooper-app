@@ -14,25 +14,23 @@ const homeStyles = StyleSheet.create({
     width: '100%',
   },
   CardsContainer: {
-    marginTop: 50,
+    paddingTop: 50,
     paddingBottom: 30,
   },
   TitleBar: {
-    width: '70%',
-    marginTop: 50,
+    width: '100%',
+    marginTop: 40,
     marginBottom: 20,
-    paddingLeft: 20,
-    display: 'flex',
+    alignSelf: 'flex-start',
     flexDirection: 'row',
-    justifyContent: 'flex-start',
-    flex: 4
+    justifyContent: 'space-between',
+    paddingHorizontal: 20,
   },
   Avatar: {
     ...Buttons.avatar,
     marginRight: 10,
   },
   Welcome: {
-    ...Colors.secondaryLabel,
     fontSize: 16,
     fontWeight: '500',
   },
@@ -40,13 +38,10 @@ const homeStyles = StyleSheet.create({
     ...Typography.h3,
     color: '#3c4560',
   },
-  UpRightButton: {
-    width: '30%',
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: 'flex-end',
-    flex: 2
-  }
+  LogoutButton: {
+    justifyContent: 'center',
+
+  },
 });
 
 export default homeStyles;

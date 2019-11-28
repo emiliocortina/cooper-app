@@ -23,7 +23,7 @@ export const tertiaryLabelContrast = {
     color: "#ebebf54c"
 };
 
-// Background
+// Card
 export const systemBackground = {
     color: "#ffffffff"
 };
