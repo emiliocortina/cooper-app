@@ -13,6 +13,10 @@ const Typography = StyleSheet.create({
         fontWeight: "bold",
         fontSize: 26
     },
+    h4: {
+        fontWeight: "bold",
+        fontSize: 20
+    }
 
 });
 

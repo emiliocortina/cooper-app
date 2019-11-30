@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { Typography} from "cooper-app/styles";
+import { Buttons, Typography } from "cooper-app/styles";
 
 const profileStyles = StyleSheet.create({
   Container: {
@@ -12,6 +12,13 @@ const profileStyles = StyleSheet.create({
     shadowOpacity: 1,
     shadowRadius: 15,
     elevation: 3,
+  },
+  CardsContainer: {
+    paddingTop: 30,
+    paddingBottom: 30,
+  },
+  CardsContentContainer: {
+    alignItems: "center",
   },
   Content: {
     flex: 4,
@@ -32,7 +39,14 @@ const profileStyles = StyleSheet.create({
   Title: {
     ...Typography.h2,
     color: "#3c4560",
-    padding: 20
+  },
+  TitleBar: {
+    width: '100%',
+    marginTop: 40,
+    marginBottom: 20,
+    alignSelf: 'flex-start',
+    flexDirection: 'row',
+    paddingHorizontal: 20,
   },
   Header: {
     width: "100%",
@@ -42,6 +56,15 @@ const profileStyles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     justifyContent: "flex-start"
+  },
+  Avatar: {
+    ...Buttons.avatar,
+    marginRight: 10,
+  },
+  Subtitle: {
+    ...Typography.h4,
+    color: "#3c4560",
+    textAlign: "center"
   }
 });
 export default profileStyles;

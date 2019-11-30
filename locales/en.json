@@ -55,6 +55,9 @@
             "notTermsError": "You have to accept the Terms and Conditions",
             "errorAccount": "Create account failed",
             "messageLogin": "Already have an account? Login"
+        },
+        "profilePage": {
+            "ownThreads": "Your threads"
         }
     }
 }
