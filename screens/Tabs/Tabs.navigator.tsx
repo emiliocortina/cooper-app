@@ -4,7 +4,7 @@ import StatsScreen from "./Stats/Stats.screen";
 import {Feather, Foundation} from "@expo/vector-icons";
 import SearchScreen from "./Search/Search.screen";
 import i18n from "cooper-app/i18n";
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {createBottomTabNavigator, BottomTabBarOptions} from '@react-navigation/bottom-tabs';
 import useColorsSheet from "../../services/useColorsSheet.service";
 
 const IconComponent = Feather;
@@ -36,14 +36,15 @@ if (Platform.OS === "ios") {
 }*/
 
 
-const TabNavigator = () => {
+const TabNavigator: React.FC = () => {
     let Colors = useColorsSheet();
 
-    const barOptions = {
+    const barOptions: BottomTabBarOptions = {
         activeTintColor: "#e06075",
         inactiveTintColor: "#8F9091",
         showLabel: false,
         safeAreaInset: {bottom: "never", top: "never"},
+        //@ts-ignore
         style: {
             ...Colors.tabBarBackground,
             ...floatingTabBar,

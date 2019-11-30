@@ -5,7 +5,7 @@ import {AppearanceProvider, useColorScheme} from 'react-native-appearance';
 import {NavigationNativeContainer} from '@react-navigation/native';
 
 
-export default function App() {
+const App: React.FC = () =>{
     let theme = useColorScheme();
 
     return (
@@ -18,3 +18,5 @@ export default function App() {
         </NavigationNativeContainer>
     );
 }
+
+export default App;

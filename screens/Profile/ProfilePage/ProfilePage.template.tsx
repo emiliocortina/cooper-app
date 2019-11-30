@@ -59,9 +59,4 @@ const ProfilePageTemplate = function ({route, navigation}) {
 
 }
 
-ProfilePageTemplate.navigationOptions = {
-    title: "ProfilePage",
-    tabBarVisible: false
-};
-
 export default ProfilePageTemplate;

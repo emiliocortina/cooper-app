@@ -9,7 +9,7 @@ import StatsDetailsScreen from "./StatsDetails/StatsDetails.screen";
 
 const Tab = createMaterialTopTabNavigator();
 
-const StatsScreen = () => {
+const StatsScreen: React.FC = () => {
 
     let Colors = useColorsSheet();
 

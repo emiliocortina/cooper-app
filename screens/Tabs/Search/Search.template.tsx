@@ -5,7 +5,7 @@ import searchStyles from "./Search.stylesheet";
 import SafeAreaView from "react-native-safe-area-view";
 import useColorsSheet from "../../../services/useColorsSheet.service";
 
-const SearchTemplate = () => {
+const SearchTemplate: React.FC = () => {
     let Colors = useColorsSheet();
 
     return (

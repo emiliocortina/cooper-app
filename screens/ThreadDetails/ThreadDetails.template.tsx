@@ -6,7 +6,8 @@ import useColorsSheet from "../../services/useColorsSheet.service";
 
 const HEADER_HEIGHT = 64;
 
-const ThreadDetailsTemplate = (props) => {
+
+const ThreadDetailsTemplate:React.FC<any> = ({navigation}) => {
 
     let Colors = useColorsSheet();
     const styles = StyleSheet.create({
@@ -80,7 +81,7 @@ const ThreadDetailsTemplate = (props) => {
                 <Feather name="heart" size={25} color="#fff"/>
             </TouchableOpacity>
             <Text style={styles.titleStyle}>Title</Text>
-            <TouchableOpacity  onPress={() => props.navigation.navigate("Home")}>
+            <TouchableOpacity  onPress={() => navigation.navigate("Home")}>
                 <Feather name="x" size={25} color="#fff"/>
             </TouchableOpacity>
         </View>
@@ -110,12 +111,6 @@ const ThreadDetailsTemplate = (props) => {
 
 const images = {
     background: require('cooper-app/assets/images/sentinel3.jpg'), // Put your own image here
-};
-
-
-ThreadDetailsTemplate.navigationOptions = {
-    title: 'Details',
-    tabBarVisible: false
 };
 
 export default ThreadDetailsTemplate;

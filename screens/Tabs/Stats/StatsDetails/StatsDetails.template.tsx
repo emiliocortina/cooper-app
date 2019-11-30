@@ -6,7 +6,7 @@ import {LinearGradient} from "expo-linear-gradient";
 import DashboardImageCard from "../../../../components/cards/stats/image/dashboardImage";
 
 
-const StatsDetailsTemplate = (props) => {
+const StatsDetailsTemplate: React.FC = () => {
     let Colors = useColorsSheet();
 
     return (

@@ -39,7 +39,7 @@ const schema = yup.object().shape({
 });
 
 
-const SignupTemplate = ({navigation}) => {
+const SignupTemplate:React.FC<any> = ({navigation}) => {
 
     let Colors = useColorsSheet();
 
@@ -225,10 +225,5 @@ const SignupTemplate = ({navigation}) => {
 
     );
 }
-
-SignupTemplate.navigationOptions = {
-    title: "SignupPage",
-    tabBarVisible: false
-};
 
 export default SignupTemplate;
