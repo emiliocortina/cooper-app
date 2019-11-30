@@ -6,7 +6,7 @@ import {
 import profileStyles from './ProfilePage.stylesheet';
 import useColorsSheet from "../../../services/useColorsSheet.service";
 
-const ProfilePageTemplate = () => {
+const ProfilePageTemplate: React.FC = () => {
     let Colors = useColorsSheet();
 
     return (
@@ -16,10 +16,5 @@ const ProfilePageTemplate = () => {
     );
 
 }
-
-ProfilePageTemplate.navigationOptions = {
-    title: "ProfilePage",
-    tabBarVisible: false
-};
 
 export default ProfilePageTemplate;

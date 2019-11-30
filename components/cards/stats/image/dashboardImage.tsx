@@ -1,7 +1,12 @@
 import {ImageBackground} from "react-native";
 import React from "react";
 
-const DashboardImageCard = (props) => {
+interface Props {
+    source: NodeRequire,
+    ratio?: number,
+}
+
+const DashboardImageCard:React.FC<Props> = (props: Props) => {
 
     let source = require('cooper-app/assets/images/sentinel3.jpg');
 

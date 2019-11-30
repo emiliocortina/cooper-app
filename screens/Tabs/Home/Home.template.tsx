@@ -19,7 +19,12 @@ import AuthService from "cooper-app/services/auth.service";
 
 const IconComponent = AntDesign;
 
-const HomeTemplate = function ({route, navigation}) {
+interface Props {
+    route: any,
+    navigation: any
+}
+
+const HomeTemplate: React.FC<Props> = function ({route, navigation}) {
 
     const goToProfile = () => {
         navigation.navigate('Profile');
@@ -112,10 +117,6 @@ const HomeTemplate = function ({route, navigation}) {
             </ScrollView>
         </SafeAreaView>
     );
-};
-
-HomeTemplate.navigationOptions = {
-    title: "Home"
 };
 
 export default HomeTemplate;

@@ -13,11 +13,10 @@ const pageSheetOptions = {
 
 const Stack = createStackNavigator();
 
-const MainAppNavigator = (theme) => {
+const MainAppNavigator: React.FC<{theme: any}> = () => {
 
     return (
-        <Stack.Navigator mode="modal"
-                         headerMode="none">
+        <Stack.Navigator mode="modal" headerMode="none">
             <Stack.Screen name="Tabs" component={TabNavigator}/>
             <Stack.Screen name="Thread" component={ThreadDetailsScreen} options={pageSheetOptions}/>
             <Stack.Screen name="Profile" component={ProfileNavigator} options={pageSheetOptions}/>

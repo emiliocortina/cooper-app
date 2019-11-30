@@ -1,5 +1,5 @@
 import LoginTemplate from './Login.template';
 
-const LoginScreen = LoginTemplate;
+const LoginScreen: React.FC<any> = LoginTemplate;
 
 export default LoginScreen;

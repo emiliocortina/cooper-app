@@ -1,5 +1,5 @@
 import ProfilePageTemplate from './ProfilePage.template';
 
-const ProfilePageScreen = ProfilePageTemplate;
+const ProfilePageScreen: React.FC = ProfilePageTemplate;
 
 export default ProfilePageScreen;

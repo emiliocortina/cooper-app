@@ -22,7 +22,7 @@ const IconComponent = Feather;
 const model = new LoginModel();
 
 
-const LoginTemplate = ({navigation}) => {
+const LoginTemplate: React.FC<any> = ({navigation}) => {
 
 
     const goHome = () => {
@@ -137,11 +137,5 @@ const LoginTemplate = ({navigation}) => {
         </ImageBackground>
     );
 }
-
-LoginTemplate.navigationOptions = {
-    title: "LoginPage",
-    tabBarVisible: false,
-    headerMode: 'none'
-};
 
 export default LoginTemplate;

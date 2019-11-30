@@ -1,5 +1,5 @@
 import StatsDetailsTemplate from './StatsDetails.template';
 
-const StatsDetailsScreen = StatsDetailsTemplate;
+const StatsDetailsScreen: React.FC = StatsDetailsTemplate;
 
 export default StatsDetailsScreen;
