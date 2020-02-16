@@ -1,9 +1,9 @@
 import React from "react";
-import {View, Text, ImageBackground, ScrollView} from "react-native";
+import {View, ScrollView} from "react-native";
 import statsDetailsStyles from "./StatsDetails.stylesheet";
 import useColorsSheet from "../../../../services/useColorsSheet.service";
-import {LinearGradient} from "expo-linear-gradient";
 import DashboardImageCard from "../../../../components/cards/stats/image/dashboardImage";
+import DashboardAreaChart from "cooper-app/components/cards/stats/chart/area-chart/dashboardAreaChart";
 
 
 const StatsDetailsTemplate: React.FC = () => {
@@ -12,17 +12,13 @@ const StatsDetailsTemplate: React.FC = () => {
     return (
         <ScrollView style={Colors.systemBackground}>
             <View style={statsDetailsStyles.Content}>
-                <ImageBackground
-                    source={require("cooper-app/assets/images/graph.png")}
-                    style={statsDetailsStyles.Graph}
-                    imageStyle={{ borderRadius: 30 }}
-                >
-                </ImageBackground>
+
+                <View style={statsDetailsStyles.Columns}><DashboardAreaChart/></View>
 
                 <View style={statsDetailsStyles.Columns}>
                     <View style={[statsDetailsStyles.ColumnLeft]}>
                         <View style={[statsDetailsStyles.Card, {aspectRatio: 1}]}></View>
-                        <DashboardImageCard source={require('cooper-app/assets/images/no2.jpg')}/>
+                        <View style={[statsDetailsStyles.Card, {aspectRatio: 5/8}]}></View>
                     </View>
                     <View style={[statsDetailsStyles.ColumnRight]}>
                         <DashboardImageCard source={require('cooper-app/assets/images/sat1.jpg')}/>
@@ -30,12 +26,7 @@ const StatsDetailsTemplate: React.FC = () => {
                     </View>
                 </View>
 
-                <ImageBackground
-                    source={require("cooper-app/assets/images/login.jpg")}
-                    style={[statsDetailsStyles.Graph, {aspectRatio: 1}]}
-                    imageStyle={{ borderRadius: 30 }}
-                >
-                </ImageBackground>
+                <DashboardAreaChart/>
 
                 <View style={statsDetailsStyles.Columns}>
                     <View style={[statsDetailsStyles.ColumnLeft]}>

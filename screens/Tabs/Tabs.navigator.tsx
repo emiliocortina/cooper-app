@@ -22,20 +22,6 @@ let floatingTabBar = {
     paddingBottom: 0,
 };
 
-/*
-if (Platform.OS === "ios") {
-    floatingTabBar = {
-        position: "absolute",
-        left: 80,
-        bottom: 0,
-        right: 80,
-        marginBottom: 26,
-        height: 50,
-        paddingBottom: 0,
-    };
-}*/
-
-
 const TabNavigator: React.FC = () => {
     let Colors = useColorsSheet();
 

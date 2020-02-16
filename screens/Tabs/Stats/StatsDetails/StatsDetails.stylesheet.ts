@@ -21,6 +21,13 @@ const statsDetailsStyles = StyleSheet.create({
         flexDirection: "column",
         paddingRight: 5,
     },
+    ColumnCenter: {
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "flex-start",
+        flexDirection: "column",
+        paddingHorizontal: 5,
+    },
     ColumnRight: {
         flex: 1,
         alignItems: "center",
