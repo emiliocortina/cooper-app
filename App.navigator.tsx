@@ -2,7 +2,8 @@ import React from "react";
 import TabNavigator from "./screens/Tabs/Tabs.navigator";
 import ThreadDetailsScreen from "./screens/ThreadDetails/ThreadDetails.screen";
 import ProfileNavigator from './screens/Profile/ProfileNavigator';
-import {createStackNavigator, TransitionPresets} from '@react-navigation/stack';
+import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
+import StatsScreen from "./screens/Tabs/Stats/Stats.screen";
 
 
 const pageSheetOptions = {
@@ -13,13 +14,14 @@ const pageSheetOptions = {
 
 const Stack = createStackNavigator();
 
-const MainAppNavigator: React.FC<{theme: any}> = () => {
+const MainAppNavigator: React.FC<{ theme: any }> = () => {
 
     return (
         <Stack.Navigator mode="modal" headerMode="none">
-            <Stack.Screen name="Tabs" component={TabNavigator}/>
-            <Stack.Screen name="Thread" component={ThreadDetailsScreen} options={pageSheetOptions}/>
-            <Stack.Screen name="Profile" component={ProfileNavigator} options={pageSheetOptions}/>
+            <Stack.Screen name="Stats" component={StatsScreen} />
+            <Stack.Screen name="Tabs" component={TabNavigator} />
+            <Stack.Screen name="Thread" component={ThreadDetailsScreen} options={pageSheetOptions} />
+            <Stack.Screen name="Profile" component={ProfileNavigator} options={pageSheetOptions} />
         </Stack.Navigator>
     );
 };

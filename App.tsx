@@ -1,18 +1,31 @@
 import React from "react";
-import AppNavigator from "cooper-app/App.navigator";
-import {SafeAreaProvider} from "react-native-safe-area-context";
-import {AppearanceProvider, useColorScheme} from 'react-native-appearance';
+import AppNavigator from "./App.navigator";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import { AppearanceProvider, useColorScheme } from 'react-native-appearance';
 import { NavigationContainer } from "@react-navigation/native";
+import { View, StyleSheet } from "react-native";
 
 
-const App: React.FC = () =>{
+const App: React.FC = () => {
     let theme = useColorScheme();
+
+    const styles = StyleSheet.create({
+        container: {
+            flex: 1,
+        },
+        background: {
+            backgroundColor: '#000',
+        }
+    });
 
     return (
         <NavigationContainer>
             <AppearanceProvider>
                 <SafeAreaProvider>
-                    <AppNavigator theme={theme}/>
+                    <View style={[styles.container, styles.background]}>
+                        <AppNavigator theme={theme} />
+                    </View>
+
                 </SafeAreaProvider>
             </AppearanceProvider>
         </NavigationContainer>

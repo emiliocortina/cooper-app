@@ -1,13 +1,13 @@
 import React from 'react';
-import {View, ScrollView, StyleSheet, Text, StatusBar, TouchableOpacity} from 'react-native';
-import {Feather} from "@expo/vector-icons";
+import { View, ScrollView, StyleSheet, Text, StatusBar, TouchableOpacity } from 'react-native';
+import { Feather } from "@expo/vector-icons";
 import ReactNativeParallaxHeader from 'react-native-parallax-header';
 import useColorsSheet from "../../services/useColorsSheet.service";
 
 const HEADER_HEIGHT = 64;
 
 
-const ThreadDetailsTemplate:React.FC<any> = ({navigation}) => {
+const ThreadDetailsTemplate: React.FC<any> = ({ navigation }) => {
 
     let Colors = useColorsSheet();
     const styles = StyleSheet.create({
@@ -76,25 +76,25 @@ const ThreadDetailsTemplate:React.FC<any> = ({navigation}) => {
 
     const renderNavBar = () => (
         <View style={styles.navBar}>
-            <TouchableOpacity  onPress={() => {
+            <TouchableOpacity onPress={() => {
             }}>
-                <Feather name="heart" size={25} color="#fff"/>
+                <Feather name="heart" size={25} color="#fff" />
             </TouchableOpacity>
             <Text style={styles.titleStyle}>Title</Text>
-            <TouchableOpacity  onPress={() => navigation.navigate("Home")}>
-                <Feather name="x" size={25} color="#fff"/>
+            <TouchableOpacity onPress={() => navigation.navigate("Home")}>
+                <Feather name="x" size={25} color="#fff" />
             </TouchableOpacity>
         </View>
     )
 
     return (
         <View style={styles.container}>
-            <StatusBar barStyle="light-content"/>
+            <StatusBar barStyle="light-content" />
             <ReactNativeParallaxHeader
                 headerMinHeight={HEADER_HEIGHT}
                 headerMaxHeight={250}
                 extraScrollHeight={20}
-                navbarColor="#DE6176"
+                navbarColor={Colors.systemBackground.backgroundColor}
                 backgroundImage={images.background}
                 backgroundImageScale={1.2}
                 renderNavBar={renderNavBar}
