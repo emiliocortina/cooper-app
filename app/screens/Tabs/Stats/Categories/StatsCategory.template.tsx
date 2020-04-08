@@ -1,8 +1,9 @@
 import React from "react";
-import { View, ScrollView, ImageBackground, Image, Text, ImageSourcePropType } from "react-native";
+import { View, ScrollView, ImageBackground, Image, Text, ImageSourcePropType, TouchableOpacity } from "react-native";
 import statsCategoryStyles from "./StatsCategory.stylesheet";
 import useColorsSheet from "../../../../services/useColorsSheet.service";
 import TimeRange from "cooper-app/app/services/models/stats/timeRange";
+import { SimpleLineIcons } from "@expo/vector-icons";
 
 interface Props {
     categoryDetails: {
@@ -26,14 +27,25 @@ const StatsCategoryTemplate: React.FC<Props> = (props: Props) => {
                     style={{ width: '100%', height: undefined, aspectRatio: 1242 / 707, justifyContent: 'flex-end' }}
                 >
                     <View style={{
-                        paddingLeft: 25,
+                        paddingHorizontal: 25,
+                        flexDirection: "row",
+                        justifyContent: "space-between",
+                        alignContent: "center",
+                        alignItems: "center"
                     }}>
-                        <Text style={{
-                            fontFamily: 'Circular', fontSize: 36, color: categoryDetails.mainColor
-                        }}>{categoryDetails.title}</Text>
-                        <Text style={{
-                            fontFamily: 'Circular', fontSize: 20, color: categoryDetails.mainColor, paddingLeft: 5
-                        }}>in Frascati</Text>
+                        <View>
+                            <Text style={{
+                                fontFamily: 'Circular', fontSize: 36, color: categoryDetails.mainColor
+                            }}>{categoryDetails.title}</Text>
+                            <Text style={{
+                                fontFamily: 'Circular', fontSize: 20, color: categoryDetails.mainColor, paddingLeft: 5
+                            }}>in Frascati</Text>
+                        </View>
+                        <TouchableOpacity style={{ paddingTop: 5 }}>
+                            <SimpleLineIcons name={"globe-alt"} size={46} color={categoryDetails.mainColor} />
+
+                        </TouchableOpacity>
+
                     </View>
 
 
