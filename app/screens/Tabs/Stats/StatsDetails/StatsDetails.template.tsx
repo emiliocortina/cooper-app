@@ -13,13 +13,13 @@ const StatsDetailsTemplate: React.FC = () => {
             <ScrollView style={Colors.systemBackground} >
 
                 <ImageBackground
-                    source={require('cooper-app/assets/category_headers/temperatures.png')}
-                    style={{ width: '100%', height: undefined, aspectRatio: 16 / 9, justifyContent: 'flex-end' }}
+                    source={require('cooper-app/assets/category_headers/vegetation.png')}
+                    style={{ width: '100%', height: undefined, aspectRatio: 1242 / 707, justifyContent: 'flex-end' }}
                 >
                     <Text style={{
                         fontFamily: 'Circular', fontSize: 36, color: '#e26a61', paddingLeft: 10,
-                        paddingBottom: 50
-                    }}> Temperatures</Text>
+                        paddingBottom: 30
+                    }}> Temperaturesa</Text>
                 </ImageBackground>
 
                 <View style={statsDetailsStyles.Content}>
