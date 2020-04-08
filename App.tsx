@@ -1,5 +1,5 @@
 import React from "react";
-import AppNavigator from "./App.navigator";
+import AppNavigator from "./app/App.navigator";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { AppearanceProvider, useColorScheme } from 'react-native-appearance';
 import { NavigationContainer } from "@react-navigation/native";
