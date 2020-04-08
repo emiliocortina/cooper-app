@@ -40,6 +40,7 @@ const StatsCategoryTemplate: React.FC<Props> = (props: Props) => {
 
                 <View style={statsCategoryStyles.Content}>
 
+                    <DashboardAreaChart backgroundColor={categoryDetails.mainColor}></DashboardAreaChart>
                     {/* Un timerange */}
 
                     <View style={statsCategoryStyles.Columns}>
