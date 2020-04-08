@@ -1,20 +1,16 @@
 import React from "react";
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import SafeAreaView from "react-native-safe-area-view";
-import { View, Text, TouchableOpacity, ScrollView } from "react-native";
-import { SimpleLineIcons } from "@expo/vector-icons";
-import statsStyles from "./Stats.stylesheet";
 import useColorsSheet from "../../../services/useColorsSheet.service";
-import StatsDetailsScreen from "./StatsDetails/StatsDetails.screen";
+import TemperaturesScreen from "./Categories/Temperatures/Temperatures.Screen";
+import PollutionScreen from "./Categories/NO2/Pollution.Screen";
+import RainScreen from "./Categories/Rain/Rain.Screen";
+import VegetationScreen from "./Categories/Vegetation/Vegetation.Screen";
 
 const Tab = createMaterialTopTabNavigator();
 
 const StatsScreen: React.FC = () => {
 
     let Colors = useColorsSheet();
-
-    const TabCategories = ['Featured', 'Pollution', 'Temperatures', 'Rain', 'Tides'];
-    const Tabs = TabCategories.map((cat) => <Tab.Screen name={cat} key={cat} component={StatsDetailsScreen} />)
 
     const options = {
         activeTintColor: '#DE6176',
@@ -39,7 +35,11 @@ const StatsScreen: React.FC = () => {
     return (
         <>
             <Tab.Navigator tabBarOptions={options} >
-                {Tabs}
+                <Tab.Screen name='Temperatures' key='Temperatures' component={TemperaturesScreen} />
+                <Tab.Screen name='Pollution' key='Pollution' component={PollutionScreen} />
+                <Tab.Screen name='Rain' key='Rain' component={RainScreen} />
+                <Tab.Screen name='Vegetation' key='Vegetation' component={VegetationScreen} />
+
             </Tab.Navigator>
         </>
     );

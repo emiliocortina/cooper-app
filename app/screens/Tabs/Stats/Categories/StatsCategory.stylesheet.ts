@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-const statsDetailsStyles = StyleSheet.create({
+const statsCategoryStyles = StyleSheet.create({
     Content: {
         width: '100%',
         paddingTop: 30,
@@ -62,4 +62,4 @@ const statsDetailsStyles = StyleSheet.create({
     }
 });
 
-export default statsDetailsStyles;
+export default statsCategoryStyles;
