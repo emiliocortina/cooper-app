@@ -10,7 +10,7 @@ import {
   ImageBackground
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import {Light, Typography} from "cooper-app/styles";
+import {Light, Typography} from "cooper-app/app/styles";
 
 class ThreadSquareCard extends React.Component {
   render() {
