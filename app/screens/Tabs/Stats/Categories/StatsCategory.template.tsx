@@ -2,14 +2,15 @@ import React from "react";
 import { View, ScrollView, ImageBackground, Image, Text, ImageSourcePropType } from "react-native";
 import statsCategoryStyles from "./StatsCategory.stylesheet";
 import useColorsSheet from "../../../../services/useColorsSheet.service";
-import DashboardAreaChart from "cooper-app/app/components/cards/stats/chart/area-chart/dashboardAreaChart";
+import TimeRange from "cooper-app/app/services/models/stats/timeRange";
 
 interface Props {
     categoryDetails: {
         title: string,
         mainColor: string,
         headerImage: ImageSourcePropType
-    }
+    },
+    timeRanges: TimeRange[]
 }
 
 const StatsCategoryTemplate: React.FC<Props> = (props: Props) => {
@@ -40,34 +41,15 @@ const StatsCategoryTemplate: React.FC<Props> = (props: Props) => {
 
                 <View style={statsCategoryStyles.Content}>
 
-                    <DashboardAreaChart backgroundColor={categoryDetails.mainColor}></DashboardAreaChart>
                     {/* Un timerange */}
 
-                    <View style={statsCategoryStyles.Columns}>
-                        <View style={[statsCategoryStyles.ColumnLeft]}>
-                            <View style={[Colors.tertiarySystemBackground, statsCategoryStyles.Card, { aspectRatio: 1 }]}></View>
-                            <View style={[Colors.tertiarySystemBackground, statsCategoryStyles.Card, { aspectRatio: 5 / 8 }]}></View>
-                        </View>
-                        <View style={[statsCategoryStyles.ColumnRight]}>
-                            <View style={[Colors.tertiarySystemBackground, statsCategoryStyles.Card, { aspectRatio: 5 / 8 }]}></View>
-                            <View style={[Colors.tertiarySystemBackground, statsCategoryStyles.Card, { aspectRatio: 1 }]}></View>
-                        </View>
-                    </View>
+                    {props.timeRanges.map((timeRange) => {
+                        const TimeRangeComponent = timeRange.getComponent();
+                        return <TimeRangeComponent />
+                    })}
+
                     {/* END OF Un timerange */}
 
-                    {/* Un timerange */}
-
-                    <View style={statsCategoryStyles.Columns}>
-                        <View style={[statsCategoryStyles.ColumnLeft]}>
-                            <View style={[Colors.tertiarySystemBackground, statsCategoryStyles.Card, { aspectRatio: 1 }]}></View>
-                            <View style={[Colors.tertiarySystemBackground, statsCategoryStyles.Card, { aspectRatio: 5 / 8 }]}></View>
-                        </View>
-                        <View style={[statsCategoryStyles.ColumnRight]}>
-                            <View style={[Colors.tertiarySystemBackground, statsCategoryStyles.Card, { aspectRatio: 5 / 8 }]}></View>
-                            <View style={[Colors.tertiarySystemBackground, statsCategoryStyles.Card, { aspectRatio: 1 }]}></View>
-                        </View>
-                    </View>
-                    {/* END OF Un timerange */}
 
                 </View>
             </View>
