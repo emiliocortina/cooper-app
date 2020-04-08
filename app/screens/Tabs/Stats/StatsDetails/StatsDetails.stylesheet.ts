@@ -39,7 +39,6 @@ const statsDetailsStyles = StyleSheet.create({
         paddingLeft: 5,
     },
     Card: {
-        backgroundColor: 'white',
         borderRadius: 30,
         width: '100%',
         marginBottom: 20,
