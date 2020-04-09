@@ -16,11 +16,11 @@ const StatsScreen: React.FC = () => {
 
     let floatingTabBar = {
         position: "absolute",
-        left: 80,
+        left: 70,
         bottom: 0,
-        right: 80,
+        right: 70,
         marginBottom: 26,
-        height: 50,
+        height: 60,
         paddingBottom: 0,
     };
 
@@ -55,7 +55,7 @@ const StatsScreen: React.FC = () => {
                 <Tab.Screen name='Pollution' key='Pollution' component={PollutionScreen}
                     options={{
                         tabBarIcon: ({ color, size }) => {
-                            return <FontAwesome name={"smog"} size={size} color={color} />;
+                            return <FontAwesome name={"cloud"} size={size} color={color} />;
                         }
                     }} />
                 <Tab.Screen name='Rain' key='Rain' component={RainScreen}
