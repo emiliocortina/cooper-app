@@ -1,12 +1,8 @@
 import React from "react";
 import { useFonts } from '@use-expo/font';
-import TabNavigator from "./screens/Tabs/Tabs.navigator";
-import ThreadDetailsScreen from "./screens/ThreadDetails/ThreadDetails.screen";
-import ProfileNavigator from './screens/Profile/ProfileNavigator';
 import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
-import StatsScreen from "./screens/Tabs/Stats/Stats.screen";
+import StatsScreen from "./screens/Stats/Stats.screen";
 import LoadingScreen from "./screens/Loading/Loading.screen";
-import { View } from "react-native";
 
 
 const pageSheetOptions = {

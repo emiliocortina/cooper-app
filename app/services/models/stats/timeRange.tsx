@@ -3,6 +3,7 @@ import DashboardAreaChart from "cooper-app/app/components/cards/stats/chart/area
 import { View, StyleSheet, Text } from "react-native";
 import useColorsSheet from "../../useColorsSheet.service";
 import NumericStats from "./numericStats";
+import DashboardImageCard from "cooper-app/app/components/cards/stats/image/dashboardImage";
 
 const styles = StyleSheet.create({
     Columns: {
@@ -85,7 +86,7 @@ export default class TimeRange {
         return () =>
             <View style={{ marginTop: 20, marginBottom: 20 }}>
                 <Text style={[styles.Title, { color: this.color }]}>{this.title}</Text>
-                <DashboardAreaChart backgroundColor={this.color} />
+                <DashboardImageCard source={require('cooper-app/assets/images/sidebyside.jpg')} ratio={16 / 9} />
                 <View style={styles.Columns}>
                     <View style={[styles.ColumnLeft]}>
                         {this.lastMeasurement.getDashboardComponent(1)(null)}
@@ -96,6 +97,7 @@ export default class TimeRange {
                         {this.averageMeasurement.getDashboardComponent(1)(null)}
                     </View>
                 </View>
+                <DashboardAreaChart backgroundColor={this.color} />
             </View>;
     }
 }

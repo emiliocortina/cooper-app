@@ -1,6 +1,6 @@
 import React from "react";
 import { createMaterialTopTabNavigator, MaterialTopTabBarOptions } from '@react-navigation/material-top-tabs';
-import useColorsSheet from "../../../services/useColorsSheet.service";
+import useColorsSheet from "../../services/useColorsSheet.service";
 import TemperaturesScreen from "./Categories/Temperatures/Temperatures.Screen";
 import PollutionScreen from "./Categories/NO2/Pollution.Screen";
 import RainScreen from "./Categories/Rain/Rain.Screen";
