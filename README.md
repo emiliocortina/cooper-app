@@ -58,6 +58,10 @@ Uses native components to deliver 60FPS animations that are run on the native th
 
 FlatList/SectionList vs ListView
 
+### App loading assets
+
+https://docs.expo.io/versions/latest/sdk/app-loading/
+
 ### Production builds
 https://facebook.github.io/react-native/docs/0.60/running-on-device#building-your-app-for-production
 

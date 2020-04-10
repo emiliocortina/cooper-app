@@ -1,9 +1,10 @@
 import React from "react";
-import { View, ScrollView, ImageBackground, Image, Text, ImageSourcePropType, TouchableOpacity } from "react-native";
+import { View, ScrollView, ImageBackground, Image, Text, ImageSourcePropType, TouchableOpacity, Button } from "react-native";
 import statsCategoryStyles from "./StatsCategory.stylesheet";
 import useColorsSheet from "../../../../services/useColorsSheet.service";
 import TimeRange from "cooper-app/app/services/models/stats/timeRange";
 import { SimpleLineIcons } from "@expo/vector-icons";
+import { shareToInstagramStories, shareGeneric } from "cooper-app/app/services/social-sharing.service";
 
 interface Props {
     categoryDetails: {
@@ -51,13 +52,22 @@ const StatsCategoryTemplate: React.FC<Props> = (props: Props) => {
 
                 </ImageBackground>
 
+                <Button
+                    title="Compartir pal insssta"
+                    onPress={shareToInstagramStories}
+                />
+                <Button
+                    title="Compartir generico"
+                    onPress={shareGeneric}
+                />
+
                 <View style={statsCategoryStyles.Content}>
 
                     {/* Un timerange */}
 
-                    {props.timeRanges.map((timeRange) => {
+                    {props.timeRanges.map((timeRange, i) => {
                         const TimeRangeComponent = timeRange.getComponent();
-                        return <TimeRangeComponent />
+                        return <TimeRangeComponent key={i} />
                     })}
 
                     {/* END OF Un timerange */}
