@@ -97,7 +97,6 @@ export default class TimeRange {
                         {this.averageMeasurement.getDashboardComponent(1)(null)}
                     </View>
                 </View>
-                <DashboardAreaChart backgroundColor={this.color} />
             </View>;
     }
 }

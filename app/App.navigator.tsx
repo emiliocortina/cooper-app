@@ -1,5 +1,6 @@
 import React from "react";
 import { useFonts } from '@use-expo/font';
+import { AppLoading } from 'expo';
 import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
 import StatsScreen from "./screens/Stats/Stats.screen";
 import LoadingScreen from "./screens/Loading/Loading.screen";
@@ -21,6 +22,7 @@ const MainAppNavigator: React.FC<{ theme: any }> = () => {
 
 
 
+
     return (
         <>
             {
@@ -31,7 +33,7 @@ const MainAppNavigator: React.FC<{ theme: any }> = () => {
                     <Stack.Screen name="Profile" component={ProfileNavigator} options={pageSheetOptions} /> */}
                     </Stack.Navigator >
                 ) : (
-                        <LoadingScreen />
+                        <AppLoading />
                     )}
         </>
     );

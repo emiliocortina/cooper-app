@@ -1,10 +1,11 @@
-import React from "react";
-import { View, ScrollView, ImageBackground, Image, Text, ImageSourcePropType, TouchableOpacity, Button } from "react-native";
+import React, { useState } from "react";
+import { View, ScrollView, ImageBackground, Button, Text, ImageSourcePropType, TouchableOpacity } from "react-native";
 import statsCategoryStyles from "./StatsCategory.stylesheet";
 import useColorsSheet from "../../../services/useColorsSheet.service";
 import TimeRange from "cooper-app/app/services/models/stats/timeRange";
 import { SimpleLineIcons } from "@expo/vector-icons";
 import { shareToInstagramStories, shareGeneric } from "cooper-app/app/services/social-sharing.service";
+import { useCurrentLocation } from "cooper-app/app/services/location.service";
 
 interface Props {
     categoryDetails: {
@@ -18,10 +19,15 @@ interface Props {
 const StatsCategoryTemplate: React.FC<Props> = (props: Props) => {
     let Colors = useColorsSheet();
     const categoryDetails = props.categoryDetails;
+    let [locationName, setLocationName] = useState('');
+    useCurrentLocation().then(parrr => {
+        if (parrr && parrr.name) {
+            setLocationName(parrr.name)
+        }
+    });
 
     return (
         <ScrollView style={{ backgroundColor: categoryDetails.mainColor }} >
-
             <View style={Colors.systemBackground}>
                 <ImageBackground
                     source={categoryDetails.headerImage}
@@ -40,7 +46,7 @@ const StatsCategoryTemplate: React.FC<Props> = (props: Props) => {
                             }}>{categoryDetails.title}</Text>
                             <Text style={{
                                 fontFamily: 'Circular', fontSize: 20, color: categoryDetails.mainColor, paddingLeft: 5
-                            }}>in Frascati</Text>
+                            }}>in {locationName}</Text>
                         </View>
                         <TouchableOpacity style={{ paddingTop: 5 }}>
                             <SimpleLineIcons name={"globe-alt"} size={46} color={categoryDetails.mainColor} />
@@ -51,7 +57,6 @@ const StatsCategoryTemplate: React.FC<Props> = (props: Props) => {
 
 
                 </ImageBackground>
-
                 <View style={statsCategoryStyles.Content}>
 
                     {/* Un timerange */}
