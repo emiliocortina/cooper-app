@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useRef } from "react";
 import DashboardAreaChart from "cooper-app/app/components/cards/stats/chart/area-chart/dashboardAreaChart";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
 import useColorsSheet from "../../useColorsSheet.service";
 import NumericStats from "./numericStats";
 import DashboardImageCard from "cooper-app/app/components/cards/stats/image/dashboardImage";
+import { shareToInstagramStories } from "../../social-sharing.service";
 
 const styles = StyleSheet.create({
     Columns: {
@@ -82,11 +83,17 @@ export default class TimeRange {
 
     getComponent(): React.FC {
         let Colors = useColorsSheet();
+        const imageRef = useRef();
 
         return () =>
             <View style={{ marginTop: 20, marginBottom: 20 }}>
                 <Text style={[styles.Title, { color: this.color }]}>{this.title}</Text>
-                <DashboardImageCard source={require('cooper-app/assets/images/sidebyside.jpg')} ratio={16 / 9} />
+                <TouchableOpacity onPress={() => shareToInstagramStories(imageRef)}>
+                    <View ref={imageRef}>
+                        <DashboardImageCard source={require('cooper-app/assets/images/sidebyside.jpg')} ratio={16 / 9} />
+                    </View>
+                </TouchableOpacity>
+
                 <View style={styles.Columns}>
                     <View style={[styles.ColumnLeft]}>
                         {this.lastMeasurement.getDashboardComponent(1)(null)}
