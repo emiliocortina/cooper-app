@@ -22,11 +22,11 @@ class Dark implements Colorsheet {
 
 
     systemBackground: { backgroundColor: string } = {
-        backgroundColor: "#1c1c1eff"
+        backgroundColor: "#000000"
     };
 
     secondarySystemBackground: { backgroundColor: string } = {
-        backgroundColor: "#2c2c2eff"
+        backgroundColor: "#1c1c1e"
     };
 
     tabBarBackground: { backgroundColor: string } = {
@@ -34,7 +34,7 @@ class Dark implements Colorsheet {
     };
 
     tertiarySystemBackground: { backgroundColor: string } = {
-        backgroundColor: "#2c2c2eff"
+        backgroundColor: "#1c1c1e"
     };
     formTextInputBackground: { backgroundColor: string } = {
         backgroundColor: "#2c2c2eff"

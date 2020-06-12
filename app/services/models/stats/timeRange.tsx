@@ -5,14 +5,14 @@ import useColorsSheet from "../../useColorsSheet.service";
 import NumericStats from "./numericStats";
 import DashboardImageCard from "cooper-app/app/components/cards/stats/image/dashboardImage";
 import { shareToInstagramStories } from "../../social-sharing.service";
+import { useNavigation } from "@react-navigation/native";
 
 const styles = StyleSheet.create({
     Columns: {
-        width: '100%',
         flex: 1,
         alignItems: "flex-start",
         justifyContent: "center",
-        flexDirection: "row",
+        flexDirection: "row"
     },
     ColumnLeft: {
         flex: 1,
@@ -37,7 +37,6 @@ const styles = StyleSheet.create({
     },
     Card: {
         borderRadius: 30,
-        width: '100%',
         marginBottom: 20,
         shadowColor: "rgba(58,55,55,0.31)",
         shadowOffset: { width: 0, height: 8 },
@@ -84,26 +83,30 @@ export default class TimeRange {
     getComponent(): React.FC {
         let Colors = useColorsSheet();
         const imageRef = useRef();
+        const navigation = useNavigation();
 
         return () =>
             <View style={{ marginTop: 20, marginBottom: 20 }}>
                 <Text style={[styles.Title, { color: this.color }]}>{this.title}</Text>
-                <TouchableOpacity onPress={() => shareToInstagramStories(imageRef)}>
-                    <View ref={imageRef}>
-                        <DashboardImageCard source={require('cooper-app/assets/images/sidebyside.jpg')} ratio={16 / 9} />
-                    </View>
-                </TouchableOpacity>
+                <View >
+                    <TouchableOpacity style={{ flex: 1 }} onPress={() => navigation.navigate('Details', { title: this.title, color: this.color })}>
+                        <View ref={imageRef}>
+                            <DashboardImageCard source={require('cooper-app/assets/images/sidebyside.jpg')} ratio={1} />
+                        </View>
+                    </TouchableOpacity>
 
-                <View style={styles.Columns}>
-                    <View style={[styles.ColumnLeft]}>
-                        {this.lastMeasurement.getDashboardComponent(1)(null)}
-                        {this.minimumMeasurement.getDashboardComponent(5 / 8)(null)}
-                    </View>
-                    <View style={[styles.ColumnRight]}>
-                        {this.maximumMeasurement.getDashboardComponent(5 / 8)(null)}
-                        {this.averageMeasurement.getDashboardComponent(1)(null)}
+                    <View style={styles.Columns}>
+                        <View style={[styles.ColumnLeft]}>
+                            {this.lastMeasurement.getDashboardComponent(1)(null)}
+                            {this.minimumMeasurement.getDashboardComponent(5 / 8)(null)}
+                        </View>
+                        <View style={[styles.ColumnRight]}>
+                            {this.maximumMeasurement.getDashboardComponent(5 / 8)(null)}
+                            {this.averageMeasurement.getDashboardComponent(1)(null)}
+                        </View>
                     </View>
                 </View>
+
             </View>;
     }
 }

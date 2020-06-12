@@ -3,7 +3,7 @@ import AppNavigator from "./app/App.navigator";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { AppearanceProvider, useColorScheme } from 'react-native-appearance';
 import { NavigationContainer } from "@react-navigation/native";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, StatusBar } from "react-native";
 
 
 const App: React.FC = () => {
@@ -23,6 +23,7 @@ const App: React.FC = () => {
             <AppearanceProvider>
                 <SafeAreaProvider>
                     <View style={[styles.container, styles.background]}>
+                        <StatusBar barStyle="light-content" />
                         <AppNavigator theme={theme} />
                     </View>
 

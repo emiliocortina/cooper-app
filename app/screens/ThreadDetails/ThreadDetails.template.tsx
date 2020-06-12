@@ -7,9 +7,10 @@ import useColorsSheet from "../../services/useColorsSheet.service";
 const HEADER_HEIGHT = 64;
 
 
-const ThreadDetailsTemplate: React.FC<any> = ({ navigation }) => {
+const ThreadDetailsTemplate: React.FC<any> = ({ navigation, route }) => {
 
     let Colors = useColorsSheet();
+    const { title, color } = route.params;
     const styles = StyleSheet.create({
         container: {
             ...Colors.systemBackground,
@@ -27,7 +28,7 @@ const ThreadDetailsTemplate: React.FC<any> = ({ navigation }) => {
             backgroundColor: 'transparent',
         },
         titleStyle: {
-            color: 'white',
+            color: color,
             fontWeight: 'bold',
             fontSize: 18,
         },
@@ -78,18 +79,17 @@ const ThreadDetailsTemplate: React.FC<any> = ({ navigation }) => {
         <View style={styles.navBar}>
             <TouchableOpacity onPress={() => {
             }}>
-                <Feather name="heart" size={25} color="#fff" />
+                <Feather name="heart" size={25} color={color} />
             </TouchableOpacity>
-            <Text style={styles.titleStyle}>Title</Text>
-            <TouchableOpacity onPress={() => navigation.navigate("Home")}>
-                <Feather name="x" size={25} color="#fff" />
+            <Text style={styles.titleStyle}>{title}</Text>
+            <TouchableOpacity onPress={() => navigation.navigate("Tabs")}>
+                <Feather name="x" size={25} color={color} />
             </TouchableOpacity>
         </View>
     )
 
     return (
         <View style={styles.container}>
-            <StatusBar barStyle="light-content" />
             <ReactNativeParallaxHeader
                 headerMinHeight={HEADER_HEIGHT}
                 headerMaxHeight={250}
@@ -110,7 +110,7 @@ const ThreadDetailsTemplate: React.FC<any> = ({ navigation }) => {
 
 
 const images = {
-    background: require('cooper-app/assets/images/sentinel3.jpg'), // Put your own image here
+    background: require('cooper-app/assets/images/sidebyside.jpg'), // Put your own image here
 };
 
 export default ThreadDetailsTemplate;

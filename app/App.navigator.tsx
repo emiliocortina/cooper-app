@@ -4,6 +4,7 @@ import { AppLoading } from 'expo';
 import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
 import StatsScreen from "./screens/Stats/Stats.screen";
 import LoadingScreen from "./screens/Loading/Loading.screen";
+import ThreadDetailsScreen from "./screens/ThreadDetails/ThreadDetails.screen";
 
 
 const pageSheetOptions = {
@@ -27,8 +28,9 @@ const MainAppNavigator: React.FC<{ theme: any }> = () => {
         <>
             {
                 fontsLoaded ? (
-                    <Stack.Navigator mode="modal" headerMode="none" >
+                    <Stack.Navigator mode="modal" headerMode="none" screenOptions={pageSheetOptions}>
                         <Stack.Screen name="Tabs" component={StatsScreen} />
+                        <Stack.Screen name="Details" component={ThreadDetailsScreen} />
                         {/* <Stack.Screen name="Thread" component={ThreadDetailsScreen} options={pageSheetOptions} />
                     <Stack.Screen name="Profile" component={ProfileNavigator} options={pageSheetOptions} /> */}
                     </Stack.Navigator >

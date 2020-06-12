@@ -3,7 +3,7 @@ import { View, StyleSheet, Text } from "react-native";
 import useColorsSheet from "cooper-app/app/services/useColorsSheet.service";
 
 interface Props {
-    aspecRatio: number,
+    aspecRatio?: number,
     title: string,
     value: number | string,
     unit: string,
