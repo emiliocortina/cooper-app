@@ -1,19 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, ReactNode } from "react";
 import { View, ScrollView, ImageBackground, Button, Text, ImageSourcePropType, TouchableOpacity } from "react-native";
 import statsCategoryStyles from "./StatsCategory.stylesheet";
 import useColorsSheet from "../../../services/useColorsSheet.service";
-import TimeRange from "cooper-app/app/services/models/stats/timeRange";
 import { SimpleLineIcons } from "@expo/vector-icons";
-import { shareToInstagramStories, shareGeneric } from "cooper-app/app/services/social-sharing.service";
 import { useCurrentLocation } from "cooper-app/app/services/location.service";
+import LastMonthTR from "cooper-app/app/services/models/time-ranges/lastMonthTR";
+import { CategoryDetails } from "cooper-app/app/services/models/categories/category-details";
+import LastYearTR from "cooper-app/app/services/models/time-ranges/lastYearTR";
 
 interface Props {
-    categoryDetails: {
-        title: string,
-        mainColor: string,
-        headerImage: ImageSourcePropType
-    },
-    timeRanges: TimeRange[]
+    categoryDetails: CategoryDetails;
 }
 
 const StatsCategoryTemplate: React.FC<Props> = (props: Props) => {
@@ -27,7 +23,7 @@ const StatsCategoryTemplate: React.FC<Props> = (props: Props) => {
     });
 
     return (
-        <ScrollView style={{ backgroundColor: categoryDetails.mainColor }} >
+        <ScrollView style={{ backgroundColor: categoryDetails.accentColor }} >
             <View style={Colors.systemBackground}>
                 <ImageBackground
                     source={categoryDetails.headerImage}
@@ -42,14 +38,14 @@ const StatsCategoryTemplate: React.FC<Props> = (props: Props) => {
                     }}>
                         <View>
                             <Text style={{
-                                fontFamily: 'Circular', fontSize: 36, color: categoryDetails.mainColor
+                                fontFamily: 'Circular', fontSize: 36, color: categoryDetails.accentColor
                             }}>{categoryDetails.title}</Text>
                             <Text style={{
-                                fontFamily: 'Circular', fontSize: 20, color: categoryDetails.mainColor, paddingLeft: 5
+                                fontFamily: 'Circular', fontSize: 20, color: categoryDetails.accentColor, paddingLeft: 5
                             }}>in {locationName}</Text>
                         </View>
                         <TouchableOpacity style={{ paddingTop: 5 }}>
-                            <SimpleLineIcons name={"globe-alt"} size={46} color={categoryDetails.mainColor} />
+                            <SimpleLineIcons name={"globe-alt"} size={46} color={categoryDetails.accentColor} />
 
                         </TouchableOpacity>
 
@@ -60,12 +56,8 @@ const StatsCategoryTemplate: React.FC<Props> = (props: Props) => {
                 <View style={statsCategoryStyles.Content}>
 
                     {/* Un timerange */}
-
-                    {props.timeRanges.map((timeRange, i) => {
-                        const TimeRangeComponent = timeRange.getComponent();
-                        return <TimeRangeComponent key={i} />
-                    })}
-
+                    <LastMonthTR categoryDetails={props.categoryDetails}></LastMonthTR>
+                    <LastYearTR categoryDetails={props.categoryDetails}></LastYearTR>
                     {/* END OF Un timerange */}
 
 

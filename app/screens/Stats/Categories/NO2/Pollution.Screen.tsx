@@ -1,15 +1,11 @@
 import React from "react";
 import StatsCategoryTemplate from "../StatsCategory.template";
 import ApiService from "cooper-app/app/services/api.service";
+import { PollutionDetails } from "cooper-app/app/services/models/categories/category-details";
 
-const pollutionDetails = {
-    title: 'Pollution',
-    mainColor: '#7F5F8F',
-    headerImage: require('cooper-app/assets/category_headers/pollution.png')
-}
+const pollutionDetails = new PollutionDetails();
 
-const timeRanges = new ApiService().getDummies(pollutionDetails.mainColor, 'ppm');
 
-const PollutionScreen: React.FC = () => <StatsCategoryTemplate categoryDetails={pollutionDetails} timeRanges={timeRanges} />;
+const PollutionScreen: React.FC = () => <StatsCategoryTemplate categoryDetails={pollutionDetails} />;
 
 export default PollutionScreen;
