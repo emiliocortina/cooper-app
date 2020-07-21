@@ -11,6 +11,7 @@ export abstract class CategoryDetails {
 
     getSensorDetailsComponent: () => React.FC
     headerImage: ImageSourcePropType;
+    spinner: any;
 }
 
 
@@ -19,6 +20,7 @@ export class TemperatureDetails extends CategoryDetails {
     accentColor = '#E26A61';
     unit = 'ºC';
     headerImage = require('cooper-app/assets/category_headers/temperatures.png');
+    spinner = require('cooper-app/assets/spinners/Temperatures.json');
 }
 
 
@@ -27,6 +29,7 @@ export class PollutionDetails extends CategoryDetails {
     accentColor = '#7F5F8F';
     unit = 'ppm';
     headerImage = require('cooper-app/assets/category_headers/pollution.png');
+    spinner = require('cooper-app/assets/spinners/Pollution.json');
 }
 
 export class RainDetails extends CategoryDetails {
@@ -34,6 +37,7 @@ export class RainDetails extends CategoryDetails {
     accentColor = '#3A89AB';
     unit = 'm3';
     headerImage = require('cooper-app/assets/category_headers/rain.png');
+    spinner = require('cooper-app/assets/spinners/Rain.json');
 }
 
 export class VegetationDetails extends CategoryDetails {
@@ -41,4 +45,5 @@ export class VegetationDetails extends CategoryDetails {
     accentColor = '#60C66E';
     unit = ':)';
     headerImage = require('cooper-app/assets/category_headers/vegetation.png');
+    spinner = require('cooper-app/assets/spinners/Vegetation.json');
 }
