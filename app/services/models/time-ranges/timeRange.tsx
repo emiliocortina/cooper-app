@@ -5,7 +5,6 @@ import DashboardImageCard from "cooper-app/app/components/cards/stats/image/dash
 import { shareToInstagramStories } from "../../social-sharing.service";
 import { CategoryDetails } from "../categories/category-details";
 import LottieView from "lottie-react-native";
-import { useCurrentLocation } from "../../location.service";
 import { useNavigation } from "@react-navigation/native";
 
 const styles = StyleSheet.create({
@@ -160,22 +159,19 @@ const TimeRange: React.FC<Props> = (props: Props) => {
                                     color={props.categoryDetails.accentColor}
                                     value={23}></NumericStats>
                                 <NumericStats
-                                    title={'Latest recorded'}
-                                    unit={'º'}
-                                    color={props.categoryDetails.accentColor}
-                                    value={23}></NumericStats>
-                                <NumericStats
                                     title={'Minimum recorded'}
                                     unit={'º'}
                                     color={props.categoryDetails.accentColor}
-                                    value={23}></NumericStats>
+                                    value={23}
+                                    aspectRatio={5 / 8}></NumericStats>
                             </View>
                             <View style={[styles.ColumnRight]}>
                                 <NumericStats
                                     title={'Maximum recorded'}
                                     unit={'º'}
                                     color={props.categoryDetails.accentColor}
-                                    value={23}></NumericStats>
+                                    value={23}
+                                    aspectRatio={5 / 8}></NumericStats>
                                 <NumericStats
                                     title={'Average'}
                                     unit={'º'}
