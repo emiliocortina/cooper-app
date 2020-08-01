@@ -22,6 +22,8 @@ const StatsCategoryTemplate: React.FC<Props> = (props: Props) => {
         }
     });
 
+    console.log('generic - ', categoryDetails.title);
+
     return (
         <ScrollView style={{ backgroundColor: categoryDetails.accentColor }} >
             <View style={Colors.systemBackground}>
@@ -57,7 +59,7 @@ const StatsCategoryTemplate: React.FC<Props> = (props: Props) => {
 
                     {/* Un timerange */}
                     <LastMonthTR categoryDetails={props.categoryDetails}></LastMonthTR>
-                    <LastYearTR categoryDetails={props.categoryDetails}></LastYearTR>
+                    {/* <LastYearTR categoryDetails={props.categoryDetails}></LastYearTR> */}
                     {/* END OF Un timerange */}
 
 

@@ -1,31 +1,44 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import SatelliteStats from './satelliteStats';
-import DasboardNumeric from 'cooper-app/app/components/cards/stats/numeric/dashboardNumeric';
+import DashboardNumeric from 'cooper-app/app/components/cards/stats/numeric/dashboardNumeric';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Modal } from 'react-native';
+import ThreadDetailsTemplate from 'cooper-app/app/screens/ThreadDetails/ThreadDetails.template';
 
-export default class NumericStats implements SatelliteStats {
-    title: string;
-    value: string | number;
-    unit: string;
-    color: string;
-
-    constructor(title: string, value: number | string, unit: string, color: string) {
-        this.title = title;
-        this.value = value;
-        this.unit = unit;
-        this.color = color;
-    }
-
-    getDashboardComponent(aspectRatio: number = 1): React.FC {
-        return () =>
-            <DasboardNumeric
-                aspecRatio={aspectRatio}
-                title={this.title}
-                value={this.value}
-                accentColor={this.color}
-                unit={this.unit} />
-    }
-    getDetailedComponent(): React.FC {
-        throw new Error("Method not implemented.");
-    }
+interface Props {
+    title: string,
+    value: string | number,
+    unit: string,
+    color: string,
 }
+
+const NumericStats: React.FC<Props> = (props: Props) => {
+
+    const [modalVisible, setModalVisible] = useState(false);
+
+
+    return (
+        <>
+            <Modal
+                animationType="slide"
+                visible={modalVisible}
+                presentationStyle={'pageSheet'}
+            >
+                <ThreadDetailsTemplate></ThreadDetailsTemplate>
+            </Modal>
+
+            <TouchableOpacity style={{ width: '100%' }} onPress={() => setModalVisible(true)}>
+                <DashboardNumeric
+                    title={props.title}
+                    value={props.value}
+                    unit={props.unit}
+                    accentColor={props.color}
+                    aspecRatio={1}
+                ></DashboardNumeric>
+            </TouchableOpacity>
+        </>
+    );
+}
+
+export default NumericStats;
 

@@ -9,7 +9,7 @@ interface Props {
     unit: string,
     accentColor: string
 }
-const DasboardNumeric: React.FC<Props> = (props: Props) => {
+const DashboardNumeric: React.FC<Props> = (props: Props) => {
     let Colors = useColorsSheet();
     const styles = StyleSheet.create({
         Card: {
@@ -47,5 +47,5 @@ const DasboardNumeric: React.FC<Props> = (props: Props) => {
     </View>);
 }
 
-export default DasboardNumeric;
+export default DashboardNumeric;
 

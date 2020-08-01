@@ -16,8 +16,8 @@ const DashboardAreaChart: React.FC<Props> = (props: Props) => {
     }
 
     // Dimensions
-    let SVGHeight = 190;
-    let SVGWidth = 340;
+    let SVGHeight = 80;
+    let SVGWidth = 100;
     let graphHeight = SVGHeight - 2 * GRAPH_MARGIN
     let graphWidth = SVGWidth - 2 * GRAPH_MARGIN
     const data = [
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 30,
-        width: '100%',
+        width: 60,
         marginBottom: 20,
         shadowColor: "rgba(58,55,55,0.31)",
         shadowOffset: { width: 0, height: 8 },

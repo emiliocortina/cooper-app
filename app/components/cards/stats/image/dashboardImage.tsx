@@ -1,16 +1,16 @@
-import {ImageBackground} from "react-native";
+import { ImageBackground } from "react-native";
 import React from "react";
 
 interface Props {
-    source: NodeRequire,
+    source: { uri: string },
     ratio?: number,
 }
 
-const DashboardImageCard:React.FC<Props> = (props: Props) => {
+const DashboardImageCard: React.FC<Props> = (props: Props) => {
 
     let source = require('cooper-app/assets/images/sentinel3.jpg');
 
-    if(props.source) {
+    if (props.source) {
         source = props.source;
     }
 
@@ -25,7 +25,7 @@ const DashboardImageCard:React.FC<Props> = (props: Props) => {
             shadowOpacity: 1,
             shadowRadius: 10,
             elevation: 3,
-            aspectRatio: props.ratio ? props.ratio : 5/8,
+            aspectRatio: props.ratio ? props.ratio : 5 / 8,
         }
     }
 
@@ -33,7 +33,7 @@ const DashboardImageCard:React.FC<Props> = (props: Props) => {
         <ImageBackground
             source={source}
             style={styles.Card}
-            imageStyle={{borderRadius: 30}}
+            imageStyle={{ borderRadius: 30 }}
         />);
 }
 
