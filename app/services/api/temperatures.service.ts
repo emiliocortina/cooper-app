@@ -1,4 +1,4 @@
-import { useCurrentLocation } from "../location.service";
+import { LocationService } from "../location.service";
 import { formatDate, request } from "./api.service";
 
 
@@ -10,11 +10,9 @@ export const getLastMonthTemperatures = async () => {
     const startDateFormatted = formatDate(startDate);
     const endDateFormatted = formatDate(endDate);
 
-    const location = await useCurrentLocation();
-    if (location.coordinates) {
-        const latitude = location.coordinates.latitude;
-        const longitude = location.coordinates.longitude;
-        const url = `API/data/surface-temperature?latitude=${latitude}&longitude=${longitude}&startDate=${startDateFormatted}&finishDate=${endDateFormatted}`;
-        return request(url, 'GET');
-    }
+    const location = LocationService.service.getLoadedLocation();
+    const { latitude, longitude } = location;
+    const url = `API/data/surface-temperature?latitude=${latitude}&longitude=${longitude}&startDate=${startDateFormatted}&finishDate=${endDateFormatted}`;
+    return request(url, 'GET');
+
 }

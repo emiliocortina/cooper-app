@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
 import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
 import StatsScreen from "./screens/Stats/Stats.screen";
-import LoadingScreen from "./screens/Loading/Loading.screen";
 import ThreadDetailsScreen from "./screens/ThreadDetails/ThreadDetails.screen";
+import { LocationService, LocationContext, LocationData } from "./services/location.service";
 
 
 const pageSheetOptions = {
@@ -23,17 +23,29 @@ const MainAppNavigator: React.FC<{ theme: any }> = () => {
 
 
 
+    let [locationContextState, setLocationContextState] = useState(
+        {
+            location: LocationService.lastLoadedLocation,
+            changeLocation: (newLocation: LocationData) => {
+                setLocationContextState(({ changeLocation }) => ({ location: newLocation, changeLocation: changeLocation }))
+            }
+        }
+    );
+
+
+
 
     return (
         <>
             {
                 fontsLoaded ? (
-                    <Stack.Navigator mode="modal" headerMode="none" screenOptions={pageSheetOptions}>
-                        <Stack.Screen name="Tabs" component={StatsScreen} />
-                        <Stack.Screen name="Details" component={ThreadDetailsScreen} />
-                        {/* <Stack.Screen name="Thread" component={ThreadDetailsScreen} options={pageSheetOptions} />
-                    <Stack.Screen name="Profile" component={ProfileNavigator} options={pageSheetOptions} /> */}
-                    </Stack.Navigator >
+                    <LocationContext.Provider value={locationContextState}>
+                        <Stack.Navigator mode="modal" headerMode="none" screenOptions={pageSheetOptions}>
+                            <Stack.Screen name="Tabs" component={StatsScreen} />
+                            <Stack.Screen name="Details" component={ThreadDetailsScreen} />
+                        </Stack.Navigator >
+                    </LocationContext.Provider>
+
                 ) : (
                         <AppLoading />
                     )}

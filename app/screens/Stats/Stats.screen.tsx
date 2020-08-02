@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { createMaterialTopTabNavigator, MaterialTopTabBarOptions } from '@react-navigation/material-top-tabs';
 import useColorsSheet from "../../services/useColorsSheet.service";
 import TemperaturesScreen from "./Categories/Temperatures/Temperatures.Screen";
@@ -7,6 +7,7 @@ import RainScreen from "./Categories/Rain/Rain.Screen";
 import VegetationScreen from "./Categories/Vegetation/Vegetation.Screen";
 import { createBottomTabNavigator, BottomTabBarOptions } from "@react-navigation/bottom-tabs";
 import { FontAwesome } from "@expo/vector-icons";
+import { LocationContext } from "cooper-app/app/services/location.service";
 
 const Tab = createBottomTabNavigator();
 
@@ -45,34 +46,36 @@ const StatsScreen: React.FC = () => {
 
     return (
         <>
-            <Tab.Navigator tabBarOptions={barOptions} >
-                <Tab.Screen name='Temperatures' key='Temperatures' component={TemperaturesScreen}
-                    options={{
-                        tabBarIcon: ({ color, size }) => {
-                            return <FontAwesome name={"thermometer-three-quarters"} size={size} color={color} />;
-                        }
-                    }} />
-                <Tab.Screen name='Pollution' key='Pollution' component={PollutionScreen}
-                    options={{
-                        tabBarIcon: ({ color, size }) => {
-                            return <FontAwesome name={"cloud"} size={size} color={color} />;
-                        }
-                    }} />
-                <Tab.Screen name='Rain' key='Rain' component={RainScreen}
-                    options={{
-                        tabBarIcon: ({ color, size }) => {
-                            return <FontAwesome name={"tint"} size={size} color={color} />;
-                        }
-                    }} />
-                <Tab.Screen name='Vegetation' key='Vegetation' component={VegetationScreen}
-                    options={{
-                        tabBarIcon: ({ color, size }) => {
-                            return <FontAwesome name={"leaf"} size={size} color={color} />;
-                        }
-                    }} />
+            {true ?
+                <Tab.Navigator tabBarOptions={barOptions} >
+                    <Tab.Screen name='Temperatures' key='Temperatures' component={TemperaturesScreen}
+                        options={{
+                            tabBarIcon: ({ color, size }) => {
+                                return <FontAwesome name={"thermometer-three-quarters"} size={size} color={color} />;
+                            }
+                        }} />
+                    <Tab.Screen name='Pollution' key='Pollution' component={PollutionScreen}
+                        options={{
+                            tabBarIcon: ({ color, size }) => {
+                                return <FontAwesome name={"cloud"} size={size} color={color} />;
+                            }
+                        }} />
+                    <Tab.Screen name='Rain' key='Rain' component={RainScreen}
+                        options={{
+                            tabBarIcon: ({ color, size }) => {
+                                return <FontAwesome name={"tint"} size={size} color={color} />;
+                            }
+                        }} />
+                    <Tab.Screen name='Vegetation' key='Vegetation' component={VegetationScreen}
+                        options={{
+                            tabBarIcon: ({ color, size }) => {
+                                return <FontAwesome name={"leaf"} size={size} color={color} />;
+                            }
+                        }} />
+                </Tab.Navigator>
 
-            </Tab.Navigator>
-        </>
+                : <></>
+            }</>
     );
 }
 

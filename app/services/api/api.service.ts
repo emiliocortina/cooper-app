@@ -1,4 +1,4 @@
-import { useCurrentLocation } from "../location.service";
+import { LocationService } from "../location.service";
 import { CategoryDetails } from "../models/categories/category-details";
 
 
@@ -30,28 +30,27 @@ export const request = (service, httpMethod) => {
 
 
 export const useLastMonthData = async (category: CategoryDetails) => {
-    const location = await useCurrentLocation();
-    if (location && location.coordinates) {
-        const { latitude, longitude } = location.coordinates;
+    const location = LocationService.service.getLoadedLocation();
+    const { latitude, longitude } = location;
 
-        const startDate = new Date();
-        startDate.setMonth(startDate.getMonth() - 1)
-        const endDate = new Date();
+    const startDate = new Date();
+    startDate.setMonth(startDate.getMonth() - 1)
+    const endDate = new Date();
 
-        const startDateFormatted = formatDate(startDate);
-        const endDateFormatted = formatDate(endDate);
+    const startDateFormatted = formatDate(startDate);
+    const endDateFormatted = formatDate(endDate);
 
-        let url = `API/data/`;
-        switch (category.id) {
-            default:
-                url += `surface-temperature`;
-                break;
-        }
-
-        url += `?latitude=${latitude}&longitude=${longitude}&startDate=${startDateFormatted}&finishDate=${endDateFormatted}`;
-        //console.log('aki');
-        return request(url, 'GET');
+    let url = `API/data/`;
+    switch (category.id) {
+        default:
+            url += `surface-temperature`;
+            break;
     }
+
+    url += `?latitude=${latitude}&longitude=${longitude}&startDate=${startDateFormatted}&finishDate=${endDateFormatted}`;
+    //console.log('aki');
+    return request(url, 'GET');
+
     console.log('o no');
     return new Promise<Response>(() => { });
 }
@@ -68,13 +67,11 @@ export const useLastMonthImage = async (category: CategoryDetails) => {
             break;
     }
 
-    const location = await useCurrentLocation();
-    if (location.coordinates) {
-        const latitude = location.coordinates.latitude;
-        const longitude = location.coordinates.longitude;
-        url += `&latitude=${latitude}&longitude=${longitude}&date=${currentDateFormatted}&colorScale=${category.colorScale}`;
-        return request(url, 'GET');
-    }
+    const location = LocationService.service.getLoadedLocation();
+    const { latitude, longitude } = location;
+    url += `&latitude=${latitude}&longitude=${longitude}&date=${currentDateFormatted}&colorScale=${category.colorScale}`;
+    return request(url, 'GET');
+
     // console.log('o no imagen no');
     return new Promise<Response>(() => { });
 }
