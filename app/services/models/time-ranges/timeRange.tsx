@@ -72,87 +72,24 @@ const TimeRange: React.FC<Props> = (props: Props) => {
 
         props.fetchData().then((response) => {
             setLoading(false);
-            setData(
-                <View style={styles.Columns}>
-                    <View style={[styles.ColumnLeft]}>
-                        <NumericStats
-                            title={'Latest recorded'}
-                            unit={'ºC'}
-                            color={props.categoryDetails.accentColor}
-                            value={23}></NumericStats>
-                        <NumericStats
-                            title={'Minimum recorded'}
-                            unit={'ºC'}
-                            color={props.categoryDetails.accentColor}
-                            value={23}
-                            aspectRatio={5 / 8}></NumericStats>
-                    </View>
-                    <View style={[styles.ColumnRight]}>
-                        <NumericStats
-                            title={'Maximum recorded'}
-                            unit={'ºC'}
-                            color={props.categoryDetails.accentColor}
-                            value={23}
-                            aspectRatio={5 / 8}></NumericStats>
-                        <NumericStats
-                            title={'Average'}
-                            unit={'ºC'}
-                            color={props.categoryDetails.accentColor}
-                            value={23}></NumericStats>
-                    </View>
-                </View>
-            );
+            setData(response);
+        });
 
-        })
+        props.fetchImage().then((value) => {
+            value.json().then((json) => {
+                console.log(json);
+                setImageURI('https://www.criticaspolares.com/wp-content/uploads/2020/08/critica-imploding-the-mirage-the-killers-2020-nuevo-disco.jpg')
+            });
+        });
     }, [locationService.location]);
 
-    // setTimeout(() => {
-    //     setHola('holaaa');
-    // }, 5000)
-
-
-
-
-
     let anim: LottieView;
-
-    //console.log(props.categoryDetails.title + ' - ' + props.title);
-
-    // props.fetchData().then((response) => {
-    //     // console.log('Fetched data from ' + props.categoryDetails.title);
-    //     response.json().then((json) => {
-    //         //const processedData = processMeasurements(json);
-    //     }
-    //     );
-    //     // const json = response.json();
-    //     // const processedMeasurements = processMeasurements(json['measurements']);
-    //     setMeasurements(<Text style={[{ color: props.categoryDetails.accentColor, alignSelf: 'center' }]}>Measurements...</Text>);
-    //     setLoading(false);
-    // }).catch((error) => console.log('baiiia'));
-
-    // props.fetchImage().then((response) => {
-    //     // console.log('Fetched image from ' + props.categoryDetails.title);
-    //     response.json().then((json) => {
-    //         if (json['url']) {
-    //             setImageURI(json['url']);
-    //         }
-    //     });
-    //     setLoading(false);
-    // }).catch((err) => console.log('errorrrrr'));
-
-
-    // const minimumMeasurement = new NumericStats('Lowest recorded', 12, props.categoryDetails.unit, props.categoryDetails.accentColor);
-    // const maximumMeasurement = new NumericStats('Highest recorded', 32, props.categoryDetails.unit, props.categoryDetails.accentColor);
-    // const averageMeasurement = new NumericStats('Average', 23, props.categoryDetails.unit, props.categoryDetails.accentColor);
-    // const lastMeasurement = new NumericStats('Latest', 26, props.categoryDetails.unit, props.categoryDetails.accentColor);
-
-
 
     return (
         <View style={{ marginTop: 20, marginBottom: 20 }}>
             <Text style={[styles.Title, { color: props.categoryDetails.accentColor }]}>{props.title}</Text>
 
-            {loading ?
+            {!(data && imageURI) ?
                 // Loading screen
                 <>
                     <LottieView

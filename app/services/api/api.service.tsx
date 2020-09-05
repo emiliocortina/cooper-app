@@ -1,5 +1,7 @@
+import React, { ReactNode } from "react";
 import { LocationService } from "../location.service";
 import { CategoryDetails } from "../models/categories/category-details";
+import { getLastMonthTemperatures } from "./temperatures.service";
 
 
 const urlLit = 'https://satellite-cms.herokuapp.com/';
@@ -29,7 +31,7 @@ export const request = (service, httpMethod) => {
 
 
 
-export const getLastMonthData = async (category: CategoryDetails) => {
+export const getLastMonthData = async (category: CategoryDetails): Promise<ReactNode> => {
     const { latitude, longitude } = LocationService.lastLoadedLocation;
 
     const startDate = new Date();
@@ -39,19 +41,14 @@ export const getLastMonthData = async (category: CategoryDetails) => {
     const startDateFormatted = formatDate(startDate);
     const endDateFormatted = formatDate(endDate);
 
-    let url = `API/data/`;
+    let node: ReactNode = <></>;
     switch (category.id) {
         default:
-            url += `surface-temperature`;
+            node = await getLastMonthTemperatures(latitude, longitude, startDateFormatted, endDateFormatted);
             break;
     }
 
-    url += `?latitude=${latitude}&longitude=${longitude}&startDate=${startDateFormatted}&finishDate=${endDateFormatted}`;
-    //console.log('aki');
-    return request(url, 'GET');
-
-    console.log('o no');
-    return new Promise<Response>(() => { });
+    return (node);
 }
 
 
@@ -73,7 +70,7 @@ export const getLastMonthImage = async (category: CategoryDetails) => {
 }
 
 
-export const formatDate = (date: Date): String => {
+export const formatDate = (date: Date): string => {
     let day: any = date.getDate();
     let month: any = date.getMonth() + 1;
     const year = date.getFullYear();

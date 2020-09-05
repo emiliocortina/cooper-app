@@ -7,7 +7,6 @@ import LastMonthTR from "cooper-app/app/services/models/time-ranges/lastMonthTR"
 import { CategoryDetails } from "cooper-app/app/services/models/categories/category-details";
 import LastYearTR from "cooper-app/app/services/models/time-ranges/lastYearTR";
 import { LocationService, LocationContext } from "cooper-app/app/services/location.service";
-import LocationGlobe from "cooper-app/app/components/location-globe/locationGlobe";
 
 interface Props {
     categoryDetails: CategoryDetails;
