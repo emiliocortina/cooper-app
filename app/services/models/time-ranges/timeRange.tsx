@@ -1,11 +1,11 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useContext } from "react";
 import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
 import NumericStats from "../stats/numericStats";
 import DashboardImageCard from "cooper-app/app/components/cards/stats/image/dashboardImage";
-import { shareToInstagramStories } from "../../social-sharing.service";
 import { CategoryDetails } from "../categories/category-details";
 import LottieView from "lottie-react-native";
 import { useNavigation } from "@react-navigation/native";
+import { LocationService, LocationContext } from "../../location.service";
 
 const styles = StyleSheet.create({
     Columns: {
@@ -60,26 +60,59 @@ interface Props {
 }
 
 const TimeRange: React.FC<Props> = (props: Props) => {
-    // const imageRef = useRef();
+    const [loading, setLoading] = useState(true);
 
-    const [loading, setLoading] = useState(false);
-    const [imageURI, setImageURI] = useState('https://earthengine.googleapis.com/v1alpha/projects/earthengine-legacy/thumbnails/a565e91303301dabbb9100961c8447aa-5fffc62493378322ad33eb7b300edebb:getPixels');
-    const navigation = useNavigation();
-    //const [measurements, setMeasurements] = useState(null);
+    const [imageURI, setImageURI] = useState(null);
+    const [data, setData] = useState(null);
+    const locationService = useContext(LocationContext);
 
-    const processMeasurements = (measurements: [any]) => {
-        console.log(measurements);
-        const processed = {};
-        const latest = measurements[0];
-        console.log('Latest ', latest);
-        const sorted = measurements.sort((a, b) => a.value - b.value);
-        const minimum = sorted[0];
-        console.log('Minimum  ', minimum);
-        const maximum = sorted[sorted.length - 1];
-        console.log('Maximum ', maximum);
+    console.log('render');
+    useEffect(() => {
+        console.log('ha cambiado la location');
 
-        return processed;
-    }
+        props.fetchData().then((response) => {
+            setLoading(false);
+            setData(
+                <View style={styles.Columns}>
+                    <View style={[styles.ColumnLeft]}>
+                        <NumericStats
+                            title={'Latest recorded'}
+                            unit={'ºC'}
+                            color={props.categoryDetails.accentColor}
+                            value={23}></NumericStats>
+                        <NumericStats
+                            title={'Minimum recorded'}
+                            unit={'ºC'}
+                            color={props.categoryDetails.accentColor}
+                            value={23}
+                            aspectRatio={5 / 8}></NumericStats>
+                    </View>
+                    <View style={[styles.ColumnRight]}>
+                        <NumericStats
+                            title={'Maximum recorded'}
+                            unit={'ºC'}
+                            color={props.categoryDetails.accentColor}
+                            value={23}
+                            aspectRatio={5 / 8}></NumericStats>
+                        <NumericStats
+                            title={'Average'}
+                            unit={'ºC'}
+                            color={props.categoryDetails.accentColor}
+                            value={23}></NumericStats>
+                    </View>
+                </View>
+            );
+
+        })
+    }, [locationService.location]);
+
+    // setTimeout(() => {
+    //     setHola('holaaa');
+    // }, 5000)
+
+
+
+
 
     let anim: LottieView;
 
@@ -141,7 +174,7 @@ const TimeRange: React.FC<Props> = (props: Props) => {
                     <View>
 
                         {imageURI &&
-                            <TouchableOpacity style={{ flex: 1 }} onPress={() => { navigation.navigate('Details') }}>
+                            <TouchableOpacity style={{ flex: 1 }}>
                                 <View>
                                     <DashboardImageCard
                                         source={{ uri: imageURI }}
@@ -151,34 +184,8 @@ const TimeRange: React.FC<Props> = (props: Props) => {
                             </TouchableOpacity>
                         }
                         {/* {measurements} */}
-                        <View style={styles.Columns}>
-                            <View style={[styles.ColumnLeft]}>
-                                <NumericStats
-                                    title={'Latest recorded'}
-                                    unit={'º'}
-                                    color={props.categoryDetails.accentColor}
-                                    value={23}></NumericStats>
-                                <NumericStats
-                                    title={'Minimum recorded'}
-                                    unit={'º'}
-                                    color={props.categoryDetails.accentColor}
-                                    value={23}
-                                    aspectRatio={5 / 8}></NumericStats>
-                            </View>
-                            <View style={[styles.ColumnRight]}>
-                                <NumericStats
-                                    title={'Maximum recorded'}
-                                    unit={'º'}
-                                    color={props.categoryDetails.accentColor}
-                                    value={23}
-                                    aspectRatio={5 / 8}></NumericStats>
-                                <NumericStats
-                                    title={'Average'}
-                                    unit={'º'}
-                                    color={props.categoryDetails.accentColor}
-                                    value={23}></NumericStats>
-                            </View>
-                        </View>
+                        {data}
+
                     </View>
                 </>
             }

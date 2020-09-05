@@ -2,7 +2,7 @@ import { LocationService } from "../location.service";
 import { CategoryDetails } from "../models/categories/category-details";
 
 
-const urlLit = 'http://192.168.0.32:3000/';
+const urlLit = 'https://satellite-cms.herokuapp.com/';
 //urlLit = 'http://cooper-app.herokuapp.com/';
 
 /**
@@ -29,9 +29,8 @@ export const request = (service, httpMethod) => {
 
 
 
-export const useLastMonthData = async (category: CategoryDetails) => {
-    const location = LocationService.service.getLoadedLocation();
-    const { latitude, longitude } = location;
+export const getLastMonthData = async (category: CategoryDetails) => {
+    const { latitude, longitude } = LocationService.lastLoadedLocation;
 
     const startDate = new Date();
     startDate.setMonth(startDate.getMonth() - 1)
@@ -56,8 +55,9 @@ export const useLastMonthData = async (category: CategoryDetails) => {
 }
 
 
-export const useLastMonthImage = async (category: CategoryDetails) => {
+export const getLastMonthImage = async (category: CategoryDetails) => {
     const currentDate = new Date();
+    currentDate.setDate(currentDate.getDate() - 7);
     const currentDateFormatted = formatDate(currentDate);
 
     let url = `API/image/static?image=`;
@@ -66,14 +66,10 @@ export const useLastMonthImage = async (category: CategoryDetails) => {
             url += `AirTemperature`;
             break;
     }
-
-    const location = LocationService.service.getLoadedLocation();
-    const { latitude, longitude } = location;
+    const { latitude, longitude } = LocationService.lastLoadedLocation;
     url += `&latitude=${latitude}&longitude=${longitude}&date=${currentDateFormatted}&colorScale=${category.colorScale}`;
+    //console.log(url);
     return request(url, 'GET');
-
-    // console.log('o no imagen no');
-    return new Promise<Response>(() => { });
 }
 
 
