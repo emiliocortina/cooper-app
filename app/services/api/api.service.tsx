@@ -2,10 +2,11 @@ import React, { ReactNode } from "react";
 import { LocationService } from "../location.service";
 import { CategoryDetails } from "../models/categories/category-details";
 import { getLastMonthTemperatures } from "./temperatures.service";
+import { getLastMonthRain } from "./rain.service";
+import { getLastMonthPollution } from "./pollution.service";
 
 
 const urlLit = 'https://satellite-cms.herokuapp.com/';
-//urlLit = 'http://cooper-app.herokuapp.com/';
 
 /**
  * Requests a service  from the  API
@@ -17,6 +18,7 @@ const urlLit = 'https://satellite-cms.herokuapp.com/';
 export const request = (service, httpMethod) => {
     let url = urlLit + service;
 
+    console.log(url);
     return fetch(url, {
         method: httpMethod,
         headers: {
@@ -43,6 +45,15 @@ export const getLastMonthData = async (category: CategoryDetails): Promise<React
 
     let node: ReactNode = <></>;
     switch (category.id) {
+        case 'temperatures':
+            node = await getLastMonthTemperatures(latitude, longitude, startDateFormatted, endDateFormatted);
+            break;
+        case 'rain':
+            node = await getLastMonthRain(latitude, longitude, startDateFormatted, endDateFormatted);
+            break;
+        case 'pollution':
+            node = await getLastMonthPollution(latitude, longitude, startDateFormatted, endDateFormatted);
+            break;
         default:
             node = await getLastMonthTemperatures(latitude, longitude, startDateFormatted, endDateFormatted);
             break;
@@ -54,7 +65,7 @@ export const getLastMonthData = async (category: CategoryDetails): Promise<React
 
 export const getLastMonthImage = async (category: CategoryDetails) => {
     const currentDate = new Date();
-    currentDate.setDate(currentDate.getDate() - 7);
+    currentDate.setDate(currentDate.getDate() - 31);
     const currentDateFormatted = formatDate(currentDate);
 
     let url = `API/image/static?image=`;

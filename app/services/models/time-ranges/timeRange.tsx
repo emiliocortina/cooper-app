@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, useContext } from "react";
+import React, { useRef, useState, useEffect, useContext, ReactNode } from "react";
 import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
 import NumericStats from "../stats/numericStats";
 import DashboardImageCard from "cooper-app/app/components/cards/stats/image/dashboardImage";
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
 
 interface Props {
     title: string,
-    fetchData: () => Promise<Response>,
+    fetchData: () => Promise<ReactNode>,
     fetchImage: () => Promise<Response>,
     categoryDetails: CategoryDetails
 }
@@ -66,9 +66,8 @@ const TimeRange: React.FC<Props> = (props: Props) => {
     const [data, setData] = useState(null);
     const locationService = useContext(LocationContext);
 
-    console.log('render');
     useEffect(() => {
-        console.log('ha cambiado la location');
+        // console.log('ha cambiado la location');
 
         props.fetchData().then((response) => {
             setLoading(false);
@@ -77,8 +76,9 @@ const TimeRange: React.FC<Props> = (props: Props) => {
 
         props.fetchImage().then((value) => {
             value.json().then((json) => {
-                console.log(json);
-                setImageURI('https://www.criticaspolares.com/wp-content/uploads/2020/08/critica-imploding-the-mirage-the-killers-2020-nuevo-disco.jpg')
+                if (json.url) {
+                    setImageURI(json.url);
+                }
             });
         });
     }, [locationService.location]);

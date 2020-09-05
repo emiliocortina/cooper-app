@@ -59,5 +59,117 @@
         "profilePage": {
             "ownThreads": "Your threads"
         }
+    },
+    "statsDetails": {
+        "latest": {
+            "lastMonth": {
+                "temperatures": {
+                    "title": "Latest temperature recorded last month",
+                    "subtitle": "Daily average aggregates",
+                    "description": "Reanalyses provide a numerical description of the recent climate by combining models with observations. They have been invaluable to numerous users in Member States and around the world and have always been closely associated with the excellence of the Centre’s forecast products."
+                },
+                "pollution": {
+                    "title": "Latest pollution data recorded last month",
+                    "subtitle": "Daily average aggregates",
+                    "description": "Reanalyses provide a numerical description of the recent climate by combining models with observations. They have been invaluable to numerous users in Member States and around the world and have always been closely associated with the excellence of the Centre’s forecast products."
+                },
+                "rain": {
+                    "title": "Latest rain data recorded last month",
+                    "subtitle": "Daily average aggregates",
+                    "description": "Reanalyses provide a numerical description of the recent climate by combining models with observations. They have been invaluable to numerous users in Member States and around the world and have always been closely associated with the excellence of the Centre’s forecast products."
+                },
+                "vegetation": {
+                    "title": "Latest vegetation recorded last month",
+                    "subtitle": "Daily average aggregates",
+                    "description": "Reanalyses provide a numerical description of the recent climate by combining models with observations. They have been invaluable to numerous users in Member States and around the world and have always been closely associated with the excellence of the Centre’s forecast products."
+                }
+            },
+            "lastYear": {},
+            "overTheYears": {}
+        },
+        "minimum": {
+            "lastMonth": {
+                "temperatures": {
+                    "title": "Minimum temperature recorded last month",
+                    "subtitle": "Daily average aggregates",
+                    "description": "Reanalyses provide a numerical description of the recent climate by combining models with observations. They have been invaluable to numerous users in Member States and around the world and have always been closely associated with the excellence of the Centre’s forecast products."
+                },
+                "pollution": {
+                    "title": "Minimum pollution data recorded last month",
+                    "subtitle": "Daily average aggregates",
+                    "description": "Reanalyses provide a numerical description of the recent climate by combining models with observations. They have been invaluable to numerous users in Member States and around the world and have always been closely associated with the excellence of the Centre’s forecast products."
+                },
+                "rain": {
+                    "title": "Minimum rain data recorded last month",
+                    "subtitle": "Daily average aggregates",
+                    "description": "Reanalyses provide a numerical description of the recent climate by combining models with observations. They have been invaluable to numerous users in Member States and around the world and have always been closely associated with the excellence of the Centre’s forecast products."
+                },
+                "vegetation": {
+                    "title": "Minimum vegetation recorded last month",
+                    "subtitle": "Daily average aggregates",
+                    "description": "Reanalyses provide a numerical description of the recent climate by combining models with observations. They have been invaluable to numerous users in Member States and around the world and have always been closely associated with the excellence of the Centre’s forecast products."
+                }
+            },
+            "lastYear": {},
+            "overTheYears": {}
+        },
+        "maximum": {
+            "lastMonth": {
+                "temperatures": {
+                    "title": "Maximum temperature recorded last month",
+                    "subtitle": "Daily average aggregates",
+                    "description": "Reanalyses provide a numerical description of the recent climate by combining models with observations. They have been invaluable to numerous users in Member States and around the world and have always been closely associated with the excellence of the Centre’s forecast products."
+                },
+                "pollution": {
+                    "title": "Maximum pollution data recorded last month",
+                    "subtitle": "Daily average aggregates",
+                    "description": "Reanalyses provide a numerical description of the recent climate by combining models with observations. They have been invaluable to numerous users in Member States and around the world and have always been closely associated with the excellence of the Centre’s forecast products."
+                },
+                "rain": {
+                    "title": "Maximum rain data recorded last month",
+                    "subtitle": "Daily average aggregates",
+                    "description": "Reanalyses provide a numerical description of the recent climate by combining models with observations. They have been invaluable to numerous users in Member States and around the world and have always been closely associated with the excellence of the Centre’s forecast products."
+                },
+                "vegetation": {
+                    "title": "Maximum vegetation recorded last month",
+                    "subtitle": "Daily average aggregates",
+                    "description": "Reanalyses provide a numerical description of the recent climate by combining models with observations. They have been invaluable to numerous users in Member States and around the world and have always been closely associated with the excellence of the Centre’s forecast products."
+                }
+            },
+            "lastYear": {},
+            "overTheYears": {}
+        },
+        "average": {
+            "lastMonth": {
+                "temperatures": {
+                    "title": "Average temperatures recorded last month",
+                    "subtitle": "Daily average aggregates",
+                    "description": "Reanalyses provide a numerical description of the recent climate by combining models with observations. They have been invaluable to numerous users in Member States and around the world and have always been closely associated with the excellence of the Centre’s forecast products."
+                },
+                "pollution": {
+                    "title": "Average pollution data recorded last month",
+                    "subtitle": "Daily average aggregates",
+                    "description": "Reanalyses provide a numerical description of the recent climate by combining models with observations. They have been invaluable to numerous users in Member States and around the world and have always been closely associated with the excellence of the Centre’s forecast products."
+                },
+                "rain": {
+                    "title": "Average rain data recorded last month",
+                    "subtitle": "Daily average aggregates",
+                    "description": "Reanalyses provide a numerical description of the recent climate by combining models with observations. They have been invaluable to numerous users in Member States and around the world and have always been closely associated with the excellence of the Centre’s forecast products."
+                },
+                "vegetation": {
+                    "title": "Average vegetation recorded last month",
+                    "subtitle": "Daily average aggregates",
+                    "description": "Reanalyses provide a numerical description of the recent climate by combining models with observations. They have been invaluable to numerous users in Member States and around the world and have always been closely associated with the excellence of the Centre’s forecast products."
+                }
+            },
+            "lastYear": {},
+            "overTheYears": {}
+        }
+    },
+    "numericStats": {
+        "latest": "Latest recorded",
+        "minimum": "Minimum recorded",
+        "maximum": "Maximum recorded",
+        "average": "Average"
     }
 }

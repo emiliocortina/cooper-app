@@ -4,11 +4,12 @@ import { Feather } from "@expo/vector-icons";
 import ReactNativeParallaxHeader from 'react-native-parallax-header';
 import useColorsSheet from "../../services/useColorsSheet.service";
 import DashboardAreaChart from 'cooper-app/app/components/cards/stats/chart/area-chart/dashboardAreaChart';
+import i18n from "cooper-app/app/i18n";
+import { NumericStatsProps } from 'cooper-app/app/services/models/stats/numericStats';
 
-const HEADER_HEIGHT = 64;
 
 
-const ThreadDetailsTemplate: React.FC<any> = ({ navigation, route }) => {
+const ThreadDetailsTemplate: React.FC<NumericStatsProps> = (props: NumericStatsProps) => {
 
     let Colors = useColorsSheet();
     const styles = StyleSheet.create({
@@ -16,18 +17,8 @@ const ThreadDetailsTemplate: React.FC<any> = ({ navigation, route }) => {
             ...Colors.systemBackground,
             flex: 1,
             padding: 36,
-            paddingBottom: 200
-        },
-        contentContainer: {
-            flexGrow: 1,
-        },
-        navBar: {
-            height: '100%',
-            justifyContent: 'space-between',
-            marginHorizontal: 20,
-            alignItems: 'center',
-            flexDirection: 'row',
-            backgroundColor: 'transparent',
+            paddingBottom: 200,
+            flexGrow: 1
         },
         Title: {
             fontFamily: 'Circular',
@@ -86,10 +77,11 @@ const ThreadDetailsTemplate: React.FC<any> = ({ navigation, route }) => {
 
     return (
         <ScrollView style={styles.container}>
-            <Text style={[styles.Title, { color: '#E26A61' }]}>Historical temperature data in detail</Text>
-            <Text style={[styles.Subtitle]}>Monthly average aggregates</Text>
+            <Text style={[styles.Title, { color: '#E26A61' }]}>
+                {i18n.t(`statsDetails.${props.measurementType}.${props.timeRange}.${props.categoryDetails.id}.title`)}</Text>
+            <Text style={[styles.Subtitle]}>{i18n.t(`statsDetails.${props.measurementType}.${props.timeRange}.${props.categoryDetails.id}.subtitle`)}</Text>
             <Image style={styles.Chart} resizeMode={'contain'} source={require('cooper-app/assets/images/temp_chart.png')}></Image>
-            <Text style={styles.Paragraph}>Reanalyses provide a numerical description of the recent climate by combining models with observations. They have been invaluable to numerous users in Member States and around the world and have always been closely associated with the excellence of the Centre’s forecast products.</Text>
+            <Text style={styles.Paragraph}> {i18n.t(`statsDetails.${props.measurementType}.${props.timeRange}.${props.categoryDetails.id}.description`)}</Text>
             <View style={styles.Card}>
                 <Image style={{ width: 90, height: 100 }} resizeMode={'contain'} source={require('cooper-app/assets/images/sentinel.png')}></Image>
                 <View style={styles.CardDescription}>
