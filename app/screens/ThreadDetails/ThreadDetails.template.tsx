@@ -1,12 +1,19 @@
 import React from 'react';
-import { View, Image, ScrollView, StyleSheet, Text, StatusBar, TouchableOpacity } from 'react-native';
+import { View, Image, ScrollView, StyleSheet, Text, StatusBar, TouchableOpacity, Dimensions } from 'react-native';
 import { Feather } from "@expo/vector-icons";
 import ReactNativeParallaxHeader from 'react-native-parallax-header';
 import useColorsSheet from "../../services/useColorsSheet.service";
 import DashboardAreaChart from 'cooper-app/app/components/cards/stats/chart/area-chart/dashboardAreaChart';
 import i18n from "cooper-app/app/i18n";
 import { NumericStatsProps } from 'cooper-app/app/services/models/stats/numericStats';
-
+import {
+    LineChart,
+    BarChart,
+    PieChart,
+    ProgressChart,
+    ContributionGraph,
+    StackedBarChart
+} from "react-native-chart-kit";
 
 
 const ThreadDetailsTemplate: React.FC<NumericStatsProps> = (props: NumericStatsProps) => {
@@ -80,7 +87,53 @@ const ThreadDetailsTemplate: React.FC<NumericStatsProps> = (props: NumericStatsP
             <Text style={[styles.Title, { color: '#E26A61' }]}>
                 {i18n.t(`statsDetails.${props.measurementType}.${props.timeRange}.${props.categoryDetails.id}.title`)}</Text>
             <Text style={[styles.Subtitle]}>{i18n.t(`statsDetails.${props.measurementType}.${props.timeRange}.${props.categoryDetails.id}.subtitle`)}</Text>
-            <Image style={styles.Chart} resizeMode={'contain'} source={require('cooper-app/assets/images/temp_chart.png')}></Image>
+
+            <LineChart
+                data={{
+                    labels: ["J", "F", "M", "A", "M", "J"],
+                    datasets: [
+                        {
+                            data: [
+                                Math.random() * 100,
+                                Math.random() * 100,
+                                Math.random() * 100,
+                                Math.random() * 100,
+                                Math.random() * 100,
+                                Math.random() * 100
+                            ]
+                        }
+                    ]
+                }}
+                width={Dimensions.get("window").width - 72} // from react-native
+                height={220} // optional, defaults to 1
+                withInnerLines={false}
+                withOuterLines={false}
+                yAxisInterval={3}
+                chartConfig={{
+                    backgroundColor: "#E26A61",
+                    backgroundGradientFrom: "#E26A61",
+                    backgroundGradientTo: "#F9A78A",
+                    decimalPlaces: 2, // optional, defaults to 2dp
+                    color: (opacity = 0) => `rgba(255, 255, 255, ${opacity})`,
+                    labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+                    style: {
+                        borderRadius: 16
+                    },
+                    propsForDots: {
+                        r: "4",
+                        strokeWidth: "2",
+                        stroke: "#ffffff"
+                    },
+
+                }}
+                bezier
+                style={{
+                    alignSelf: 'center',
+                    marginVertical: 8,
+                    borderRadius: 16
+                }}
+            />
+
             <Text style={styles.Paragraph}> {i18n.t(`statsDetails.${props.measurementType}.${props.timeRange}.${props.categoryDetails.id}.description`)}</Text>
             <View style={styles.Card}>
                 <Image style={{ width: 90, height: 100 }} resizeMode={'contain'} source={require('cooper-app/assets/images/sentinel.png')}></Image>
